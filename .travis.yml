@@ -1,0 +1,27 @@
+env:
+  global:
+  - FILE_NAME="TCC_FGA.pdf"
+  - RELEASE_NAME="RELATORIO_RADOP-v$TRAVIS_BUILD_NUMBER.pdf"
+sudo: required
+dist: trusty
+before_install:
+- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-full
+  texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended
+  make
+script:
+- make clean
+- make
+- mkdir build/
+- mv $FILE_NAME $RELEASE_NAME
+- mv $RELEASE_NAME build/
+deploy:
+  provider: releases
+  api_key:
+    secure: ZR2ORcuJbEwhEkStfqsn/1XxPcsEULcTWMJAiwcRl/ot/v2hc/df53XQpStHzvYIP0pTlqvbywwShRYHW2BoQkMRg8AWPXxfuozQoQ7knCw8IzmuPfzkt1utcBGDMMJDVzTnT8nMhDPVptT4rY9HLMcVPhQ5SC9RL1AfXipkavrgxo1RwTL4Dtq1GVDgZzKyFs/rytvlQBBU/yOQlh3jKYCw13TO4Jtlelw3YXPRq3jb5C+19CGeKRXPMatSGxZ2x/bWpuQGE/SVKa+KgPXIvy9C171wPbHZPoUomzTNygaIc1Drfmy/+OlBbBJ1hfegCBPheO8PJIkuWAaG1nmSeybVzZ9mFtXnkWuQaty8RsTI94VoPYG12Iag70AY8sO6av52/bATmJuVrPgY20pb3PsVsBodLNBodqOcVtLayK3wJtRKWcykpbNnA62ZRrzDqyQppDCOSJ5m7Le6oZ/lMib31A6rHP5RPsqLHQ9WqtgjyiPTaWa5Q7q5Zcq6yJKcdKdco8evgeX9jpOBK63gMa1LArzpFcE645e8W/6aHa5QZSyRvs7Clys/ncMaCM+RHLGfE/5mGSJ/kewJBqrCjjIoS6BkEZEj4vg+inmxllLxTnXbcMvn+bEIuG2tMfgx3mRSa9znhpAxqXhXEfjK7wKBbts9LHAejmpKmLbzffQ=
+  file_glob: true
+  file: build/*
+  skip_cleanup: true
+  on:
+    all_branches: true
+    condition: $TRAVIS_BRANCH =~ ^develop|master$
+  tags: true
