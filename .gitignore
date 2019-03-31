@@ -5,6 +5,7 @@
 *.ps
 *.backup
 *.aux
+*.bcf
 
 #logs
 *.log
@@ -19,3 +20,6 @@
 *.brf
 *.toc
 *.idx
+
+#Other files
+.DS_Store
