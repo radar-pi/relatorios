@@ -7,18 +7,18 @@
 \subsection{Detalhamento dos softwares}
 Radares usados no trânsito das cidades necessitam se comunicar com outros sistemas, tanto para passarem as informações obtidas dos automóveis monitorados quanto dados sobre o próprio funcionamento.
 
-Além disso, é necessário às equipes que dão manutenção aos radares terem condições de obterem dados do funcionamento do sistema deles, para decidirem se e qual intervenção necessitarão fazer no equipamento.
+Além disso, é necessário às equipes que darão manutenção aos radares terem condições de obterem dados do funcionamento do sistema deles, para decidirem se e qual intervenção necessitarão fazer no equipamento.
 
-Tendo isso em vista, serão criados 2 softwares para dar suporte ao funcionamento do radar: um serviço de monitoramento remoto dos radares e uma aplicação a ser usada por equipes de manutenção no diagnóstico dos equipamentos.
+Tendo isso em vista, serão 2 as soluções em software para dar suporte ao funcionamento do radar: um serviço -- que fará uso de microsserviços -- para o monitoramento remoto dos radares e uma aplicação a ser usada por equipes de manutenção no diagnóstico dos equipamentos.
 
-Abaixo está um diagrama que mostra como esses softwares interagirão com o radar:
+Na Figura \ref{fig:diagrama-in-out-software} diagrama que mostra como esses softwares interagirão com o radar:
 
 \begin{figure}[!htb]
-    \center{\includegraphics[width=\textwidth]{diagrama-in-out-software.eps}}
+    \center{\includegraphics[width=\textwidth]{diagrama-in-out-software}}
     \caption{\label{fig:diagrama-in-out-software} Diagrama de inputs e outputs do radar e dos softwares}
 \end{figure}
 
-Nas sessões abaixo, serão melhor detalhados os softwares, assim como as funcionalidades deles.
+Nas sessões a seguir, serão melhor detalhados os softwares, assim como as funcionalidades deles.
 
 \subsubsection{Serviço de Monitoramento Remoto (SMR)}
 Este serviço, que é um dashboard que possui um servidor de microsserviços que dá suporte a ele, terá a função de obter os dados sobre automóveis enviados pelos radares, receber informações sobre o funcionamento dos equipamentos (por exemplo, se eles estão com a bateria ou os LEDs funcionando) e a partir disso realizar diversas operações.
