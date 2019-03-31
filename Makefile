@@ -1,9 +1,10 @@
 TARGET = TCC_FGA.pdf
 
 BIBTEX = bibtex
-LATEX = latex
-DVIPS = dvips
-PS2PDF = ps2pdf
+LATEX = pdflatex
+# LATEX = latex
+# DVIPS = dvips
+# PS2PDF = ps2pdf
 
 VERSION = 0.1.0
 
@@ -42,8 +43,8 @@ $(TARGET): $(MAIN_FILE) $(SOURCES) bibliografia.bib
 	$(BIBTEX) $(AUX_FILE)
 	$(LATEX) $(MAIN_FILE) $(SOURCES)
 	$(LATEX) $(MAIN_FILE) $(SOURCES)
-	$(DVIPS) $(DVI_FILE)
-	$(PS2PDF) $(PS_FILE)
+	# $(DVIPS) $(DVI_FILE)
+	# $(PS2PDF) $(PS_FILE)
 	@cp $(PDF_FILE) $(TARGET)
 
 clean:
