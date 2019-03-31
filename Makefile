@@ -1,9 +1,10 @@
 TARGET = TCC_FGA.pdf
 
 BIBTEX = bibtex
-LATEX = latex
-DVIPS = dvips
-PS2PDF = ps2pdf
+LATEX = pdflatex
+# LATEX = latex
+# DVIPS = dvips
+# PS2PDF = ps2pdf
 
 VERSION = 0.1.0
 
@@ -20,7 +21,7 @@ EDITAVEIS_SOURCES = informacoes.tex errata.tex dedicatoria.tex \
 					abreviaturas.tex simbolos.tex introducao.tex \
 					aspectosgerais.tex consideracoes.tex textoepostexto.tex \
 					elementosdotexto.tex elementosdopostexto.tex \
-					apendices.tex anexos.tex solucaoproposta.tex
+					apendices.tex anexos.tex
 
 EDITAVEIS_FILES = $(addprefix $(EDITAVEIS_DIR)/, $(EDITAVEIS_SOURCES))
 
@@ -42,14 +43,13 @@ $(TARGET): $(MAIN_FILE) $(SOURCES) bibliografia.bib
 	$(BIBTEX) $(AUX_FILE)
 	$(LATEX) $(MAIN_FILE) $(SOURCES)
 	$(LATEX) $(MAIN_FILE) $(SOURCES)
-	$(DVIPS) $(DVI_FILE)
-	$(PS2PDF) $(PS_FILE)
+	# $(DVIPS) $(DVI_FILE)
+	# $(PS2PDF) $(PS_FILE)
 	@cp $(PDF_FILE) $(TARGET)
 
 clean:
 	rm -f *~ *.dvi *.ps *.backup *.aux *.log
 	rm -f *.lof *.lot *.bbl *.blg *.brf *.toc *.idx
-	rm -f *.fdb_latexmk *.fls *.ilg *.ind *.synctex.gz
 	rm -f *.pdf
 	
 dist: clean
