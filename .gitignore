@@ -5,6 +5,7 @@
 *.ps
 *.backup
 *.aux
+*.bcf
 
 #logs
 *.log
@@ -29,5 +30,5 @@
 tcc.synctex.gz
 *.run.xml
 
-# Other random files
+#Other files
 .DS_Store
