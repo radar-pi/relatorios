@@ -10,6 +10,40 @@
 \subsection{Não é}
 \section{Requisitos}
 \subsection{Eletrônica}
+
+Os requisitos de eletrônica são:
+	
+\begin{itemize}
+	\item Detectar a aproximação do carro na via;
+    \item Calcular a velocidade relativa do carro;
+    \item Implementar uma comunicação entre os dois radares para determinar a emissão do alerta;
+    \item Criar uma interface entre o radar e o motorista para visualização do alerta;
+    \item Capturar imagem traseira do carro com a placa quando este passar acima da velocidade permitida;
+    \item Projetar e construir circuitos de proteção para o dispositivos eletrônicos;
+    \item Fazer o pré-processamento da imagem para reconhecimento da placa do veículo;
+    \item Determinar a velocidade máxima do veículo para melhor captura da placa;
+    \item Determinar a distância do veículo em relação ao radar para melhor captura da placa;
+    \item Determinar a distância máxima entre os dois radares;
+    \item Selecionar e implementar os protocolos de comunicação entre os dois radares;
+    \item Selecionar e implementar os protocolos de comunicação entre os radares e o servidor;
+     \item Determinar a capacidade de amarzenamento mínimo necessário para guardar dados quando a comunicação entre o radar e o servidor estiver fora de serviço;
+     \item Determinar a velocidade mínima de transmissão de dados entre os radares para emissão de alerta;
+     \item Determinar e implementar a estrutura do pacote de dados a ser enviado para o servidor contendo todas as informações necessárias;
+     \item Transmitir para o servidor a velocidade, a imagem da placa pré-processada  e outras informações sobre o funcionamento do sistema.
+\end{itemize}    
+    
+    As restrições de eletrônica são:
+
+\begin{itemize}
+
+	\item Se limitar em apenas reconhecer a placa do veículo, e não gerar a multa.
+	\item Falha de comunicação entre os radares e o servidor por no máximo 3 dias.
+	\item O veículo deve estar em uma velocidade igual ou menor que a velocidade máxima estabelecida para captura da placa.
+	\item A captura da câmera deve ser apenas da traseira do veículo, devido a moto ter placa apenas na parte de trás, unificando o processo.
+	\item A distância máxima entre os radares deve ser de 1 km.
+	
+\end{itemize} 	
+	
 \subsection{Energia}
 \subsection{Estrutura}
 \subsection{Software}
