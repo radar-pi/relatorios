@@ -31,7 +31,7 @@ O módulo embarcado dentro da beaglebone tem como função principal servir de c
  O módulo tem como objetivo realizar a captura e enquadramento de um veículo em uma imagem. Uma vez detectado um automóvel acima da velocidade limite da via a câmera irá realizar o \textit{screenshot} da gravação, onde a imagem logo em seguida passara por um pré-processamento para ser enviada há um servidor remoto, apresentado na Fig. \ref{fig:processos}.
  
  \begin{figure}[!htb]
-	\center{\includegraphics[scale=1]{Processos.pdf}}
+	\center{\includegraphics[scale=1]{processos}}
 	\caption{\label{fig:processos} Diagrama do sistema do processamento da imagem.}
 \end{figure}
 
@@ -47,14 +47,14 @@ Responsável pela emissão e detecção dos pulsos eletromagnéticos. Ela enviar
 Na Fig. \ref{fig:nuand}, será apresentado o diagrama de processos entre o \emph{Nuand Blade} e a antena.
 
  \begin{figure}[!htb]
-	\center{\includegraphics[scale=1]{Processos-2.pdf}}
+	\center{\includegraphics[scale=1]{processos-2}}
 	\caption{\label{fig:nuand} Diagrama do sistema do Nuand e antena.}
 \end{figure}
 
 De acordo com a Fig. \ref{fig:nuand}, o rádio definido por software será responsável pela modulação do pulso enviado e recebido pela antena. Dentro da placa de desenvolvimento encontra-se um mixer para realização do deslocamento do espectro com o intuito de facilitar a amostragem do sinal. Após o deslocamento é realizado uma filtragem das altas frequências para limpar as possíveis interferências de outros sinais. Após a filtragem é utilizado um algoritmo para realizar a FFT do sinal amostrado e para depois passar por um outro processo onde é possível estimar a sua velocidade, o rádio é apresentado na Fig. \ref{fig:bladerf}. 
 
 \begin{figure}[!htb]
-	\center{\includegraphics[scale=0.35]{bladerf.pdf}}
+	\center{\includegraphics[scale=0.35]{bladerf}}
 	\caption{\label{fig:bladerf} Placa BladeRF NUAND}
 \end{figure}
 
@@ -106,7 +106,7 @@ A \emph{Beaglebone Black} é um sistema embarcado, como apresentado na Fig. \ref
 Tem como função fazer a comunicação entre os dois radares no meio da rodovia. Este módulo foi escolhido pelo fato que o mesmo permite uma boa comunicação sem fio a longas distâncias em lugares abertos, possibilitando assim o envio e a recepção de informações de uma forma simples e rápida de um radar para o outro. A comunicação deste módulo com a placa Beaglebone será pelo protocolo \emph{Serial Peripheral Interface} (SPI), como mostrado na Fig. \ref{fig:nrf24}. 
 
 \begin{figure}[!htb]
-	\center{\includegraphics[scale=0.5]{nrf24.pdf}}
+	\center{\includegraphics[scale=0.5]{nrf24}}
 	\caption{\label{fig:nrf24} Módulo GSM  GPRS}
 \end{figure}
 \begin{itemize}
@@ -131,7 +131,7 @@ Tem como função fazer a comunicação entre os radares e o servidor. Este mód
 
  
 \begin{figure}[!htb]
-	\center{\includegraphics[scale=0.5]{gsm.pdf}}
+	\center{\includegraphics[scale=0.5]{gsm}}
 	\caption{\label{fig:gsm} Módulo GSM  GPRS}
 \end{figure}
 
@@ -170,7 +170,7 @@ A câmera tem como função realizar a captura das imagens que serão processada
 Com o objetivo de atender às demandas de energia do projeto, a solução básica adotada foi a utilização de painéis solares em sistemas isolados para geração de energia elétrica, utilizando baterias para a garantia de alimentação em regime permanente e controladores de carga para evitar sobrecargas ou descargas exageradas na bateria, aumentando sua vida útil e desempenho. Também faz parte da solução básica de energia o dimensionamento da iluminação onde serão utilizados painéis e lâmpadas de LED. O sistema, a princípio, tem como objetivo atender a todas as demandas de consumo enérgico dos subsistemas iluminação, aparelhos e componentes eletrônicos, o esquemático do sistema de alimentação é apresentado na Fig. \ref{fig:diagrama_energia}.
 
 \begin{figure}[!htb]
-	\center{\includegraphics[scale=0.7]{Diagrama_de_Blocos_Energia_2.pdf}}
+	\center{\includegraphics[scale=0.7]{Diagrama_de_Blocos_Energia_2}}
 	\caption{\label{fig:diagrama_energia} Diagrama do sistema de alimentação}
 \end{figure}
 
