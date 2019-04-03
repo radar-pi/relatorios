@@ -48,7 +48,7 @@ Os requisitos de eletrônica são:
     \item Determinar a distância máxima entre os dois radares;
     \item Selecionar e implementar os protocolos de comunicação entre os dois radares;
     \item Selecionar e implementar os protocolos de comunicação entre os radares e o servidor;
-     \item Determinar a capacidade de amarzenamento mínimo necessário para guardar dados quando a comunicação entre o radar e o servidor estiver fora de serviço;
+     \item Determinar a capacidade de armazenamento mínimo necessário para guardar dados quando a comunicação entre o radar e o servidor estiver fora de serviço;
      \item Determinar a velocidade mínima de transmissão de dados entre os radares para emissão de alerta;
      \item Determinar e implementar a estrutura do pacote de dados a ser enviado para o servidor contendo todas as informações necessárias;
      \item Transmitir para o servidor a velocidade, a imagem da placa pré-processada  e outras informações sobre o funcionamento do sistema.
@@ -58,10 +58,10 @@ Os requisitos de eletrônica são:
 
 \begin{itemize}
 
-	\item Se limitar em apenas reconhecer a placa do veículo, e não gerar a multa.
-	\item Falha de comunicação entre os radares e o servidor por no máximo 3 dias.
-	\item O veículo deve estar em uma velocidade igual ou menor que a velocidade máxima estabelecida para captura da placa.
-	\item A captura da câmera deve ser apenas da traseira do veículo, devido a moto ter placa apenas na parte de trás, unificando o processo.
+	\item Se limitar em apenas reconhecer a placa do veículo, e não gerar a multa;
+	\item Falha de comunicação entre os radares e o servidor por no máximo 3 dias;
+	\item O veículo deve estar em uma velocidade igual ou menor que a velocidade máxima estabelecida para captura da placa;
+	\item A captura da câmera deve ser apenas da traseira do veículo, devido ao fato de motos terem placa apenas na parte de trás, unificando o processo;
 	\item A distância máxima entre os radares deve ser de 1 km.
 	
 \end{itemize} 	
@@ -71,9 +71,8 @@ Os requisitos de eletrônica são:
 	\item O sistema deve conter painéis fotovoltaicos que promoverão a fonte de alimentação para todos os componentes do sistema;
 	\item O sistema deve garantir o máximo aproveitamento energético;
 	\item O sistema deve conter circuitos de controle de tensão e corrente;
-	\item O sistema deve conter circuitos de controle de tensão e corrente;
 	\item O sistema deve garantir o funcionamento seguro e contínuo do Radar;
-	\item O sistema deve conter um circuito de iluminação para servir de alerta aos motoristas;
+	\item O sistema deve conter um circuito de iluminação para servir de alerta aos motoristas.
 
 \end{itemize}
 
@@ -82,10 +81,10 @@ As restrições de Energia são:
    \item Dependêcia do clima para a geração de energia;
    \item Localização Geografica;
    \item Temperatura média;
-   \item Indices de radiação solar;
+   \item Índices de radiação solar;
    \item Posicionamento das placas em relação a radiação solar;
    \item Horário de exposição;
-   \item Existência de sombramento
+   \item Existência de sombramento.
  \end{itemize}
 \subsection{Estrutura}
 
@@ -117,15 +116,15 @@ Os requisistos de \emph{software} são:
 \begin{itemize}
     \item Interface do \emph{Dashboard};
     \item Interface do aplicativo;
-    \item Manual de uso dos emph{softwares} : microsserviços, aplicativo e \emph{Dashboard}.;
-    \item Funcionar com conexão a redes (emph{internet});
+    \item Manual de uso dos \emph{softwares} : microsserviços, aplicativo e \emph{Dashboard}.;
+    \item Funcionar com conexão a redes (\emph{internet});
     \item Ser capaz de lidar e recuperar de falhas e erros como: conexão, processamento, entre outros;
-    \item \emph{Softwares} devem ser manuteníveis e evolutíveis;
-    \item Os \emph{softwares} devem ser testáveis e testados;
-    \item \emph{Software} deve mostrar dados e informações do Radar;
-    \item \emph{Software} deve ser capaz de tomar decisões para alertar socorristas a respeito de prováveis acidentes automobilísticos;
+    \item O \emph{Software} devem ser manuteníveis e evolutíveis;
+    \item O \emph{software} devem ser testáveis e testados;
+    \item O \emph{Software} deve mostrar dados e informações do Radar;
+    \item O \emph{Software} deve ser capaz de tomar decisões para alertar socorristas a respeito de prováveis acidentes automobilísticos;
     \item \emph{Software} deve ser capaz de tomar decisões para alertar usuários de possíveis situações de risco;
-    \item \emph{Software} deve ser capaz de mostrar informações gerenciais com os dados do Radar;
+    \item \emph{Software} deve ser capaz de mostrar informações gerenciais com os dados do Radar.
 \end{itemize}
 
 As restrições de \emph{software} são:
@@ -134,7 +133,7 @@ As restrições de \emph{software} são:
     \item O emph{software} necessita estar sempre conectado à internet para comunicação e, consequentemente, para o correto funcionamento;
     \item O aplicativo de manutenção irá auxiliar apenas com o essencial;
     \item O aplicativo só funcionará em aparelhos \emph{Android};
-    \item A linguagem de cada microsserviço (assim como \emph{framework}/tecnologia) será definida dada necessidade (performance, armazemanento e etc) dos mesmos;
+    \item A linguagem de cada microsserviço (assim como \emph{framework}/tecnologia) será definida dada necessidade (performance, armazemanento e etc) dos mesmos.
 \end{itemize}
 
 \section{\emph{Stakeholders}}
@@ -283,11 +282,11 @@ A Tabela \ref{tab:custos_energia} apresenta os gastos preliminares de energia, a
 \hline
 \multicolumn{5}{|c|}{Energia}                                                 \\ \hline
 Material             & Preço         & Quantidade & Total         & Marca     \\ \hline
-Painel Fotovoltaico  & R(\$) 420,00  & 2          & R(\$) 840,00  & Komaes    \\ \hline
-Bateria              & R(\$) 300,00  & 2          & R(\$) 600,00  & Unipower  \\ \hline
-Controlador de Carga & R(\$) 65,00  & 2          & R(\$) 130,00  & Automad3D \\ \hline
-Painel de LED        & R(\$) 23,00  & 2          & R(\$) 46,00 & Briwax    \\ \hline
-Lâmpada de LED       & R (\$) 38,00 & 2          & R (\$) 76,00 & PXT         \\ \hline
+Painel Fotovoltaico  & R\$ 420,00  & 2          & R\$ 840,00  & Komaes    \\ \hline
+Bateria              & R\$ 300,00  & 2          & R\$ 600,00  & Unipower  \\ \hline
+Controlador de Carga & R\$ 65,00  & 2          & R\$ 130,00  & Automad3D \\ \hline
+Painel de LED        & R\$ 23,00  & 2          & R\$ 46,00 & Briwax    \\ \hline
+Lâmpada de LED       & R\$ 38,00 & 2          & R\$ 76,00 & PXT         \\ \hline
 \end{tabular}
 \end{table}
 
@@ -347,7 +346,7 @@ Contribuição mensal (R\$)     & R\$ 122,33   \\ \hline
     \item RSN 2 - Descontinuação de pacotes de dependências usados;
     \item RSN 3 - Dificuldades para realizar o \emph{deploy};
     \item RSN 4 - Atraso na implementação da arquitetura do projeto;
-    \item RSN 5 - Dificuldades com as tecnologias relacionadas à microsserviços;
+    \item RSN 5 - Dificuldades com as tecnologias relacionadas aos microsserviços;
     \item RSN 6 - Problemas na comunicação entre os \emph{softwares} e o radar.
 \end{itemize}
 
@@ -361,7 +360,7 @@ Contribuição mensal (R\$)     & R\$ 122,33   \\ \hline
    \item RSN 6 - Altura da fonte de alimentação segura para realizar manutenção e instalação;
    \item RSN 7 - Pista movimentada no dia da instalação;
    \item RSN 8 - Negligenciamento da dissipação de calor;
-   \item RSN 9 - Estrutura mal dimensionada para o suporte e proteção do sistema de alimentação
+   \item RSN 9 - Estrutura mal dimensionada para o suporte e proteção do sistema de alimentação.
 \end{itemize}
 
 \subsection{Eletrônica}
@@ -373,7 +372,7 @@ Contribuição mensal (R\$)     & R\$ 122,33   \\ \hline
 	\item RSN 3 - Queda de energia do sistema;
 	\item RSN 4 - Falha na comunicação entre os radares e/ou entre os radares e o servidor;
 	\item RSN 5 - Interferência entre os sinais do radar e do módulo de comunicação entre os radares;
-	\item RSN 6 - Captura da câmera com qualidade inferior ao necessário para processamento da imagem;
+	\item RSN 6 - Captura da câmera com qualidade inferior ao necessário para processamento da imagem.
 	
 \end{itemize} 	
 
@@ -382,7 +381,7 @@ Contribuição mensal (R\$)     & R\$ 122,33   \\ \hline
 	\item RSN 1 - Atrasos por fornecimento de materiais;
 	\item RSN 2 - Aterramento mal feito podendo causar a corrosão da estrutura ou sua fundação;
 	\item RSN 3 - Montagem mal feita;
-	\item RSN 4 - Interferência da estrutura com os equipamentos de radiofrequencia;
+	\item RSN 4 - Interferência da estrutura com os equipamentos de radiofrequência;
 	\item RSN 5 - Atrasos causados por problemas de simulações e modelagem;
-	\item RSN 6 - Curto circuito de componentes eletrônicos causados pela estrutura;
+	\item RSN 6 - Curto circuito de componentes eletrônicos causados pela estrutura.
 \end{itemize}
