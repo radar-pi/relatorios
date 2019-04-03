@@ -174,7 +174,7 @@ Tem como função fazer a comunicação entre os radares e o servidor. Este mód
 
 \subsubsection{Câmera} 
 
-A câmera tem como função realizar a captura das imagens que serão processadas.  Para que a imagem tenha uma resolução adequada é necessário que a câmera atinja algumas especificações. Dentre elas é necessário que a mesma possua uma lente de pelo menos 6mm para que a mesma possa enxergar com nitidez objetos na faixa de 7-10 metros de distância, outro fator importante é a sensibilidade dos seus sensores de modo que o mais adequado seria que o mesmo possuísse entre 1/2.8"e 1/2"sendo desejado o de 1/2". Esses fatores influenciam no ângulo de abertura da câmera, sendo que quanto menor ele maior a quantidade de informação presente na Fig. \ref{fig:camera}, obtida pela câmera.
+A câmera tem como função realizar a captura das imagens que serão processadas.  Para que a imagem tenha uma resolução adequada é necessário que a câmera atinja algumas especificações. Dentre elas é necessário que a mesma possua uma lente de pelo menos 6mm para que a mesma possa enxergar com nitidez objetos na faixa de 7-10 metros de distância, outro fator importante é a sensibilidade dos seus sensores de modo que o mais adequado seria que o mesmo possuísse entre 1/2.8" e 1/2" sendo desejado o de 1/2". Esses fatores influenciam no ângulo de abertura da câmera, sendo que quanto menor ele maior a quantidade de informação presente na Fig. \ref{fig:camera}, obtida pela câmera.
 
 \begin{figure}[!htb]
     \centering
@@ -217,7 +217,7 @@ Essa estrutura terá um envólucro, apresentado na Fig. \ref{fig:radop}, de mate
     \caption{\label{fig:radop} Concepção artística preliminar do radar.}
 \end{figure}
 
-Vale ressaltar que as dimensões aqui escolhidas para a caixa de operação e para os pilares podem sofrer alterações, se necessário, a acomodação de novos componentes ou para melhor estabilidade do sistema como um todo. Sabe-se desde agora que o radar de efeito \textit{Doppler} ficará no ponto mais alto da caixa de operações e acima da caixa ficará o painel fotovoltáico, para que além do seu papel energético, ele possa servir como isolante térmico da parte superior da caixa de operações. A disposição dos demais componentes será escolhida em conjunto com o setor responsável pela eletrônica do projeto.
+Vale ressaltar que as dimensões aqui escolhidas para a caixa de operação e para os pilares podem sofrer alterações, se necessário, a acomodação de novos componentes ou para melhor estabilidade do sistema como um todo. Sabe-se desde agora que o radar de efeito \textit{Doppler} ficará no ponto mais alto da caixa de operações e acima da caixa ficará o painel fotovoltaico, para que além do seu papel energético, ele possa servir como isolante térmico da parte superior da caixa de operações. A disposição dos demais componentes será escolhida em conjunto com o setor responsável pela eletrônica do projeto.
 
 \section{Software}
 
@@ -236,7 +236,7 @@ Tendo isso em vista, serão duas soluções em \emph{software} para dar suporte 
  A seguir, serão melhor detalhados os \emph{softwares}, assim como suas funcionalidades.
 
 \subsubsection{Serviço de Monitoramento Remoto (SMR)}
-Este serviço, que é um dashboard que possui um servidor de microsserviços que dá suporte a ele, terá a função de obter os dados sobre automóveis enviados pelos radares, receber informações sobre o funcionamento dos equipamentos por exemplo, se eles estão com a bateria ou os LEDs funcionando, e a partir disso realizar diversas operações.
+Este serviço, que é um \emph{dashboard} que possui um servidor de microsserviços que dá suporte a ele, terá a função de obter os dados sobre automóveis enviados pelos radares, receber informações sobre o funcionamento dos equipamentos por exemplo, se eles estão com a bateria ou os LEDs funcionando, e a partir disso realizar diversas operações.
 
 As funcionalidades desse serviço serão:
 
@@ -293,7 +293,7 @@ Através do aplicativo o responsável pela manutenção poderá saber como está
 
 \item{Alteração da fonte de energia do radar}
 
-Através do aplicativo o responsável pela manutenção poderá mudar a fonte de alimentação do radar para a bateria ou para a fonte de energia externa.
+Através do aplicativo, o responsável pela manutenção poderá mudar a fonte de alimentação do radar para a bateria ou para a fonte de energia externa.
 
 \end{itemize}
 
@@ -303,28 +303,13 @@ Esta seção se reserva a informar as decisões tomadas pela equipe de \emph{sof
 
 \subsubsection{Finalidade}\label{finalidade}
 
-Esta seção tem como finalidade apresentar uma visão geral arquitetural
-do sistemas que compõe a rede de serviços de \emph{software} para o
-\textbf{\emph{RaDop - Radar de Efeito Doppler}}, que será usada como
-guia no desenvolvimento do projeto e permitirá um entendimento maior de
-todos os componentes integrantes destes sistemas, como um todo, além de
-descrever comportamentos, padrões, protocolos de comunicação e demais
-informações relacionadas ou correlacionadas. Com o detalhamento da
-arquitetura, espera-se, também, deixar explicíta as decisões
-arquiteturais realizadas pela equipe.
+Esta seção tem como finalidade apresentar uma visão geral arquitetural do sistemas que compõe a rede de serviços de \emph{software} para o \textbf{\emph{RaDop - Radar de Efeito Doppler}}, que será usada como
+guia no desenvolvimento do projeto e permitirá um entendimento maior de todos os componentes integrantes destes sistemas, como um todo, além de descrever comportamentos, padrões, protocolos de comunicação e demais informações relacionadas ou correlacionadas. Com o detalhamento da arquitetura, espera-se também, deixar explícita as decisões arquiteturais realizadas pela equipe.
 
 \subsubsection{Escopo}\label{escopo}
 
-O documento presente abrange três camadas de produtos de \emph{software}
-proposto pela equipe de Projeto Integrador 2 na UnB/FGA, sendo eles um
-servidor de serviços/microserviços que darão suporte ao Radar de Efeito
-Doppler, com serviços de manipulação de dados, processamento de imagens,
-tomada de decisões em tempo real, entre outros. A segunda se trata de um
-\emph{WebApp} de \emph{Dashboard}, onde estará centralizado grande parte dos dados
-providos do Radar com painéis de visualização em tempo real e alguns
-dados estatísticos do mesmo. E por fim, o último produto de \emph{software} se
-trata de uma aplicação \emph{\emph{mobile}} para auxílio de equipes de
-manutenção, com dados e informações sobre o equipamento.
+O documento presente abrange três camadas de produtos de \emph{software} proposto pela equipe de Projeto Integrador 2 na UnB/FGA, sendo eles um servidor de serviços/microserviços que darão suporte ao Radar de Efeito \emph{Doppler}, com serviços de manipulação de dados, processamento de imagens, tomada de decisões em tempo real, entre outros. A segunda se trata de um \emph{WebApp} de \emph{Dashboard}, onde estará centralizado grande parte dos dados providos do Radar com painéis de visualização em tempo real e alguns
+dados estatísticos do mesmo. E por fim, o último produto de \emph{software} se trata de uma aplicação \emph{mobile} para auxílio de equipes de manutenção, com dados e informações sobre o equipamento.
 
 \subsubsection{Definições, Acrônimos e Abreviações}\label{definicoes-acronimos-e-abreviacoes}
 
@@ -345,40 +330,14 @@ manutenção, com dados e informações sobre o equipamento.
 
 \subsubsection{Servidor de Microserviços RaDop - SMR}\label{servidor-de-microservicos-radop---smr}
 
-A solução de software proposta para o RaDop será composta de um servidor
-de serviços/microserviços para realizar tarefas específicas, esses
-serviços serão especialistas em tarefas que serão suportadas pelo RaDop,
-dessa forma haverá um sistema central que controlará os demais serviços.
-A comunicação se dará via API e requisições HTML com transporte, se
-necessário, de arquivos JSON com os dados para execução completa e
-correta dos serviços. Vale ressaltar que, para sistemas que comunicam
-diretamente com componentes eletrônicos do equipamento, o formato de
-comunicação pode ser diferente, mas mantendo-se em protocolos de
-comunicação em rede, o que pode alterar o formato de transporte de dados
-de JSON para um \emph{encoding} mais simples. Os serviços deverão ser
-construídos em \href{https://www.python.org/}{python} e/ou em
-\href{https://golang.org/}{Go}, podendo ser atribuído a estes uso de
-\emph{frameworks}/ferramentas/tecnologias a serem definidas no andamento
-do projeto e posteriormente descritos nesta seção. Detalhes da
-arquitetura dos mesmos também serão adicionados a posteriori.
+A solução de software proposta para o RaDop será composta de um servidor de serviços/microserviços para realizar tarefas específicas, esses serviços serão especialistas em tarefas que serão suportadas pelo RaDop, dessa forma haverá um sistema central que controlará os demais serviços. A comunicação se dará via API e requisições HTML com transporte, se necessário, de arquivos JSON com os dados para execução completa e correta dos serviços. Vale ressaltar que, para sistemas que comunicam diretamente com componentes eletrônicos do equipamento, o formato de comunicação pode ser diferente, mas mantendo-se em protocolos de comunicação em rede, o que pode alterar o formato de transporte de dados de JSON para um \emph{encoding} mais simples. Os serviços deverão ser construídos em \href{https://www.python.org/}{python} e/ou e \href{https://golang.org/}{Go}, podendo ser atribuído a estes uso de \emph{frameworks}/ferramentas/tecnologias a serem definidas no andamento do projeto e posteriormente descritos nesta seção. Detalhes da arquitetura dos mesmos também serão adicionados a \emph{posteriori}.
 
 \subsubsection{WebApp Dashboard RaDop}\label{webapp-dashboard-radop}
 
-O WebApp Dashboard RaDop será uma aplicação web desenvolvida a partir do
-\emph{framework} \href{https://www.djangoproject.com/}{Django}, o qual é
-escrito na linguagem de programação
-\href{https://www.python.org/}{python}. O \emph{framework} utiliza por
-definição o padrão arquitetural \textbf{MVT}, abreviação para
-\emph{model}, \emph{view}, \emph{template}, que é derivada do padrão
-arquitetural \textbf{MVC}, \emph{model}, \emph{view}, \emph{controller},
-amplamente utilizada para esta finalidade e largamente aceita pela
-comunidade produtora de software. De acordo com o \emph{site}
-DjangoBook, a parte de \emph{controller}, em Django, é tratada pelo
-próprio \emph{framework}. Portanto a \emph{View} do \textbf{MVT}
-desempenha um papel próximo, mas não igual ao \emph{controller}.
+O WebApp Dashboard RaDop será uma aplicação web desenvolvida a partir do \emph{framework} \href{https://www.djangoproject.com/}{Django}, o qual é escrito na linguagem de programação
+\href{https://www.python.org/}{python}. O \emph{framework} utiliza por definição o padrão arquitetural \textbf{MVT}, abreviação para \emph{model}, \emph{view}, \emph{template}, que é derivada do padrão arquitetural \textbf{MVC}, \emph{model}, \emph{view}, \emph{controller}, amplamente utilizada para esta finalidade e largamente aceita pela comunidade produtora de software. De acordo com o \emph{site} DjangoBook, a parte de \emph{controller}, em Django, é tratada pelo próprio \emph{framework}. Portanto a \emph{View} do \textbf{MVT} desempenha um papel próximo, mas não igual ao \emph{controller}.
 
-As camadas desse tipo de arquitetura estão descritas no seguinte
-formato, abaixo.
+As camadas desse tipo de arquitetura estão descritas no seguinte formato, abaixo.
 
 \begin{itemize}
 
@@ -386,44 +345,24 @@ formato, abaixo.
 
 \item{\emph{Model}}\label{model}
 
-É uma representação do banco de dados. Além disso, também inclui
-características, relações e outros comportamentos que os dados podem
-assumir.
+É uma representação do banco de dados. Além disso, também inclui características, relações e outros comportamentos que os dados podem assumir.
 
-O Django inclui varias ferramentas para automatizar tanto quanto
-possível o processo e a manipulação do banco de dados, de forma que o
-desenvolvedor não precise se preocupar tanto com o banco de dados, o que
-ajuda no foco do desenvolvimento da aplicação de forma mais rápida.
+O Django inclui varias ferramentas para automatizar tanto quanto possível o processo e a manipulação do banco de dados, de forma que o desenvolvedor não precise se preocupar tanto com o banco de dados, o que ajuda no foco do desenvolvimento da aplicação de forma mais rápida.
 
 \item{\emph{View}}\label{view}
 
-Estabelece uma ponte entre a \emph{Models} e o \emph{Templates}. Recebe
-as requisições do usuário a partir do \emph{template}, acessa o banco de
-dados e então retorna a informação solicitada pelo usuário, por meio de
-HTML, XML e/ou os erros encontrados.
+Estabelece uma ponte entre a \emph{Models} e o \emph{Templates}. Recebe as requisições do usuário a partir do \emph{template}, acessa o banco de dados e então retorna a informação solicitada pelo usuário, por meio de HTML, XML e/ou os erros encontrados.
 
 \item{\emph{Template}}\label{template}
 
-Agrega toda a parte visual que estará visível para os usuários. Inclui
-os códigos HTML, CSS, JavaScript, entre outras linguagens que são
-utilizadas na apresentação da \emph{View}/\emph{Front-end} ao usuário.
+Agrega toda a parte visual que estará visível para os usuários. Inclui os códigos HTML, CSS, JavaScript, entre outras linguagens que são utilizadas na apresentação da \emph{View}/\emph{Front-end} ao usuário.
 
 \end{itemize}
 
 
 \subsubsection{Aplicativo RaDop}\label{aplicativo-radop}
 
-O aplicativo RaDop será uma aplicação \emph{mobile} desenvolvida a partir do
-\emph{framework} \href{https://facebook.github.io/react-native/}{React-Native}, construído em cima da
-linguagem de programação \href{https://www.javascript.com/}{JavaScript}. O
-\emph{React-Native} é o que chamamos de \emph{data-driven}, ou seja, ele não
-implementa padrões arquiteturais por padrão, apenas utiliza os dados que
-recebe (basicamente as funções recebem os dados e devolvem resultados).
-No caso do \emph{React} os dados são o estado da aplicação, as \emph{controllers} são
-as funções são os componentes e os resultados são a UI. Dessa forma, a
-aplicação é modularizada em \textbf{N} componentes, como dito por Jensen \cite{jensen2018} (podendo ser
-\emph{stateless} ou \emph{stateful}), o que torna a aplicação escalável,
-robusta e de fácil manutenção.
+O aplicativo RaDop será uma aplicação \emph{mobile} desenvolvida a partir do \emph{framework} \href{https://facebook.github.io/react-native/}{React-Native}, construído em cima da linguagem de programação \href{https://www.javascript.com/}{JavaScript}. O \emph{React-Native} é o que chamamos de \emph{data-driven}, ou seja, ele não implementa padrões arquiteturais por padrão, apenas utiliza os dados que recebe (basicamente as funções recebem os dados e devolvem resultados). No caso do \emph{React} os dados são o estado da aplicação, as \emph{controllers} são as funções são os componentes e os resultados são a UI. Dessa forma, a aplicação é modularizada em \textbf{N} componentes, como dito por Jensen \cite{jensen2018} (podendo ser \emph{stateless} ou \emph{stateful}), o que torna a aplicação escalável, robusta e de fácil manutenção.
 
 \begin{itemize}
 
