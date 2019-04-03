@@ -6,8 +6,8 @@
 O sistema eletrônico tem como objetivo captar a aproximação de veículos ao longo da pista, fazer a detecção de sua velocidade, verificar se a mesma se encontra na faixa permitida pela via, e caso não esteja, capturar a placa do veículo infrator. Uma vez capturada a placa do veículo, o sistema envia a imagem para uma rede remota, onde a mesma fará a identificação. Para isso foi projetado alguns módulos responsáveis por assegurar o funcionamento de todo sistema, apresentados na Fig. \ref{fig:sistemacompleto}.
 
 \begin{figure}[h]
-	\center{\includegraphics[scale=0.5]{processos-3}}
-	\caption{\label{fig:sistemacompleto} Diagrama do sistema eletrônico.}
+	\center{\includegraphics[scale=0.5]{Esquematico}}
+	\caption{\label{fig:sistemacompleto} Diagrama em blocos do sistema eletrônico completo de um totem.}
 \end{figure}
 
 
@@ -15,15 +15,19 @@ O sistema eletrônico tem como objetivo captar a aproximação de veículos ao l
  O módulo tem como objetivo enviar uma onda modulada na direção do veículo. A partir do fenômeno de refração a mesma irá voltar para antena, entretanto, de acordo com a velocidade do veículo ocorre uma pequena variação na frequência emitida pela antena. De acordo com essa diferença é possível estimar sua velocidade. 
 
 
+\subsubsection{Módulo do cálculo da velocidade}
+Neste módulo, para o cálculo da velocidade é feito a modulação do pulso enviado e recebido pela antena. Quando este sinal retorna, é necessário fazer um mixer para realização do deslocamento do espectro com o intuito de facilitar a amostragem do sinal. Após o deslocamento é realizado uma filtragem das altas frequências para limpar as possíveis interferências de outros sinais. Após a filtragem é utilizado um algoritmo para realizar a FFT do sinal amostrado para depois passar por um outro processo onde é possível estimar a sua velocidade.
+
+Na Fig. \ref{fig:nuand}, será apresentado o diagrama de processos entre o \emph{Nuand Blade} e a antena.
+
+ \begin{figure}[!htb]
+	\center{\includegraphics[scale=1.1]{processos-2}}
+	\caption{\label{fig:nuand} Diagrama do sistema do Nuand e antena, responsável pelo cálculo da velocidade.}
+\end{figure}
+
 \subsubsection{Módulo Embarcado}
 
-O módulo embarcado dentro da beaglebone tem como função principal servir de centro de operações dos demais componentes ou módulos presente no sistema, de modo que é realizado nele a comparação da velocidade do veículo com a velocidade limite, o pré-processamento da imagem e também a comunicação entre o outro radar localizado no outro extremo da curva e também com o servidor remoto. 
-
-\begin{itemize}
-	\item Conferir a velocidade
-	\item Capturar a imagem da placa
-	\item Receber informação do outro radar para acionar iluminação.
-\end{itemize}
+Este módulo tem como função principal servir de centro de operações dos demais componentes ou módulos presente no sistema. Portanto, após receber a velocidade relativa do veículo, é feita a comparação desta velocidade com a máxima permitida na via. Quando o carro está acima da velocidade, é dado um sinal para capturar a imagem da placa do veículo, para ser pré-processada e depois enviada para o servidor terminar o processamento da mesma. Outra função deste módulo é estar em comunicação com o sistema embarcado do outro radar, para acionamento do sistema de iluminação, avisando ao condutor que outro veículo está se aproximando na direção contrária.
 
 
 
@@ -32,10 +36,8 @@ O módulo embarcado dentro da beaglebone tem como função principal servir de c
  
  \begin{figure}[!htb]
 	\center{\includegraphics[scale=1]{processos}}
-	\caption{\label{fig:processos} Diagrama do sistema do processamento da imagem.}
+	\caption{\label{fig:processos} Diagrama do sistema da aquisição de imagem e reconhecimento da placa.}
 \end{figure}
-
- 
 \subsection{Componentes Eletrônicos}
 
 \subsubsection{Antena}
@@ -44,14 +46,32 @@ Responsável pela emissão e detecção dos pulsos eletromagnéticos. Ela enviar
 
 \subsubsection{\emph{Nuand Blade RF x115}}
 
-Na Fig. \ref{fig:nuand}, será apresentado o diagrama de processos entre o \emph{Nuand Blade} e a antena.
+A \emph{Blade RF x115} é um rádio definido por software, que possui as seguintes especificações:
 
- \begin{figure}[!htb]
-	\center{\includegraphics[scale=1]{processos-2}}
-	\caption{\label{fig:nuand} Diagrama do sistema do Nuand e antena.}
-\end{figure}
+\begin{itemize}
 
-De acordo com a Fig. \ref{fig:nuand}, o rádio definido por software será responsável pela modulação do pulso enviado e recebido pela antena. Dentro da placa de desenvolvimento encontra-se um mixer para realização do deslocamento do espectro com o intuito de facilitar a amostragem do sinal. Após o deslocamento é realizado uma filtragem das altas frequências para limpar as possíveis interferências de outros sinais. Após a filtragem é utilizado um algoritmo para realizar a FFT do sinal amostrado e para depois passar por um outro processo onde é possível estimar a sua velocidade, o rádio é apresentado na Fig. \ref{fig:bladerf}. 
+  \item O \emph{hardware} consiste em:\\
+	– Si5338 gerador de \emph{clock} para taxas arbitrarias de amostragem.\\
+	–  \emph{Lime Microsystems} LMS6002D\\
+	–  \emph{Cyclone IV E (40kLE or 115kLE) FPGA} para processamento de sinal e controle.\\
+	–  \emph{Cypress} FX3 USB 3.0 \emph{Superspeed} Microcontrolador\\
+  \item	The FX3 \emph{firmware} tem basicamente 3 modos de operação:\\
+	– \emph{FPGA Loading}\\
+	–  \emph{RF Link}\\
+	–  \emph{SPI flashing}
+  \item \emph{Cyclone IV E FPGA:}\\
+O software na FPGA consiste em duas partes principais:\\
+	–  \emph{Hardware Description Language (HDL)} para o controle e processo.\\
+	– Programação em c para um processador NIOS II responsável pelo controle do LMS6002D, VCTCXO trim DAC e o Si5338 PLL.
+	
+  \item Alimentação:
+	–  Tensão: 5 V\\
+	–  Corrente: 1.5 - 3 A\\
+	–  Diâmetro interno do plug : 2.5 mm (V+)\\
+	–  Diâmetro externo do plug : 5.5 mm (GND)\\
+	–  Recomenda-se proteção contra sobretensão, sobre corrente, curto circuito.
+   
+\end{itemize}
 
 \begin{figure}[!htb]
 	\center{\includegraphics[scale=0.35]{bladerf}}
@@ -66,38 +86,37 @@ A \emph{Beaglebone Black} é um sistema embarcado, como apresentado na Fig. \ref
 
 \begin{figure}[!htb]
 	\center{\includegraphics[scale=0.3]{beaglebone}}
-	\caption{\label{fig:beaglebone} Sistema embarcado Beaglebone Black}
+	\caption{\label{fig:beaglebone} Sistema embarcado \emph{Beaglebone Black}}
 \end{figure}
 
 \begin{itemize}
 
-\item Especificações do Processador:
+\item Especificações do Processador:\\
+– \emph{Chip: AM335x 1GHz ARM® Cortex-A8}\\
+– Memória: 512MB DDR3 RAM\\
+– Armazenamento: 4GB 8-bit \emph{eMMC on-board flash storage}\\
+– \emph{3D graphics accelerator\\
+– NEON \emph{floating-point accelerator}\\
+– 2x PRU \emph{32-bit microcontrollers}}
 
-– Chip: AM335x 1GHz ARM® Cortex-A8
-– Memória: 512MB DDR3 RAM
-– Armazenamento: 4GB 8-bit eMMC on-board flash storage
-– 3D graphics accelerator
-– NEON floating-point accelerator
-– 2x PRU 32-bit microcontrollers
-
-\item Interface:
-– USB 2.0 Client, para alimentação e comunicação
-– USB 2.0 Host
-– 10/100M Ethernet (Conector RJ45)
-– Interface LCD
-– HDMI
-– Slot cartão TF
+\item Interface:\\
+– USB 2.0\emph{ Client}, para alimentação e comunicação\\
+– USB 2.0 \emph{Host}\\
+– 10/100M\emph{ Ethernet }(Conector RJ45)\\
+– Interface LCD\\
+– HDMI\\
+– \emph{Slot }cartão TF\\
 – 2x 46 Pinos
 
-\item  Compatibilidade de Softwares:
-– Debian
-– Android
-– Ubuntu
-– Cloud9 IDE em Node.js com biblioteca BoneScript
+\item  Compatibilidade de Softwares:\\
+\emph{– Debian\\
+– Android\\
+– Ubuntu\\
+– Cloud9 IDE} em \emph{Node.js} com biblioteca \emph{BoneScript}
 
-\item  Especificações Gerais:
-– Tensão de operação: 5V/0,35A
-– Temperatura de operação: 0-70$^{\circ}$C
+\item  Especificações Gerais:\\
+– Tensão de operação: 5V/0,35A\\
+– Temperatura de operação: 0-70$^{\circ}$C\\
 – Dimensões: 86,36 x 54,61mm
     
 \end{itemize}
@@ -107,21 +126,21 @@ Tem como função fazer a comunicação entre os dois radares no meio da rodovia
 
 \begin{figure}[!htb]
 	\center{\includegraphics[scale=0.5]{nrf24}}
-	\caption{\label{fig:nrf24} Módulo GSM  GPRS}
+	\caption{\label{fig:nrf24} Módulo NRF24L10}
 \end{figure}
 \begin{itemize}
     
-\item  Especificações:
-– Controlador NRF24L01
-– Frequência: 2.4GHz
-– Tensão de operação: 1.9 à 3.6V
-– Taxa de transferência: 2 Mbit/s
-– Modulação GFSK
-– Regulador de tensão embutido
-– Corrente em power down: 400nA
-– Corrente em standby: 32uA
-– Conector para antena SM
-– Dimensões: 29 x 15mm
+\item  Especificações:\\
+– Controlador NRF24L01\\
+– Frequência: 2.4GHz\\
+– Tensão de operação: 1.9 à 3.6V\\
+– Taxa de transferência: 2 Mbit/s\\
+– Modulação GFSK\\
+– Regulador de tensão embutido\\
+– Corrente em \emph{power down}: 400nA\\
+– Corrente em \emph{standby}: 32uA\\
+– Conector para antena SM\\
+– Dimensões: 29 x 15mm\\
 – Alcance: 1 Km, antena externa.
 \end{itemize}
 
@@ -137,28 +156,27 @@ Tem como função fazer a comunicação entre os radares e o servidor. Este mód
 
  \begin{itemize}
     
-\item Especificações:
-–  Tensão de alimentação: 3.7 - 4.2V
-– CI SIM800L (datasheet)
-– Frequencias: EGSM900, DCS1800, GSM850, PCS1900
-– Conector para antena externa U.FL
-– GPRS Data Downlink: 85.6 kbps (máximo)
-– GPRS Data Uplink: 85.6 kbps (máximo)
-– Suporte PAP (password authentication protocol) para conexões PPP
-– Protocolo TCP/IP embutido
-– Serial: 1200 bps à 115.200 bps
-– Slot MicroSIM
-– Acompanha antena mola
-– Temperatura de operação: -40 a $85^{\circ}C$
+\item Especificações:\\
+–  Tensão de alimentação: 3.7 - 4.2V\\
+– CI SIM800L (datasheet)\\
+– Frequencias: EGSM900, DCS1800, GSM850, PCS1900\\
+– Conector para antena externa U.FL\\
+– GPRS\emph{ Data Downlink}: 85.6 kbps (máximo)\\
+– GPRS \emph{Data Uplink}: 85.6 kbps (máximo)\\
+– Suporte PAP (\emph{password authentication protocol}) para conexões PPP\\
+– Protocolo TCP/IP embutido\\
+– Serial: 1200 bps à 115.200 bps\\
+– \emph{Slot MicroSIM}\\
+– Acompanha antena mola\\
+– Temperatura de operação: -40 a $85^{\circ}C$\\
 – Dimensões: 21 x 15 x 3,2mm
 \end{itemize}
 
 \subsubsection{Câmera} 
 
 A câmera tem como função realizar a captura das imagens que serão processadas.  Para que a imagem tenha uma resolução adequada é necessário que a câmera atinja algumas especificações. Dentre elas é necessário que a mesma possua uma lente de pelo menos 6mm para que a mesma possa enxergar com nitidez objetos na faixa de 7-10 metros de distância, outro fator importante é a sensibilidade dos seus sensores de modo que o mais adequado seria que o mesmo possuísse entre 1/2.8"e 1/2"sendo desejado o de 1/2". Esses fatores influenciam no ângulo de abertura da câmera, sendo que quanto menor ele maior a quantidade de informação presente na Fig. \ref{fig:camera}, obtida pela câmera.
-\pagebreak
 
-\begin{figure}[!htbp]
+\begin{figure}[!htb]
     \centering
         \includegraphics[scale=0.5]{camera.png} 
     \caption{Análise das configurações de uma câmera}
