@@ -77,7 +77,7 @@ Os requisitos de eletrônica são:
 
 \end{itemize}
 
-\subsubsection{Restrições}
+As restrições de Energia são:
 \begin{itemize}
    \item Dependêcia do clima para a geração de energia;
    \item Localização Geografica;
@@ -89,157 +89,26 @@ Os requisitos de eletrônica são:
  \end{itemize}
 \subsection{Estrutura}
 
-\subsubsection{Requisitos e restrições estruturais}
+Os requisitos de Estruturas são:
 
-Os requisitos a serem considerados na elabora\c c\~ao e projeto estrutural dever\~ao considerar principalmente as condi\c c\~oes clim\'aticas da regi\~ao (esta\c c\~oes do ano, varia\c c\~ao de umidade e temperatura, velocidade m\'axima do vento e poss\'iveis fatores locais que possam interferir ou no funcionamento da estrutura ou no funcionamento dos componentes eletr\^onicos), al\'em das cargas geradas pelos próprios componentes estruturais. Para isso, foi realizada uma pesquisa em sites de metereologia que pudessem fornecer as informa\c c\~oes clim\'aticas da regi\~ao de Serra, onde as informações fornecidas foram retiradas do site de meteorologia do estado do Esp\'irito Santo.
-A regi\~ao da Serra, de forma ampla, fica no estado do Esp\'irito Santo, na regi\~ao sudeste do Brasil, localizado na Microrregi\~ao de Vit\'oria e na Mesorregi\~ao Central Esp\'irito-Santense, como pode ser observado em \ref{mapa_es}. O clima predominante da regi\~ao sudeste litor\^anea do Brasil \'e o Tropical Atl\^antico (tropical \'umido), que apresenta grande influ\^encia da umidade vinda do Oceano Atl\^antico. As caracter\'isticas desse tipo de clima s\~ao: temperaturas elevadas no ver\~ao (podendo atingir at\'e 40$^\circ$C) e amenas no inverno (m\'edia de 20$^\circ$C), e em fun\c c\~ao da umidade trazida pelo oceano, costuma chover muito nestas \'areas.
+\begin{itemize}
+	\item A estrutura deve suportar o peso de todos os componentes com margem de segurança para eventuais cargas não estimadas;
+	\item Deve possuir resistência a ação climática, especificamente a radiação solar, temperatura elevada e corrosão devido a exposição a chuva;
+	\item A placa solar que fornecerá a energia do sistema deverá ficar na parte superior do conjunto, a estrutura deve ser pensada e dimensionada com isso em mente;
+	\item Os sistemas de antena e câmera deverão estar em montantes articulados para que a incidência possa ser ajustada;
+	\item A estrutura deve conter suporte para manutenção facilitada, permitindo o acesso aos componentes de maneira facilitada;
+	\item O vento incidente devido a região de instalação deve também ser suportado pela estrutura;
+\end{itemize}
 
-Os dados trazidos aqui são referentes às análises estátisticas de relatórios horários adquiridos entre janeiro de 1980 e dezembro de 2016. 
+As restrições de Estruturas são:
 
-\begin{figure}[h]
-	\includegraphics[scale=0.2]{mapa_es}
-	\centering
-	\caption{Mapa regional do Estado do Espírito Santo}
-	\label{mapa_es}
-	
-\end{figure}
-Dessa forma, o clima do município de Serra é dividido da seguinte maneira:
-
-\begin{figure}[!ht]
-	\includegraphics[scale=0.8]{reg_serra}
-	\centering
-	\caption{Zonas naturais da região de Serra. Fonte: Zonas Naturais do Espírito Santo (EMCAPA/NEPUT (1999))}
-	\label{regiao_serra}
-\end{figure}
-
-\begin{figure}[!ht]
-	\includegraphics[scale=1]{tabela_serra}
-	\centering
-\end{figure}
-
-Será considerado de forma majoritária a climatização da zona 8, por ocupar uma maior porcentagem de área na região.
-Assim, foram pesquisadas de forma mais a fundo os valores médios das características climáticas da região (analisadas entre os anos de 1980 e 2016 segundo Y), tais como temperatura, nuvens, precipitação, chuva, Sol, umidade, ventos e energia solar incidente apresentados abaixo. Vale  
-
-\subsubsection{Temperatura}
-
-\begin{figure}[!ht]
-	\includegraphics[scale=1]{mapa_temp}
-	\centering
-	\caption{Gráfico de temperatura média na região de Serra - ES.}
-\end{figure}
-
-Para o gráfico de temperaturas, é possível observar que durante o verão, a temperatura média mais alta é de 32º, enquanto durante o inverno, a mínima média é de 18º. 
-
-\begin{figure}[!ht]
-	\includegraphics[scale=1]{mapa_temp2}
-	\centering
-	\caption{Gráfico de temperatura média horária na região de Serra - ES.}
-\end{figure}
-
-A análise gráfica dos daods de precipitação, chuva mensal e umidade severão ser analisados juntos para uma melhor interpretação pois eles se complementam.
-
-\subsubsection{Precipitação}
-
-\begin{figure}[!ht]
-	\includegraphics[scale=1]{mapa_prep}
-	\centering
-	\caption{Gráfico de precipitação média na região de Serra - ES.}
-	\label{mapa_prep}
-\end{figure}
-
-\subsubsection{Chuva}
-\begin{figure}[!ht]
-	\includegraphics[scale=1]{mapa_chuva}
-	\centering
-	\caption{Gráfico das chuvas médias na região de Serra - ES.}
-	\label{mapa_chuva}
-\end{figure}
-\subsubsection{Umidade}
-\begin{figure}[!ht]
-	\includegraphics[scale=1]{mapa_umidade}
-	\centering
-	\caption{Gráfico da umidade média na região de Serra - ES.}
-	\label{mapa_umidade}
-\end{figure}
-
-Análisando os gráficos \ref{mapa_prep}, \ref{mapa_chuva}, \ref{mapa_umidade} é possível relacioná-los em relação as épocas de seca e umidade, além de poder ser possível observar que os períodos quando ocorrem serem no inverno (baixas temperaturas) e verão (altas temperaturas), respectivamente. Essa análise é importante, pois além de ser necessário escolher um material que seja resistente tanto a condições de seca como de umidade, é necessário escolher um material que seja resistente à essas variações de temperatura mas que também seja ao contato constante com a chuva e umidade. Sabe-se que climas secos estão relacionados à uma variação de temperatura mais rápida entre as temperaturas máxima e mínima, enquanto dias úmidos estão relacionados à uma variação mais lenta.
- 
-\subsubsection{Velocidade do vento}
-
-\begin{figure}[!ht]
-	\includegraphics[scale=1]{velocidade_vento}
-	\centering
-	\caption{Gráfico develocidade média do vento na região de Serra - ES.}
-	\label{vel_vento}
-\end{figure}
-
-Um fator mecânico importante a ser analisado é a velocidade do vento na estrutura, pois ele é responsável por esforços mecânicos que a estrutura terá que resistir. Pode-se analisar o gráfico \ref{vel_vento} e perceber que ele traz valores médios para a velocidade do mesmo. Entretanto, a fim de projetar-se uma estrutura que seja eficiente é necessário analisar a valocidade máxima do vento nos períodos de ventos fortes. Para isso, analisou-se o dia 07 de outubro que trouxe uma velocidade média acima das demais:
-
-\begin{figure}[!ht]
-	\includegraphics[scale=1]{velocidade_vento_dia07}
-	\centering
-	\caption{Gráfico de velocidade média do vento no dia 07 de outubro na região de Serra - ES.}
-\end{figure}
-
-Analisando as velocidades médias do vento no dia 07, vê-se que a velocidade máxima do mesmo neste dia foi de 21 Km/h. Dessa forma, é necessário perceber as variações de fatores importantes que possam interferir na eficiencia estrutural do projeto e traze-los para o projeto de forma a ter uma estrutura resistente.
-
-
-\subsubsection{Incidência solar}
-
-
-\begin{figure}[!ht]
-	\includegraphics[scale=1]{mapa_inci_solar}
-	\centering
-	\caption{Gráfico da incidencia solar média nna região de Serra - ES.}
-\end{figure}
-
-É necessária uma análise da indicência solar na região levando em consideração as variações sazonais da mesma. A incidência solar é importante para o projeto em dois aspéctos: primeiro para que seja possível pesquisar materiais que sejam resistentes às ações das radiações  visíveis e também às radiações ultravioletas e, em segundo, para que seja possível fazer o projeto da placa solar que estará no topo do radar.
-
-\subsubsection{Materiais}
-
-O grande desafio estrutural desse projeto é conseguir aliar materiais com boas propriedades mecânicas mas que não interfiram na recepção e nem na emissão dos sinais dos componentes eletrônicos, além disso, será necessário também uma estrutura que proteja e isole os componentes eletrônicos das ações climáticas da região. 
-
-\subsubsection{Manutenção}
-
-É necessário projetar uma estrutura que permita o acesso de técnicos de forma segura, eficiente e rápida para manutenções periódicas (ou quando necessárias) por se tratar de um projeto que tem como áreas de atuação e instalação estradas de alta velocidade e serras.
-
-\subsubsection{Normas}
-
-A estrutura visa a acomodação dos componentes eletrônicos de forma segura e que
-seja possível a manutenção de forma ágil, caso necessário. Além disso a estrutura
-precisa possuir vazão de ar para a dissipação de calor e ao mesmo tempo
-impermeável para que em caso de chuva o sistema ainda esteja protegido.
-
-Foi levantado as dimensões mínimas para o projeto com base em documentação
-disponível online no site do Conselho Nacional de Trânsito (CONATRAN).
-Inicialmente foi escolhido um poste engastado com uma caixa de operação com os
-componentes eletrônicos. A dimensão mínima recomendada para o poste é de 2,10
-metros. A dimensões preliminares da caixa de operação são de 60cmx40cmx40cm.
-Sabe-se também que a estrutura deve estar a uma distância mínima de 1,20 metros
-de distância do acostamento. É necessário ser perfeitamente visível (percepção da
-existência do painel), a uma distância mínima de 300m e legível (condição de leitura
-e compreensão da mensagem em tempo hábil) a uma distância mínima de 270
-metros. Segundo as normas do CONATRAN é necessário permitir ajustes em sua
-luminosidade, em função da luminosidade ambiente e também possuir proteção anti
-reflexo quando da incidência direta de luz solar.
-Vale ressaltar que as dimensões aqui escolhidas para a caixa de operação e para o
-poste podem sofrer alterações se for necessário a acomodação de novos
-componentes ou para melhor estabilidade do sistema como um todo.
-
-Sabe-se desde agora que o radar doppler ficará no ponto mais alto da caixa de
-operações e acima da caixa ficará o painel fotovoltáico para que além do seu papel
-energético ele possa servir como isolante térmico da parte superior da caixa de
-operações. A disposição dos demais componentes será escolhida em conjunto com
-o setor responsável pela eletrônica do projeto.
-
-\subsubsection{Laboratórios}
-Para a estrutura será utilizado o galpão da FGA e seus recursos para possíveis
-processos de soldagem e reparos no projeto. A disponibilidade do mesmo já foi
-pesquisada para melhor atender nossa demanda de trabalho. Eventuais processos
-de fabricação serão feitos em locais próprios dos integrantes do grupo quando não
-houver a necessidade ou a disponibilidade do galpão da FGA. Já foi levantado o
-nome do técnico responsável para a soldagem e colaboração com a equipe de
-estrutura.
+\begin{itemize}
+	\item Os materiais não podem ser suscetíveis a corrosão, a ruptura por radiação e temperatura solar e não podem comprometer o funcionamento dos sistemas eletrônicos;
+	\item A estrutura não pode ter área de contato com o vento muito elevado;
+	\item Os compartimentos de instalação dos eletrônicos não pode possuir entrada para água ou detritos externos;
+	\item Os compartimentos não podem estar totalmente isolados, permitindo acesso para reparos e manutenção;
+	\item Os materiais selecionados não podem impedir o funcionamento de qualquer um dos componentes eletrônicos, a exemplo de impedir a emissão ou recepção do radar.
+\end{itemize}
 
 \subsection{Software}
 
@@ -280,12 +149,12 @@ Professores da Universidade de Brasília (UnB) que ministram a disciplina Projet
 
 \section{Recurso humanos}
 
- De modo a ter uma melhor organização, a equipe foi dividida em subgrupos, onde cada subgrupo tem um gerente técnico, além disso a equipe também conta com um gerente de qualidade e um coordenador geral. Na Figura \ref{fig:organograma} mostra o organograma da equipe e o nome de cada integrante por função.
+ De modo a ter uma melhor organização, a equipe foi dividida em subgrupos, onde cada subgrupo tem um gerente técnico, além disso a equipe também conta com um gerente de qualidade e um coordenador geral. Na Fig. \ref{fig:organograma} mostra o organograma da equipe e o nome de cada integrante por função.
  
 \begin{figure}[h]
 \centering
 \includegraphics[scale = 0.5]{organograma}
-\caption{.}\label{fig:organograma}
+\caption{Organograma}\label{fig:organograma}
 \end{figure} 
 
 A seguir estão os nomes de cada integrante separado por área:
@@ -378,7 +247,7 @@ A Tabela \ref{tab:custos_software} apresenta todos os gastos que serão necessá
 OBS: Essa planilha poderá ser atualizado dependendo de necessidades que surgirem durante a execução do projeto.
 
 
-\subsection {Engenharia Eletrônica}
+\subsection{Engenharia Eletrônica}
 
 A Tabela \ref{custos_eletronica} apresenta a estimativa de custos gerais, assim como os insumos já adquiridos.
 
@@ -402,7 +271,7 @@ X & Componentes diversos & R\$ 50,00 & R\$ 50,00 & HU Infinito \\ \hline
 Total & - - & - - & R\$ 9873,30 & - - \\ \hline
 \end{tabular}
 \end{table}
-
+\pagebreak
 \subsection{Engenharia de Energia}
 
 A Tabela \ref{tab:custos_energia} apresenta os gastos preliminares de energia, assim como todas as aquisições que serão feitas durante o projeto:
@@ -437,7 +306,7 @@ O projeto será executado atendendo os requisitos apresentados, acima foram list
 \hline
 Área                                                          & Eletrônica                                               & Energia                                               & Estrutura                                      & Software                                                & Total                                \\ \hline
 Custos totais (R\$)                                           & \cellcolor[HTML]{34CDF9}R\$ 9873,30                      & \cellcolor[HTML]{FCFF2F}R\$ 1692                      & \cellcolor[HTML]{9B9B9B}-                      & \cellcolor[HTML]{34FF34}R\$ 472,92                      & \cellcolor[HTML]{FD6864}R\$ 12037,92 \\ \hline
-\begin{tabular}[c]{@{}c@{}}Custos com os insumos\\ disponíveis (R$\$$)\end{tabular} & \multicolumn{1}{l|}{\cellcolor[HTML]{34CDF9}R\$ 3253,30} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFFE65}R\$ 1692} & \multicolumn{1}{l|}{\cellcolor[HTML]{9B9B9B}   -} & \multicolumn{1}{l|}{\cellcolor[HTML]{34FF34}R\$ 192,72} & \cellcolor[HTML]{FD6864}R\$5138,02   \\ \hline
+\begin{tabular}[c]{@{}c@{}}Custos com os insumos\\ disponíveis (R$\$$)\end{tabular} & \multicolumn{1}{l|}{\cellcolor[HTML]{34CDF9}R\$ 3253,30} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFFE65}R\$ 1692} & \cellcolor[HTML]{9B9B9B}-                      & \multicolumn{1}{l|}{\cellcolor[HTML]{34FF34}R\$ 192,72} & \cellcolor[HTML]{FD6864}R\$5138,02   \\ \hline
 \end{tabular}
 \end{table}
 
@@ -482,7 +351,7 @@ Contribuição mensal (R\$)     & R\$ 122,33   \\ \hline
     \item RSN 6 - Problemas na comunicação entre os \emph{softwares} e o radar.
 \end{itemize}
 
-\subsubsection{Energia}
+\subsection{Energia}
 \begin{itemize}
    \item RSN 1 - Alimentação insuficiente ao Radar;
    \item RSN 2 - Curta vida útil dos equipamentos; 
@@ -495,7 +364,7 @@ Contribuição mensal (R\$)     & R\$ 122,33   \\ \hline
    \item RSN 9 - Estrutura mal dimensionada para o suporte e proteção do sistema de alimentação
 \end{itemize}
 
-\subsubsection{Eletrônica}
+\subsection{Eletrônica}
 
 \begin{itemize}
 
@@ -508,3 +377,12 @@ Contribuição mensal (R\$)     & R\$ 122,33   \\ \hline
 	
 \end{itemize} 	
 
+\subsection{Estruturas}
+\begin{itemize}
+	\item RSN 1 - Atrasos por fornecimento de materiais;
+	\item RSN 2 - Aterramento mal feito podendo causar a corrosão da estrutura ou sua fundação;
+	\item RSN 3 - Montagem mal feita;
+	\item RSN 4 - Interferência da estrutura com os equipamentos de radiofrequencia;
+	\item RSN 5 - Atrasos causados por problemas de simulações e modelagem;
+	\item RSN 6 - Curto circuito de componentes eletrônicos causados pela estrutura;
+\end{itemize}

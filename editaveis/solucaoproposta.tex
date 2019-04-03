@@ -175,6 +175,32 @@ Com o objetivo de atender às demandas de energia do projeto, a solução básic
 \end{figure}
 
 \section{Estrutura}
+
+A estrutura visa a acomodação dos componentes eletrônicos de forma segura e que seja possível a manutenção de forma ágil, quando necessário. Além disso a estrutura precisa possuir vazão de ar para a dissipação de calor e ao mesmo tempo impermeável para que em caso de chuva o sistema ainda esteja protegido.
+
+\subsection{Normas}
+
+Foram levantadas as dimensões mínimas para o projeto, com base em documentação disponível online no site do Conselho Nacional de Trânsito \cite{contranV} e \cite{contranVI}. A dimensão mínima recomendada para o poste é de 2,10 metros. A dimensões preliminares da caixa de operação são de 60cm x 40cm x 40cm. Sabe-se também que a estrutura deve estar a uma distância mínima de 1,20 metros do acostamento. É necessário ser perfeitamente visível (percepção da existência do painel), a uma distância mínima de 300 metros e legível (condição de leitura e compreensão da mensagem em tempo hábil) a uma distância mínima de 270 metros. Segundo as normas do \cite{contranV} e \cite{contranVI}, é necessário permitir ajustes em sua
+luminosidade, em função da luminosidade ambiente e também possuir proteção antirreflexo quando da incidência direta de luz solar.
+
+\subsection{Geometria}
+A estrutura proposta consiste em dois pilares, apresentado na Fig. \ref{fig:radop}, que sustentam plataformas onde os equipamentos eletrônicos e de alimentação serão instalados, a estrutura será de material condutor para servir como aterramento para os circuitos instalados, diminuindo a quantidade de fios elétricos. No topo, será instalado o painel solar e na parte de trás da estrutura, o radar doppler e a câmera para a captura de imagens.   
+
+\begin{figure}[h]
+	    \center{\includegraphics[scale=0.45]{estrutura}}
+    \caption{\label{fig:estrutura} Concepção artística preliminar da estrutura.}
+\end{figure}
+\pagebreak
+Essa estrutura terá um envólucro, apresentado na Fig. \ref{fig:radop}, de material isolante para não causar interferências no radar e proteger os componentes internos das condições climáticas do local de instalação formando a caixa de operação.
+
+
+\begin{figure}[h]
+    \center{\includegraphics[scale=0.5]{skin}}
+    \caption{\label{fig:radop} Concepção artística preliminar do radar.}
+\end{figure}
+
+Vale ressaltar que as dimensões aqui escolhidas para a caixa de operação e para os pilares podem sofrer alterações, se necessário, a acomodação de novos componentes ou para melhor estabilidade do sistema como um todo. Sabe-se desde agora que o radar de efeito \textit{Doppler} ficará no ponto mais alto da caixa de operações e acima da caixa ficará o painel fotovoltáico, para que além do seu papel energético, ele possa servir como isolante térmico da parte superior da caixa de operações. A disposição dos demais componentes será escolhida em conjunto com o setor responsável pela eletrônica do projeto.
+
 \section{Software}
 
 \subsection{Detalhamento dos \emph{softwares}}
@@ -467,21 +493,22 @@ execução do projeto devido ao fato da necessidade de cada serviço ser
 
 \subsubsection{WebApp Dashboard RaDop}\label{visao-webapp-dashboard-radop}
 
-A visão lógica do WebApp Dashboard está descrita na Figura 2.
+A visão lógica do WebApp Dashboard está descrita na Fig. \ref{fig:diagrama-pact-django}.
 
 \begin{figure}[!htb]
-    \center{\includegraphics[width=\textwidth]{diagrama-pacotes-django}}
+    \center{\includegraphics[scale=0.5]{diagrama-pacotes-django}}
     \caption{\label{fig:diagrama-pact-django} Diagrama de Pacotes Django}
 \end{figure}
-
+\pagebreak
 \subsubsection{Aplicativo RaDop}\label{visao-aplicativo-radop}
 
-A visão lógica do Aplicativo está descrita na Figura 3.
+A visão lógica do Aplicativo está descrita na Fig. \ref{fig:diagrama-pact-react}.
 
 \begin{figure}[!htb]
-    \center{\includegraphics[width=\textwidth]{diagrama-pacotes-react}}
+    \center{\includegraphics[scale=0.5]{diagrama-pacotes-react}}
     \caption{\label{fig:diagrama-pact-react}Diagrama de Pacotes React}
 \end{figure}
+\pagebreak
 
 \subsection{Tamanho e Desempenho}\label{tamanho-e-desempenho}
 
