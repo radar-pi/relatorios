@@ -1,5 +1,170 @@
 \chapter{Solução proposta}
 \section{Eletrônica}
+
+
+\subsection{Solução Eletrônica}
+O sistema eletrônico tem como objetivo captar a aproximação de veículos ao longo da pista, fazer a detecção de sua velocidade, verificar se a mesma se encontra na faixa permitida pela via, e caso não esteja, capturar a placa do veículo infrator. Uma vez capturada a placa do veículo, o sistema envia a imagem para uma rede remota, onde a mesma fará a identificação. Para isso foi projetado alguns módulos responsáveis por assegurar o funcionamento de todo sistema, apresentados na Fig. \ref{fig:sistemacompleto}.
+
+\begin{figure}[h]
+	\center{\includegraphics[scale=0.5]{Untitled_Diagram-2.png}}
+	\caption{\label{fig:sistemacompleto} Diagrama do sistema eletrônico.}
+\end{figure}
+
+
+\subsubsection{Módulo de aquisição da velocidade}
+ O módulo tem como objetivo enviar uma onda modulada na direção do veículo. A partir do fenômeno de refração a mesma irá voltar para antena, entretanto, de acordo com a velocidade do veículo ocorre uma pequena variação na frequência emitida pela antena. De acordo com essa diferença é possível estimar sua velocidade. 
+
+
+\subsubsection{Módulo Embarcado}
+
+O módulo embarcado dentro da beaglebone tem como função principal servir de centro de operações dos demais componentes ou módulos presente no sistema, de modo que é realizado nele a comparação da velocidade do veículo com a velocidade limite, o pré-processamento da imagem e também a comunicação entre o outro radar localizado no outro extremo da curva e também com o servidor remoto. 
+
+\begin{itemize}
+	\item Conferir a velocidade
+	\item Capturar a imagem da placa
+	\item Receber informação do outro radar para acionar iluminação.
+\end{itemize}
+
+
+
+\subsubsection{Módulo de reconhecimento do veículo}
+ O módulo tem como objetivo realizar a captura e enquadramento de um veículo em uma imagem. Uma vez detectado um automóvel acima da velocidade limite da via a câmera irá realizar o \textit{screenshot} da gravação, onde a imagem logo em seguida passara por um pré-processamento para ser enviada há um servidor remoto, apresentado na Fig. \ref{fig:processos}.
+ 
+ \begin{figure}[!htb]
+	\center{\includegraphics[scale=1]{Processos.pdf}}
+	\caption{\label{fig:processos} Diagrama do sistema do processamento da imagem.}
+\end{figure}
+
+ 
+\subsection{Componentes Eletrônicos}
+
+\subsubsection{Antena}
+
+Responsável pela emissão e detecção dos pulsos eletromagnéticos. Ela enviará uma onda em uma determinada frequência, e recebe essa onda em uma outra frequência determinada pela velocidade do veículo. Ela irá operar na faixa de 915 MHz.
+
+\subsubsection{\emph{Nuand Blade RF x115}}
+
+Na Fig. \ref{fig:nuand}, será apresentado o diagrama de processos entre o \emph{Nuand Blade} e a antena.
+
+ \begin{figure}[!htb]
+	\center{\includegraphics[scale=1]{Processos-2.pdf}}
+	\caption{\label{fig:nuand} Diagrama do sistema do Nuand e antena.}
+\end{figure}
+
+De acordo com a Fig. \ref{fig:nuand}, o rádio definido por software será responsável pela modulação do pulso enviado e recebido pela antena. Dentro da placa de desenvolvimento encontra-se um mixer para realização do deslocamento do espectro com o intuito de facilitar a amostragem do sinal. Após o deslocamento é realizado uma filtragem das altas frequências para limpar as possíveis interferências de outros sinais. Após a filtragem é utilizado um algoritmo para realizar a FFT do sinal amostrado e para depois passar por um outro processo onde é possível estimar a sua velocidade, o rádio é apresentado na Fig. \ref{fig:bladerf}. 
+
+\begin{figure}[!htb]
+	\center{\includegraphics[scale=0.35]{bladerf.pdf}}
+	\caption{\label{fig:bladerf} Placa BladeRF NUAND}
+\end{figure}
+
+
+
+\subsubsection{\emph{Beaglebone Black Rev C}} 
+
+A \emph{Beaglebone Black} é um sistema embarcado, como apresentado na Fig. \ref{fig:beaglebone}, que recebe do rádio definido por software \emph{NUAND} a velocidade média do veículo, e a partir deste dado o sistema da \emph{beagle} será responsável por verificar se o mesmo está acima da velocidade permitida da via. Se realmente a velocidade for superior, ela mandará um comando para a câmera para que a mesma realize um \textit{screenshot} de sua gravação para capturar uma imagem do veículo infrator. Após a captura da imagem do automóvel, a \emph{beagle} realizará o pré-processamento, o enquadramento da imagem e aumento ou diminuição do contraste para facilitar o processamento realizado dentro de um servidor. Além disso, a mesma é responsável por todo o controle do sistema de iluminação, que alertará o condutor que existe um veículo se aproximando em direção contrária.
+
+\begin{figure}[!htb]
+	\center{\includegraphics[scale=0.3]{beaglebone}}
+	\caption{\label{fig:beaglebone} Sistema embarcado Beaglebone Black}
+\end{figure}
+
+\begin{itemize}
+
+\item Especificações do Processador:
+
+– Chip: AM335x 1GHz ARM® Cortex-A8
+– Memória: 512MB DDR3 RAM
+– Armazenamento: 4GB 8-bit eMMC on-board flash storage
+– 3D graphics accelerator
+– NEON floating-point accelerator
+– 2x PRU 32-bit microcontrollers
+
+\item Interface:
+– USB 2.0 Client, para alimentação e comunicação
+– USB 2.0 Host
+– 10/100M Ethernet (Conector RJ45)
+– Interface LCD
+– HDMI
+– Slot cartão TF
+– 2x 46 Pinos
+
+\item  Compatibilidade de Softwares:
+– Debian
+– Android
+– Ubuntu
+– Cloud9 IDE em Node.js com biblioteca BoneScript
+
+\item  Especificações Gerais:
+– Tensão de operação: 5V/0,35A
+– Temperatura de operação: 0-70$^{\circ}$C
+– Dimensões: 86,36 x 54,61mm
+    
+\end{itemize}
+ \subsubsection{Módulo \emph{NRF24L10}} 
+
+Tem como função fazer a comunicação entre os dois radares no meio da rodovia. Este módulo foi escolhido pelo fato que o mesmo permite uma boa comunicação sem fio a longas distâncias em lugares abertos, possibilitando assim o envio e a recepção de informações de uma forma simples e rápida de um radar para o outro. A comunicação deste módulo com a placa Beaglebone será pelo protocolo \emph{Serial Peripheral Interface} (SPI), como mostrado na Fig. \ref{fig:nrf24}. 
+
+\begin{figure}[!htb]
+	\center{\includegraphics[scale=0.5]{nrf24.pdf}}
+	\caption{\label{fig:nrf24} Módulo GSM  GPRS}
+\end{figure}
+\begin{itemize}
+    
+\item  Especificações:
+– Controlador NRF24L01
+– Frequência: 2.4GHz
+– Tensão de operação: 1.9 à 3.6V
+– Taxa de transferência: 2 Mbit/s
+– Modulação GFSK
+– Regulador de tensão embutido
+– Corrente em power down: 400nA
+– Corrente em standby: 32uA
+– Conector para antena SM
+– Dimensões: 29 x 15mm
+– Alcance: 1 Km, antena externa.
+\end{itemize}
+
+ \subsubsection{Módulo GSM GPRS}
+ 
+Tem como função fazer a comunicação entre os radares e o servidor. Este módulo foi escolhido principalmente pelo fato de apresentar uma ampla disponibilidade de área para conexão e apresenta também uma banda que atende as necessidades de transmissão do projeto, como apresentado na Fig. \ref{fig:gsm}.
+
+ 
+\begin{figure}[!htb]
+	\center{\includegraphics[scale=0.5]{gsm.pdf}}
+	\caption{\label{fig:gsm} Módulo GSM  GPRS}
+\end{figure}
+
+ \begin{itemize}
+    
+\item Especificações:
+–  Tensão de alimentação: 3.7 - 4.2V
+– CI SIM800L (datasheet)
+– Frequencias: EGSM900, DCS1800, GSM850, PCS1900
+– Conector para antena externa U.FL
+– GPRS Data Downlink: 85.6 kbps (máximo)
+– GPRS Data Uplink: 85.6 kbps (máximo)
+– Suporte PAP (password authentication protocol) para conexões PPP
+– Protocolo TCP/IP embutido
+– Serial: 1200 bps à 115.200 bps
+– Slot MicroSIM
+– Acompanha antena mola
+– Temperatura de operação: -40 a $85^{\circ}C$
+– Dimensões: 21 x 15 x 3,2mm
+\end{itemize}
+
+\subsubsection{Câmera} 
+
+A câmera tem como função realizar a captura das imagens que serão processadas.  Para que a imagem tenha uma resolução adequada é necessário que a câmera atinja algumas especificações. Dentre elas é necessário que a mesma possua uma lente de pelo menos 6mm para que a mesma possa enxergar com nitidez objetos na faixa de 7-10 metros de distância, outro fator importante é a sensibilidade dos seus sensores de modo que o mais adequado seria que o mesmo possuísse entre 1/2.8"e 1/2"sendo desejado o de 1/2". Esses fatores influenciam no ângulo de abertura da câmera, sendo que quanto menor ele maior a quantidade de informação presente na Fig. \ref{fig:camera}, obtida pela câmera.
+\pagebreak
+
+\begin{figure}[!htbp]
+    \centering
+        \includegraphics[scale=0.5]{camera.png} 
+    \caption{Análise das configurações de uma câmera}
+    \label{fig:camera}
+\end{figure}
+
 \section{Energia}
 
 Com o objetivo de atender às demandas de energia do projeto, a solução básica adotada foi a utilização de painéis solares em sistemas isolados para geração de energia elétrica, utilizando baterias para a garantia de alimentação em regime permanente e controladores de carga para evitar sobrecargas ou descargas exageradas na bateria, aumentando sua vida útil e desempenho. Também faz parte da solução básica de energia o dimensionamento da iluminação onde serão utilizados painéis e lâmpadas de LED. O sistema, a princípio, tem como objetivo atender a todas as demandas de consumo enérgico dos subsistemas iluminação, aparelhos e componentes eletrônicos.
@@ -219,7 +384,11 @@ responsável pelo envio dessas informações para outros componentes.
 
 \subsubsection{Servidor de Microserviços RaDop - SMR}\label{req-servidor-de-microservicos-radop---smr}
 
+A Tabela \ref{tab:Servidor de Microserviços RaDop} apresenta as restrições e requisitos dos microservições propostos.
+
 \begin{table}[h]
+	\caption{Restrições e Requisitos para a construção dos microsserviços propostos}
+	\label{tab:Servidor de Microserviços RaDop}
   \resizebox{\textwidth}{!}{\begin{tabular}{|r|l|}
   \hline
   \textbf{Requisito} & \textbf{Ferramenta/Solução}                                                                                                                                                                                                                                                           \\ \hline
@@ -227,12 +396,16 @@ responsável pelo envio dessas informações para outros componentes.
   Framework & WebSocket, API Rest e Outros                                                                                                                                                                                                                                                                   \\ \hline
   Segurança & \begin{tabular}[c]{@{}l@{}}Os dados utiizados nos serviços/microsserviços\\ de apoio serão armazenados apenas para\\ auditórias e uso em estatísticas/mining/BI,\\ sendo possível o agendamento da remoção\\  dos mesmos para manter sigilo de dados pessoais,\\ caso necessário.\end{tabular} \\ \hline
   \end{tabular}}
-  \caption{Restrições e Requisitos para a construção dos microsserviços propostos.}
+  
 \end{table}
 
 \subsubsection{WebApp Dashboard RaDop}\label{req-webapp-dashboard-radop}
 
+A Tabela \ref{tab:WebApp Dashboard RaDop} apresenta as restrições e requisitos para construção do sistema em Django.
+
 \begin{table}[h]
+ \caption{Restrições e Requisitos para construção do sistema em Django}
+ \label{tab:WebApp Dashboard RaDop}
   \resizebox{\textwidth}{!}{\begin{tabular}{|r|l|}
   \hline
   \textbf{Requisito}  & \textbf{Ferramenta/Solução}                                                                                                                                                                                                                                       \\ \hline
@@ -241,13 +414,17 @@ responsável pelo envio dessas informações para outros componentes.
   Plataforma & Web - Navegadores Google Chrome, Apple Safari e Mozilla Firefox                                                                                                                                                                                                            \\ \hline
   Segurança  & \begin{tabular}[c]{@{}l@{}}Todas as informações dos usuários da dashboard\\ devem ser tratadas em sigilo para que\\ apenas o próprio usuário possa visualizá-las,\\  demais informações não serão\\ armazenadas a fim de manter sigilo de dados\\ dos mesmos.\end{tabular} \\ \hline
   \end{tabular}}
-  \caption{Restrições e Requisitos para construção do sistema em Django.}
+  
 \end{table}
 
 \subsubsection{Aplicativo RaDop}\label{req-aplicativo-radop}
 
+A Tabela \ref{tab:app} apresenta as restrições e requisitos para construção do sistema em React-Native.
+
 \begin{table}[h]
 \centering
+\caption{Restrições e Requisitos para construção do sistema em React-Native}
+\label{tab:app}
   \begin{tabular}{|r|l|}
   \hline
   \textbf{Requisito} & \textbf{Ferramenta/Solução}  \\ \hline
@@ -256,7 +433,6 @@ responsável pelo envio dessas informações para outros componentes.
   Dependências       & Java Oracle JDK 8 e Node 11+ \\ \hline
   Plataforma         & Mobile - Android 4+          \\ \hline
   \end{tabular}
-  \caption{Restrições e Requisitos para construção do sistema em React-Native.}
 \end{table}
 
 \subsection{Visão Lógica}\label{visao-logica}
