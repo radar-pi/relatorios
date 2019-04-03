@@ -7,7 +7,29 @@
 \end{figure}
 \section{Lista É/Não é}
 \subsection{É}
+
+\begin{itemize}
+	\item É um radar de efeito \textit{Doppler};
+	\item É um detector de veículos;
+	\item É composto de sistema capaz de reconhecer placa de carros acima da velocidade da rodovia;
+	\item É projetado para pistas simples;
+	\item É para ser utilizados em curvas;
+	\item É para áreas de região serrana;
+	\item É configurado para sinalizar por meio de sinalização luminosa;
+	\item É um sistema de prevenção de acidentes;
+	\item É composto de sistema energético fotovotaico.
+\end{itemize}
 \subsection{Não é}
+
+\begin{itemize}
+	\item Não é para ser utilizado em pistas duplas;
+	\item Não é para usar em trechos de rodovias contínuos;
+	\item Não é para utilizar em cruzamentos;
+	\item Não é para aplicar multa em carros infratores;
+	\item Não é para ser utilizado em sinalização de trânsito;
+	\item Não é um sistema de fiscalização de trânsito.
+\end{itemize}
+
 \section{Requisitos}
 \subsection{Eletrônica}
 
@@ -313,7 +335,11 @@ Para uma melhor visualização, o leitor será redirecionado para o local de hos
 
 \section{Milestones Identificados}
 
+A Tabela \ref{tab:milestones} apresenta as datas de entregáveis.
+
 \begin{table}[h]
+\caption{Milestones}
+\label{tab:milestones}
 \begin{tabular}{|c|c|}
 \hline
 \rowcolor[HTML]{9B9B9B} 
@@ -336,9 +362,11 @@ Entrega de relatório do Ponto de Controle 4                                    
 
 \subsection{Engenharia de Software}
 
-Aqui está listado todos os gastos que serão necessários para a equipe de software, assim como todas as aquisições que serão feitas durante o projeto:
+A Tabela \ref{tab:custos_software} apresenta todos os gastos que serão necessários para a equipe de software, assim como todas as aquisições que serão feitas durante o projeto:
 
 \begin{table}[h]
+	\caption{Estimativa de custos de \emph{software}}
+	\label{tab:custos_software}
     \resizebox{\textwidth}{!}{\begin{tabular}{|c|c|c|c|c|c|c|}
     \hline
     \textbf{Nome do produto} & \textbf{Descrição}                      & \textbf{Marca} & \textbf{Preço unitário} & \textbf{Quantidade} & \textbf{Fornecedor} & \textbf{Orçamento} \\ \hline
@@ -352,7 +380,8 @@ OBS: Essa planilha poderá ser atualizado dependendo de necessidades que surgire
 
 \subsection {Engenharia Eletrônica}
 
-\subsubsection{Orçamento preliminar}
+A Tabela \ref{custos_eletronica} apresenta a estimativa de custos gerais, assim como os insumos já adquiridos.
+
 \begin{table}[h]
 \centering
 \caption{Estimativa de custos de eletrônica}
@@ -376,9 +405,11 @@ Total & - - & - - & R\$ 9873,30 & - - \\ \hline
 
 \subsection{Engenharia de Energia}
 
-Aqui está listado  os gastos preliminares de energia, assim como todas as aquisições que serão feitas durante o projeto:
+A Tabela \ref{tab:custos_energia} apresenta os gastos preliminares de energia, assim como todas as aquisições que serão feitas durante o projeto:
 
 \begin{table}[h]
+\caption{Estimativa de custos de energia}
+\label{tab:custos_energia}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
 \multicolumn{5}{|c|}{Energia}                                                 \\ \hline
@@ -392,6 +423,41 @@ Lâmpada de LED       & R (\$) 38,00 & 2          & R (\$) 76,00 & PXT         \
 \end{table}
 
 \section{Viabilidades financeira}
+
+O projeto será executado atendendo os requisitos apresentados, acima foram listados todos os insumos que serão necessários para a realização. Alguns insumos foram fornecidos pelos professores da matéria ou outros professores ou os membros do grupo já tinham. A Tabela \ref{tab:elps1} mostra o valor estimado total do projeto. 
+
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[h]
+\centering
+\caption{Valor estimado dos insumos totais}
+\label{tab:elps1}
+\begin{tabular}{|c|c|c|c|c|l|}
+\hline
+Área                                                          & Eletrônica                                               & Energia                                               & Estrutura                                      & Software                                                & Total                                \\ \hline
+Custos totais (R\$)                                           & \cellcolor[HTML]{34CDF9}R\$ 9873,30                      & \cellcolor[HTML]{FCFF2F}R\$ 1692                      & \cellcolor[HTML]{9B9B9B}-                      & \cellcolor[HTML]{34FF34}R\$ 472,92                      & \cellcolor[HTML]{FD6864}R\$ 12037,92 \\ \hline
+\begin{tabular}[c]{@{}c@{}}Custos com os insumos\\ disponíveis (R$\$$)\end{tabular} & \multicolumn{1}{l|}{\cellcolor[HTML]{34CDF9}R\$ 3253,30} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFFE65}R\$ 1692} & \multicolumn{1}{l|}{\cellcolor[HTML]{9B9B9B}   -} & \multicolumn{1}{l|}{\cellcolor[HTML]{34FF34}R\$ 192,72} & \cellcolor[HTML]{FD6864}R\$5138,02   \\ \hline
+\end{tabular}
+\end{table}
+
+A Tabela \ref{tab: elps2} mostra o valor estimado sem o valor dos insumos que o grupo já tem.
+
+\begin{table}[h]
+\centering
+\caption{Valor dos insumos já adquiridos}
+\label{tab: elps2}
+\begin{tabular}{|c|c|}
+\hline
+                              & Cliente Real \\ \hline
+Pessoas na equipe             & 14           \\ \hline
+Duração do projeto (em meses) & 3            \\ \hline
+Valor total (R\$)             & R\$ 5138,02  \\ \hline
+Valor por pessoa (R\$)        & R\$ 367      \\ \hline
+Contribuição mensal (R\$)     & R\$ 122,33   \\ \hline
+\end{tabular}
+\end{table}
+
 \section{Levantamento de riscos}
 \subsection{Geral}
 

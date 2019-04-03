@@ -12,6 +12,7 @@
 
 #PDFs
 *.pdf
+!figuras/*.pdf
 
 *.lof
 *.lot
