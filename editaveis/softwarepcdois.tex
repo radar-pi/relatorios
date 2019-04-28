@@ -1,6 +1,7 @@
 \chapter{Software}
 
-O subsistema de software é parte fundamental do projeto por proporcionar a interação entre o usuário e a Radar. Subdivide-se em Requisitos, Casos de Uso, Microsserviços, Banco de Dados, Resiliência na Comunicação do Software, Comunicação entre Software e Eletrônica, Representação Arquitetural e Protótipos.
+
+O subsistema de software é parte fundamental do projeto por proporcionar a interação entre o usuário e o Radar. Subdivide-se em Requisitos, Casos de Uso, Microsserviços, Banco de Dados, Resiliência na Comunicação do Software, Comunicação entre Software e Eletrônica, Representação Arquitetural e Protótipos. 
 
 \section{Requisitos}\nopagebreak
 
@@ -17,7 +18,7 @@ Abaixo estão listados os requisitos funcionais e não funcionais do aplicativo 
   \item O aplicativo da manutenção deve receber dados do radar. Esses dados são:
   \begin{enumerate}
     \item Informação de calibração DC\footnote{Integração com a \textit{BladeRF} para calibração de parâmetros de funcionamento da placa, os sistemas de calibração serão produzidos pela equipe de eletrônica do projeto RaDop.};
-    \item Operacionalidade: Câmera, RF (Doppler) e Raspberry;
+    \item Operacionalidade: Câmera, RF (Doppler) e \textit{Raspberry};
     \item Temperatura do equipamento;
     \item Nível de carga da bateria;
     \item Relatório de operação com falhas ocorridas em virtude de algum equipamento eletrônico não estar operacional;
@@ -86,7 +87,8 @@ Abaixo estão listados os requisitos funcionais e não funcionais do \textit{Web
 \end{itemize}
 
 \begin{itemize}
-    \item O \textit{Dashboard} deve possibilitar obter informações complementares a partir dos dados recebidos para realizar \textit{data mining};
+
+    \item O \textit{Dashboard} deve possibilitar obter informações complementares a partir dos dados recebidos para realizar \textit{data mining}\footnote{Data Mining: A partir dos dados recebidos extrair dados terceários a fim de obter novos conhecimentos, identificar padrões, relacionamentos sistemáticos e etc.}. 
 \end{itemize}
 
 \begin{itemize}
@@ -133,7 +135,7 @@ Segue abaixo os diagramas de casos de uso do Aplicativo e do \textit{Dashboard}.
 \begin{figure}[ht]
 	\center{\includegraphics[scale=0.5]{caso_de_uso_app.pdf}}
 	\caption{\label{fig:casos_de_uso} Diagrama de casos de uso com as principais funcionalidades do aplicativo RaDop.}
-\end{figure}
+\end{figure}\newpage
 
 \begin{figure}[ht]
 	\center{\includegraphics[scale=0.5]{caso_de_uso_dashboard.pdf}}
@@ -166,7 +168,7 @@ Os microsserviços que serão construídos para este projeto são:
 \begin{itemize}
     \item Microsserviço para processar imagem do radar (ALPR);
     \item Microsserviço para verificar a situação de veículos no banco de placas do SINESP;
-    \item Microsserviço de banco de dados para armazenamentos de informações dos serviços (RethinkDB);
+    \item Microsserviço de banco de dados para armazenamentos de informações dos serviços (\textit{RethinkDB});
     \item Microsserviço de fila de mensagens (\textit{MQ - Message Queue});
     \item Microsserviço de banco de dados para o aplicativo RaDop (armazena as manutenções e informações relacionadas com a aplicação);
     \item Microsserviço de notificação de veículos flagrados excedendo a velocidade da via ou identificados como em situação irregular;
@@ -254,7 +256,7 @@ A partir dessa escolha a equipe elaborou, com base nos requisitos e necessidades
 
 A equipe de software do RaDop construiu a figura \ref{fig:diagrama-classe-soft} para tentar representar melhor como será o modelo de dados/objetos das aplicações de software. Devido ao fato que grande parte dos sistemas trabalham com tecnologias de JSON para o armazenamento de objetos as classes derivaram destes arquivos definidos durante a execução dos sistemas.
 
-JSON é um acrônimo de \textit{JavaScript Object Notation}, é um formato compacto, de padrão aberto independente, de troca de dados simples e rápida (parsing) entre sistemas, especificado por Douglas Crockford em 2000, que utiliza texto legível a humanos, no formato atributo-valor (natureza auto-descritiva)\footnote{JSON Organization}.
+JSON é um acrônimo de \textit{JavaScript Object Notation}, é um formato compacto, de padrão aberto independente, de troca de dados simples e rápida (\textit{parsing}) entre sistemas, especificado por Douglas Crockford em 2000, que utiliza texto legível a humanos, no formato atributo-valor (natureza auto-descritiva)\footnote{JSON Organization}.
 
 A partir disso a equipe elaborou de uma forma simples e explicativa como se dariam as classes de objetos e suas relações por meio da representação em UML. Lembrando que novas classes e relacionamentos podem ser criados.
 
