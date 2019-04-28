@@ -146,11 +146,11 @@ A arquitetura do \textit{Dashboard}, esquematizada na Figura \ref{fig:diagrama-a
 
 O uso de componentes permite uma série de vantagens. A primeira é construir componentes com alta coesão e baixo acoplamento, o que melhora a manutenibilidade do código. Outra é que eles podem ser totalmente independentes entre si. As vantangens citadas acabam permitindo que componentes criados possam ser reaproveitados em vários projetos, evitando retrabalho desnecessário e assim otimizando o tempo dos desenvolvedores envolvidos no projeto.
 
-Uma tecnologia importante que também será utilizada em ocnjunto com o \textit{Dashboard} é o NGINX. Ele será utilizado para fazer o proxy reverso da aplicação. De modo resumido, ele vai atuar como uma espécie de organizador, redirecionando as requisições que chegam dos clientes para os contêineres corretos.
+Uma tecnologia importante que também será utilizada em conjunto com o \textit{Dashboard} é o NGINX. Ele será utilizado para fazer o proxy reverso da aplicação. De modo resumido, ele vai atuar como uma espécie de organizador, redirecionando as requisições que chegam dos clientes para os contêineres corretos.
 
 \section{\textit{WebApp}}
 
-
+Conforme mostra a Figura \ref{fig:diagrama-arq-webApp}, o applicativo móvel que irá auxiliar a equipe de manutenção não irá acessar o radar diretamente, mas sim através dos microsserviços. Deste modo, os microsserviços funcionarão como uma espécie de interface entre o radar e o aplicativo.
 
 \section{Microsserviços}
 
