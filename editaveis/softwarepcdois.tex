@@ -1,6 +1,6 @@
 \chapter{Software}
 
-O subsistema de software é parte fundamental do projeto por proporcionar a interação entre o usuário e a Radar. Subdivide-se em Requisitos, Casos de Uso, Microsserviços, Banco de Dados, Resiliência na Comunicação do Software, Comunicação entre Software e Eletrônica, Representação Arquitetural e Protótipos. 
+O subsistema de software é parte fundamental do projeto por proporcionar a interação entre o usuário e a Radar. Subdivide-se em Requisitos, Casos de Uso, Microsserviços, Banco de Dados, Resiliência na Comunicação do Software, Comunicação entre Software e Eletrônica, Representação Arquitetural e Protótipos.
 
 \section{Requisitos}\nopagebreak
 
@@ -13,7 +13,7 @@ Os requisitos estão dividos por sistemas, sendo eles o aplicativo da manutenç�
 Abaixo estão listados os requisitos funcionais e não funcionais do aplicativo móvel que será usado pela equipe de manutenção do RaDop. Começando pelos requisitos funcionais temos:
 
 
-\begin{itemize} 
+\begin{itemize}
   \item O aplicativo da manutenção deve receber dados do radar. Esses dados são:
   \begin{enumerate}
     \item Informação de calibração DC\footnote{Integração com a \textit{BladeRF} para calibração de parâmetros de funcionamento da placa, os sistemas de calibração serão produzidos pela equipe de eletrônica do projeto RaDop.};
@@ -31,13 +31,13 @@ Abaixo estão listados os requisitos funcionais e não funcionais do aplicativo 
         \item Quando a carga da bateria estiver igual ou menor que 20\%;
         \item Em caso de falha de comunicação do aplicativo com o radar.
     \end{enumerate}
-\end{itemize} 
- 
- 
+\end{itemize}
+
+
 \begin{itemize}
      \item O aplicativo deve ter um registro de manutenção (\textit{CRUD}\footnote{\textit{CRUD}: Sigla em inglês para \textit{Create}, \textit{Read}, \textit{Update} e \textit{Delete}. Se trata do gerenciamento do objeto.}), ou seja, registrar a data e o hórario de acesso ao radar, e qual usuário acessou.
 \end{itemize}
- 
+
 \begin{itemize}
      \item O aplicativo deve ter um sistema de usuários (\textit{CRUD}), ou seja, um sistema para identificação, cadastro e gerenciamento dos usuários do aplicativo.
 \end{itemize}
@@ -86,7 +86,7 @@ Abaixo estão listados os requisitos funcionais e não funcionais do \textit{Web
 \end{itemize}
 
 \begin{itemize}
-    \item O \textit{Dashboard} deve possibilitar obter informações complementares a partir dos dados recebidos para realizar \textit{data mining}; 
+    \item O \textit{Dashboard} deve possibilitar obter informações complementares a partir dos dados recebidos para realizar \textit{data mining};
 \end{itemize}
 
 \begin{itemize}
@@ -100,7 +100,7 @@ Abaixo estão listados os requisitos funcionais e não funcionais do \textit{Web
 
 \begin{itemize}
     \item O \textit{Dashboard} deve ter um sistema de cadastro de acidentes (\textit{CRUD});
-\end{itemize} 
+\end{itemize}
 
 \begin{itemize}
     \item O \textit{Dashboard} deve ter um sistema de visualização/notificação de veículos irregulares;
@@ -109,7 +109,7 @@ Abaixo estão listados os requisitos funcionais e não funcionais do \textit{Web
 \begin{itemize}
     \item O \textit{Dashboard} deve ter um sistema de visualização/notificação de acidentes;
 \end{itemize}
- 
+
 \begin{itemize}
     \item O aplicativo deve ter a capacidade de configurar e calibrar o radar afim de auxiliar na manutenção corretiva do radar.
 \end{itemize}
@@ -140,12 +140,23 @@ Segue abaixo os diagramas de casos de uso do Aplicativo e do \textit{Dashboard}.
 	\caption{\label{fig:diagrama-comm-soft} Diagrama de casos de uso com as principais funcionalidades do \textit{Dashboard}.}
 \end{figure}
 
+\section{\textit{Dashboard}}
+
+A arquitetura do \textit{Dashboard}, esquematizada na Figura \ref{fig:diagrama-arq-dashboard}, será principalmente a baseada em componentes. O motivo para isso se deve ao uso do \textit{Django Application} do \textit{framework} Django, que é a principal tecnologia que será usada com o \textit{Dashboard}.
+
+O uso de componentes permite uma série de vantagens. A primeira é construir componentes com alta coesão e baixo acoplamento, o que melhora a manutenibilidade do código. Outra é que eles podem ser totalmente independentes entre si. As vantangens citadas acabam permitindo que componentes criados possam ser reaproveitados em vários projetos, evitando retrabalho desnecessário e assim otimizando o tempo dos desenvolvedores envolvidos no projeto.
+
+Uma tecnologia importante que também será utilizada em ocnjunto com o \textit{Dashboard} é o NGINX. Ele será utilizado para fazer o proxy reverso da aplicação. De modo resumido, ele vai atuar como uma espécie de organizador, redirecionando as requisições que chegam dos clientes para os contêineres corretos.
+
+\section{\textit{WebApp}}
+
+
 
 \section{Microsserviços}
 
-Conforme definido na fase de iniciação de projeto do radar RaDop, e anteriormente citado, além do aplicativo e do \textit{WebApp} de \textit{Dashboard}, alguns dos outros serviços de software serão montados no formato de microsserviços. 
+Conforme definido na fase de iniciação de projeto do radar RaDop, e anteriormente citado, além do aplicativo e do \textit{WebApp} de \textit{Dashboard}, alguns dos outros serviços de software serão montados no formato de microsserviços, cuja arquitetura está esquematizada na Figura \ref{fig:diagrama-arq-microsservicos}.
 
-Logo, a partir da elicitação dos requisitos, tanto do projeto quanto dos outros produtos de software, a equipe levantou quais são os microsserviços que devem ser construídos. Lembrando que microsserviço é uma abordagem para desenvolver uma única aplicação como uma suíte de serviços, cada um rodando em seu próprio processo e se comunicando entre eles através de mecanismos leves. Segundo Fowler e Lewis (2014), estes serviços são construídos através de pequenas responsabilidades e publicados em produção de maneira independente. 
+Logo, a partir da elicitação dos requisitos, tanto do projeto quanto dos outros produtos de software, a equipe levantou quais são os microsserviços que devem ser construídos. Lembrando que microsserviço é uma abordagem para desenvolver uma única aplicação como uma suíte de serviços, cada um rodando em seu próprio processo e se comunicando entre eles através de mecanismos leves. Segundo Fowler e Lewis (2014), estes serviços são construídos através de pequenas responsabilidades e publicados em produção de maneira independente.
 
 Alguns dos microsserviços serão produzidos no formato de \textit{FaaS} (\textit{Function as a Service}), função como serviço, segundo Freitas (2018) estas funções são um serviço de computação em nuvem que busca abstrair a questão de servidor e máquinas onde rodam os seus programas. Em detalhes, ela deriva da filosofia \textit{Servless}, que delega ao provedor de computação em nuvem (\textit{Cloud Provider}) provisionar uma plataforma que permita ao cliente: desenvolver, rodar e gerenciar aplicações. Nestes moldes, reduz-se a complexidade de uma pessoa ter que montar e manter a infraestrutura, atual padrão de todo mercado corporativo. Montando uma aplicação com este padrão, implementamos a teoria \textit{Servless} e criamos uma arquitetura nativa de microsserviços.
 
@@ -162,7 +173,7 @@ Os microsserviços que serão construídos para este projeto são:
     \item Microsserviço de notificação de possíveis/prováveis acidentes.
 \end{itemize}
 
-Devido a filosofia dos microsserviços e à necessidades específicas de cada serviço, cada um será programado na linguagem e utilizando o \textit{framework} que melhor atendar a equipe e as expectativas do produto.  
+Devido a filosofia dos microsserviços e à necessidades específicas de cada serviço, cada um será programado na linguagem e utilizando o \textit{framework} que melhor atendar a equipe e as expectativas do produto.
 Caso haja necessidade de remoção, criação de novos ou especialização dos serviços, a equipe de software fará as devidas alterações e comunicará aos demais membros equipe, assim como fará as devidas alterações nas documentações do projeto.
 
 \subsection{ALPR}
@@ -199,7 +210,7 @@ Os tipos de interfaces para a comunicação dos serviços, com uma leve explana�
         \item \textbf{\textit{WebApp Dashboard}}: Se comunicará com o serviços no mesmo formato do aplicativo, através de requisições com envio de pacotes de hipertexto.
     \end{enumerate}
     \item \textbf{HTTPS}:
-    Uma evolução do \textit{HTTP}, o \textit{Hypertext Transfer Protocol Secure}, ou HTTPS, é uma implementação do HTTP sobre uma camada adicional de segurança que utiliza o protocolo SSL/TLS. 
+    Uma evolução do \textit{HTTP}, o \textit{Hypertext Transfer Protocol Secure}, ou HTTPS, é uma implementação do HTTP sobre uma camada adicional de segurança que utiliza o protocolo SSL/TLS.
     \begin{enumerate}
         \item \textbf{Banco de Dados NoSQL}: Esse protocolo será utilizado para a comunicação da nuvem de serviços com o banco de dados (\textit{RethinkDB\footnote{\textit{RethinkDB é um banco de dados \textit{NoSQL} utilizado para aplicações em tempo real.}}}) e vice versa. Ele trabalha de uma forma similar aos serviços acima, mas como implementado no próprio protocolo, necessita de uma camada adicional de segurança devido a natureza dos dados.
     \end{enumerate}
@@ -261,11 +272,11 @@ Abaixo estão listadas as falhas possíveis de ocorrerem, assim como as medidas 
 
 \begin{itemize}
     \item \textbf{Descrição da falha:}
-    
+
     A comunicação entre o radar e o sistema remoto é interrompida, impossibilitando a troca de dados entre ambos.
-    
+
     \item \textbf{Mecanismo para mitigar a falha:}
-    
+
     Os dados que não puderem ser enviados serão armazenados localmente (no radar e no serviço remoto) e transmitidos assim que a comunicação for restabelecida. Isso fará com que dados não deixem de ser enviados em caso de falha de comunicação.
 \end{itemize}
 
@@ -273,13 +284,13 @@ Abaixo estão listadas as falhas possíveis de ocorrerem, assim como as medidas 
 
 \begin{itemize}
     \item \textbf{Descrição da falha:}
-    
+
      O envio ou recebimento de dados de um microsserviço é impossibilitado.
-    
+
     \item \textbf{Mecanismo para mitigar a falha:}
-    
+
     Toda nova requisição, independente se o serviço está ou não sem comunicação, será colocada em uma fila de execução. Esta fila permitirá com que o microsserviço não deixe de executar uma requisição em virtude de ter ficado sem comunicação.
-    
+
     Além disso, o uso da fila proporcionará uma organização na ordem de execução dos pedidos. A ferramenta que será utilizada para gerenciar essas filas será o \textit{RabbitMQ}.
 \end{itemize}
 
@@ -287,11 +298,11 @@ Abaixo estão listadas as falhas possíveis de ocorrerem, assim como as medidas 
 
 \begin{itemize}
     \item \textbf{Descrição da falha:}
-    
+
     Um microsserviço se torna indisponível, entendendo indisponibilidade como ele travar ou ser encerrado.
-    
+
     \item \textbf{Mecanismo para mitigar a falha:}
-    
+
     Os microsserviços serão colocados em contêineres da tecnologia \textit{Docker}. Isso permitirá que novas instâncias de microsserviços indisponíveis sejam criadas rapidamente, fazendo com que o tempo indisponível deles seja reduzido.
 
     Além disso, o uso dos contêineres permitirá que várias instâncias idênticas de um microsserviço estejam em funcionamento ao mesmo tempo e sejam criadas ou removidas a qualquer momento. Desse modo, será possível ter uma alta disponibilidade dos microsserviços, assim como escalabilidade.
@@ -305,7 +316,7 @@ Segundo Ebert et al. [4] o \textit{DevOps} trata de processos de negócios de de
 
 Dentro do projeto RaDop, a equipe de software buscará seguir algumas das melhores práticas do processo para garantir agilidade e segurança durante o desenvolvimento dos produtos. As práticas implementadas serão:
 \begin{itemize}
-    \item Integração Contínua (CI): Para garantir a qualidade e a uniformidade de todo o código novo que entra no sistema, os produtos de softwares estarão inseridos num \textit{pipeline}, onde passarão por testes de padrão de desenvolvimento, testes de código, testes estáticos, testes de segurança e testes de construção de serviços. Com a execução exitosa de todos os teste os novos serviços, assim como suas evoluções, estarão integrados que as versões anteriores e os demais serviços. 
+    \item Integração Contínua (CI): Para garantir a qualidade e a uniformidade de todo o código novo que entra no sistema, os produtos de softwares estarão inseridos num \textit{pipeline}, onde passarão por testes de padrão de desenvolvimento, testes de código, testes estáticos, testes de segurança e testes de construção de serviços. Com a execução exitosa de todos os teste os novos serviços, assim como suas evoluções, estarão integrados que as versões anteriores e os demais serviços.
     \item Entrega Contínua (CD): Com a garantia de que as novas versões, e evoluções, estão de acordo com o planejado, esses novos produtos, ou subprodutos, serão entregues e implantados no seu destino (serviço do servidor, aplicativo ou \textit{Dashboard}) mais rapidamente e estarão prontamente disponíveis para uso.
     \item Docker: Para provisionamento dos serviços, implantação e isolamento dos ambientes e requerimentos. Além de auxiliar na escalabilidde dos mesmos serviços e ações ágeis sobre erros e dificuldades.
 \end{itemize}
@@ -350,7 +361,22 @@ Segue abaixo as telas da interface do aplicativo e do \textit{dashboard} do RaDo
 \textbf{JSON}. [S. l.], 2019. Disponível em: https://www.json.org/. Acesso em: 25 abr. 2019.
 
 [4] C. Ebert, G. Gallardo, J. Hernantes, and N. Serrano, “DevOps,” IEEE Softw., vol. 33, no. 3, pp. 94–100, 2016.
-\chapter{Anexos}
+
+\chapter{Apêndices}
+\begin{figure}[h!]
+	\center{\includegraphics[width=\textwidth]{diagrama-arq-dashboard.png}}
+	\caption{\label{fig:diagrama-arq-dashboard} Diagrama que mostra a arquitetura e tecnologias que serão usadas com o \textit{Dashboard}.}
+\end{figure}
+
+\begin{figure}[h!]
+	\center{\includegraphics[width=\textwidth]{diagrama-arq-webApp.png}}
+	\caption{\label{fig:diagrama-arq-webApp} Diagrama que mostra a arquitetura e tecnologias que serão usadas com o \textit{WebApp}.}
+\end{figure}
+
+\begin{figure}[!h]
+	\center{\includegraphics[width=\textwidth]{diagrama-arq-microsservicos.png}}
+	\caption{\label{fig:diagrama-arq-microsservicos} Diagrama que mostra a arquitetura e tecnologias que serão usadas com os microsserviços.}
+\end{figure}
 
 \begin{figure}[ht]
 	\center{\includegraphics[scale=0.5]{diagrama-de-comunicacao-PC2.pdf}}
