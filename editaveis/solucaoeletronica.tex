@@ -6,7 +6,7 @@ Para solucionar o problema da implementação de um radar de efeito doppler, foi
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.85]{imagens/totem.pdf}
+    \includegraphics[scale=0.85]{totem.pdf}
     \caption{Esquemático da solução eletrônica proposta para a construção do totem. }
     \label{esquematico1}
 \end{figure}
@@ -19,7 +19,7 @@ Nas próximas seções referentes ao radar, estarão detalhados os blocos do dia
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=1]{imagens/sistema_radar.pdf}
+    \includegraphics[scale=1]{sistema_radar.pdf}
     \caption{Diagrama geral do radar representando a responsabilidade de cada bloco na detecção do veículo e estimativa da velocidade.}
     \label{processos_geral_radar}
 \end{figure}
@@ -66,7 +66,7 @@ A antena utilizada no projeto é uma antena dipolo com frequência central a 915
 
 \begin{figure}[H]
     \centering
-   \includegraphics[scale = 0.15]{imagens/antena.jpeg}
+   \includegraphics[scale = 0.15]{antena.jpeg}
    \caption{Antena dipolo com frequência central de 915MHz, será utilizada para a transmissão e recepção de dados no radar.}
    \label{antena}
     \end{figure}
@@ -75,7 +75,7 @@ Outro parâmetro importante da antena é sua diretividade, ou seja a capacidade 
 
 \begin{figure}[H]
     \centering
-   \includegraphics[scale = 0.5]{imagens/ganho.png}
+   \includegraphics[scale = 0.5]{ganho.png}
    \caption{Diagrama de radiação com o ganho da antena.}
    \label{ganho}
     \end{figure}
@@ -84,7 +84,7 @@ Podemos verificar também a abertura 3dB da antena, para calcular é preciso peg
 
 \begin{figure}[t]
     \centering
-   \includegraphics[scale = 0.35]{imagens/gir.png}
+   \includegraphics[scale = 0.35]{gir.png}
    \caption{Diagrama de radiação da antena e a
 abertura 3dB.}
    \label{dr}
@@ -97,7 +97,7 @@ O processamento de sinal realizado dentro do radar consiste em realizar a transm
 
 \begin{figure}[H]
     \centering
-   \includegraphics[scale = 0.4]{imagens/bladerf.pdf}
+   \includegraphics[scale = 0.4]{bladerf.pdf}
    \caption{Placa de rádio definido por \emph{software Nuand BladeRF x115} que realizará a transmissão e recepção do sinal e o cálculo de velocidade do veículo.}
    \label{bladerf}
     \end{figure}
@@ -134,7 +134,7 @@ O pulso já modulado em largura será utilizado como portadora para modular uma 
 Para realizar a solução proposta para recepção e transmissão do sinal foi verificado qual a arquitetura padrão utilizada pelo fabricante, que está representada na figura \ref{arquitetura} e após isso foi adicionado as soluções abordadas nesse seção de modo que a arquitetura do sistema ficou de acordo com o que está representado no anexo  Figura \ref{arquitetura1} as alterações propostas tem o intuito de realizar a transmissão e recepção da mensagem.
 \begin{figure}[H]
     \centering
-   \includegraphics[scale = 0.48]{imagens/blade.pdf}
+   \includegraphics[scale = 0.48]{blade.pdf}
    \caption{Arquitetura utilizada pelo fabricante para emissão e recepção do sinal.}
    \label{arquitetura}
     \end{figure}
@@ -145,7 +145,7 @@ Para realizar a solução proposta para recepção e transmissão do sinal foi v
     
     \begin{figure}[H]
     \centering
-   \includegraphics[scale = 0.27]{imagens/raspberry.pdf}
+   \includegraphics[scale = 0.27]{raspberry.pdf}
    \caption{Placa \emph{Raspberry PI 3} que será responsável por fazer o controle dos módulos e o processamento da imagem.}
    \label{raspberry}
     \end{figure}
@@ -159,14 +159,14 @@ Para realizar a solução proposta para recepção e transmissão do sinal foi v
     
     \begin{figure}[H]
     \centering
-    \includegraphics[scale = 0.6]{imagens/nrf24.pdf}
+    \includegraphics[scale = 0.6]{nrf24.pdf}
     \caption{Módulo \emph{Wi-fi} NRF24L01 com antena, esse dispositivo será utilizado para a comunicação entre os dois radares.}
     \label{nrf24}
 \end{figure}
 
     \begin{figure}[H]
     \centering
-    \includegraphics[scale = 0.6]{imagens/rele.pdf}
+    \includegraphics[scale = 0.6]{rele.pdf}
     \caption{Módulo relé 5V que fará o chaveamento para acionamento do holofote.}
     \label{rele}
 \end{figure}
@@ -184,7 +184,7 @@ Para realizar a solução proposta para recepção e transmissão do sinal foi v
     
     \begin{figure}[H]
     \centering
-    \includegraphics[scale = 0.8]{imagens/camera.pdf}
+    \includegraphics[scale = 0.8]{camera.pdf}
     \caption{Câmera IPC-B620H-V/Z responsável pela captura da traseira do veículo para reconhecimento da placa.}
     \label{camera}
 \end{figure}
@@ -194,7 +194,7 @@ Para realizar a solução proposta para recepção e transmissão do sinal foi v
     Para realizar o envio de dados para o servidor foi realizado previamente um estudo de caso para as rodovias brasileiras em geral, e notou-se que segundo o Departamento Nacional de Infraestrutura e Transporte (DNIT) o fluxo médio das grandes rodovias é de aproximadamente 60 mil veículos por dia, de onde cerca de somente 0.5\% desse veículos geram infrações, resultando em uma média de 300 veículos infratores por dia. Foi estipulado pelo grupo o envio de duas imagens com resolução de 2 \emph{megapixels}, estimando que o pacote de dados após as imagens serem transformadas em base64 ficaria em torno de 6 \emph{Mbytes}. Com esses dados pode-se calcular que o volume médio de dados enviados para o servidor seria de 1800 \emph{Mbytes} por dia, estimando que a conexão com servidor ocorra sem quedas durante o dia. A taxa de transmissão miníma para garantir a entrega de todos os dados é de 20.84 \emph{Kbytes/s}. A princípio foi estipulado para o projeto o uso de um módulo \emph{General Packet Radio Services - GPRS} para transmissão desses dados, porém o mesmo tem uma capacidade máxima de transmissão de 10.63 \emph{Kbytes/s}, e por este fato optou-se por conectar um \emph{switch} a uma rede de acesso local para garantir o envio e recebimento dos dados. 
         \begin{figure}[H]
             \centering
-            \includegraphics[scale=0.15]{imagens/switch.png}
+            \includegraphics[scale=0.15]{switch.png}
             \caption{Módulo \emph{switch} utilizado para transmissão e recepção dos dados com o servidor e com a câmera.}
             \label{switch}
         \end{figure}
@@ -206,7 +206,7 @@ Este processo tem como objetivo "binarizar/simplificar" e extrair a placa do ve�
 %Arrumar legenda da imagem
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.85]{imagens/processamento_imagem.pdf}
+    \includegraphics[scale=0.85]{processamento_imagem.pdf}
     \caption{Diagrama geral .....}
     \label{processamento}
 \end{figure}
@@ -229,7 +229,7 @@ As escolhas para os mesmos foram baseadas na disponibilidade de protocolos de co
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.7]{imagens/Diagrama_Logico.pdf}
+    \includegraphics[scale=0.7]{Diagrama_Logico.pdf}
     \caption{Diagrama geral da comunicação e alimentação dos módulos presentes no sistema do radar. }
     \label{diagrama_logico}
 \end{figure}
@@ -243,7 +243,7 @@ As escolhas para os mesmos foram baseadas na disponibilidade de protocolos de co
     
     \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.6]{imagens/fritzingnrf.pdf}
+    \includegraphics[scale=0.6]{fritzingnrf.pdf}
     \caption{Esquemático entre a \emph{raspberry} e o módulo NRF24, mostrando as conexões de cada pino entre eles.}
     \label{fritizingnrf}
 \end{figure}
@@ -309,7 +309,7 @@ Os GPIOs são portas de entradas e saídas digitas, podendo ser programadas e co
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.5]{imagens/datasheet.pdf}
+    \includegraphics[scale=0.5]{datasheet.pdf}
     \caption{\emph{datasheet} da placa \emph{Raspberry PI 3} com todos os protocolos de comunicação e seus respectivos pinos.}
     \label{datasheet}
 \end{figure}
@@ -319,7 +319,7 @@ A comunicação por GPIO irá realizar o controle do holofote através de um rel
 
     \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.6]{imagens/fritzingrele.pdf}
+    \includegraphics[scale=0.6]{fritzingrele.pdf}
     \caption{Esquemático entre a \emph{raspberry} e o módulo relé, mostrando as conexões de cada pino entre eles.}
     \label{fritizingrele}
 \end{figure}
