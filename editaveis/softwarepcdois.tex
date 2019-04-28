@@ -156,9 +156,9 @@ Conforme mostra a Figura \ref{fig:diagrama-arq-webApp}, o applicativo móvel que
 
 Conforme definido na fase de iniciação de projeto do radar RaDop, e anteriormente citado, além do aplicativo e do \textit{WebApp} de \textit{Dashboard}, alguns dos outros serviços de software serão montados no formato de microsserviços, cuja arquitetura está esquematizada na Figura \ref{fig:diagrama-arq-microsservicos}.
 
-Logo, a partir da elicitação dos requisitos, tanto do projeto quanto dos outros produtos de software, a equipe levantou quais são os microsserviços que devem ser construídos. Lembrando que microsserviço é uma abordagem para desenvolver uma única aplicação como uma suíte de serviços, cada um rodando em seu próprio processo e se comunicando entre eles através de mecanismos leves. Segundo Fowler e Lewis (2014), estes serviços são construídos através de pequenas responsabilidades e publicados em produção de maneira independente.
+Logo, a partir da elicitação dos requisitos, tanto do projeto quanto dos outros produtos de software, a equipe levantou quais são os microsserviços que devem ser construídos. Lembrando que microsserviço é uma abordagem para desenvolver uma única aplicação como uma suíte de serviços, cada um rodando em seu próprio processo e se comunicando entre eles através de mecanismos leves. Segundo Fowler e Lewis \cite{fowler2015}, estes serviços são construídos através de pequenas responsabilidades e publicados em produção de maneira independente.
 
-Alguns dos microsserviços serão produzidos no formato de \textit{FaaS} (\textit{Function as a Service}), função como serviço, segundo Freitas (2018) estas funções são um serviço de computação em nuvem que busca abstrair a questão de servidor e máquinas onde rodam os seus programas. Em detalhes, ela deriva da filosofia \textit{Servless}, que delega ao provedor de computação em nuvem (\textit{Cloud Provider}) provisionar uma plataforma que permita ao cliente: desenvolver, rodar e gerenciar aplicações. Nestes moldes, reduz-se a complexidade de uma pessoa ter que montar e manter a infraestrutura, atual padrão de todo mercado corporativo. Montando uma aplicação com este padrão, implementamos a teoria \textit{Servless} e criamos uma arquitetura nativa de microsserviços.
+Alguns dos microsserviços serão produzidos no formato de \textit{FaaS} (\textit{Function as a Service}), função como serviço, segundo Freitas \cite{freitas2018} estas funções são um serviço de computação em nuvem que busca abstrair a questão de servidor e máquinas onde rodam os seus programas. Em detalhes, ela deriva da filosofia \textit{Servless}, que delega ao provedor de computação em nuvem (\textit{Cloud Provider}) provisionar uma plataforma que permita ao cliente: desenvolver, rodar e gerenciar aplicações. Nestes moldes, reduz-se a complexidade de uma pessoa ter que montar e manter a infraestrutura, atual padrão de todo mercado corporativo. Montando uma aplicação com este padrão, implementamos a teoria \textit{Servless} e criamos uma arquitetura nativa de microsserviços.
 
 
 Os microsserviços que serão construídos para este projeto são:
@@ -254,7 +254,7 @@ A partir dessa escolha a equipe elaborou, com base nos requisitos e necessidades
 
 A equipe de software do RaDop construiu a figura \ref{fig:diagrama-classe-soft} para tentar representar melhor como será o modelo de dados/objetos das aplicações de software. Devido ao fato que grande parte dos sistemas trabalham com tecnologias de JSON para o armazenamento de objetos as classes derivaram destes arquivos definidos durante a execução dos sistemas.
 
-JSON é um acrônimo de \textit{JavaScript Object Notation}, é um formato compacto, de padrão aberto independente, de troca de dados simples e rápida (parsing) entre sistemas, especificado por Douglas Crockford em 2000, que utiliza texto legível a humanos, no formato atributo-valor (natureza auto-descritiva)\footnote{JSON Organization}.
+JSON é um acrônimo de \textit{JavaScript Object Notation}, é um formato compacto, de padrão aberto independente, de troca de dados simples e rápida (parsing) entre sistemas, especificado por Douglas Crockford em 2000, que utiliza texto legível a humanos, no formato atributo-valor (natureza auto-descritiva)\footnote{\cite{jsonorg}}.
 
 A partir disso a equipe elaborou de uma forma simples e explicativa como se dariam as classes de objetos e suas relações por meio da representação em UML. Lembrando que novas classes e relacionamentos podem ser criados.
 
@@ -312,7 +312,7 @@ Abaixo estão listadas as falhas possíveis de ocorrerem, assim como as medidas 
 
 \textit{DevOps} é um termo criado a partir da união de dois termos, o \textit{Dev} é atribuido ao \textit{development}, ou seja, a parte de desenvolvimento da organização. Já o \textit{Ops} diz respeito à \textit{operations}, o setor da organização relacionado a operações. O \textit{DevOps} descreve um conjunto de práticas para integração entre os setores de desenvolvimento, operações, além da adoção de processos automatizados para produção rápida e segura de aplicações e serviços. É um processo que factível o desenvolvimento ágil de aplicações.
 
-Segundo Ebert et al. [4] o \textit{DevOps} trata de processos de negócios de desenvolvimento e provisionamento rápidos e flexíveis. Integra de forma eficiente o desenvolvimento, a entrega e as operações, facilitando assim uma conexão enxuta e fluida desses silos tradicionalmente separados.
+Segundo Ebert \cite{ebert2016devops} o \textit{DevOps} trata de processos de negócios de desenvolvimento e provisionamento rápidos e flexíveis. Integra de forma eficiente o desenvolvimento, a entrega e as operações, facilitando assim uma conexão enxuta e fluida desses silos tradicionalmente separados.
 
 Dentro do projeto RaDop, a equipe de software buscará seguir algumas das melhores práticas do processo para garantir agilidade e segurança durante o desenvolvimento dos produtos. As práticas implementadas serão:
 \begin{itemize}
@@ -346,21 +346,6 @@ Segue abaixo as telas da interface do aplicativo e do \textit{dashboard} do RaDo
 	\center{\includegraphics[scale=0.5]{tela_dashboard.pdf}}
 	\caption{\label{fig:tela_dashboard} Protótipo da tela principal do dashboard do radar.}
 \end{figure}\newpage
-
-\section{Referências}
-
-[1] FOWLER, Martin; LEWIS, James.
-\textbf{Microservices: a definition of this new architectural term}.
-[S. l.], 25 mar. 2014. Disponível em: https://martinfowler.com/articles/microservices.html. Acesso em: 18 abr. 2019.
-
-[2] FREITAS, Rubens.
-\textbf{O que é FaaS(function-as-a-service)?}.
-[S. l.], 14 dez. 2018. Disponível em: https://vertigo.com.br/o-que-e-faas-function-as-a-service-2/. Acesso em: 16 abr. 2019.
-
-[3] JSON ORGANIZATION.
-\textbf{JSON}. [S. l.], 2019. Disponível em: https://www.json.org/. Acesso em: 25 abr. 2019.
-
-[4] C. Ebert, G. Gallardo, J. Hernantes, and N. Serrano, “DevOps,” IEEE Softw., vol. 33, no. 3, pp. 94–100, 2016.
 
 \chapter{Apêndices}
 \begin{figure}[h!]
