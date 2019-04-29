@@ -1,4 +1,5 @@
-\chapter{Custos}
+\chapter{Estruturas}
+\section{Custos}
 
 Um levantamento orçamentário foi feito para a compra do material de construção do RaDop. Os custos aqui apresentados foram feitos através de contato com os fornecedores. 
 
@@ -28,7 +29,7 @@ TOTAL & - - & - - & R\$ 1.418,96 & - - \\ \hline
 \label{custosestruturas}
 \end{table}
 
-\chapter{Requisitos}
+\section{Requisitos}
 
 Os requisitos de Estruturas são:
 
@@ -42,7 +43,7 @@ Os requisitos de Estruturas são:
 \item O vento incidente devido a região de instalação deve também ser suportado pela estrutura;
 \end{itemize}
 
-\chapter{Restrições}
+\section{Restrições}
 \begin{itemize}
 \item Os materiais não podem ser suscetíveis a corrosão, a ruptura por radiação e temperatura solar e não podem comprometer o funcionamento dos sistemas eletrônicos;
 \item A estrutura não pode ter área de contato com o vento muito elevado;
@@ -51,7 +52,7 @@ Os requisitos de Estruturas são:
 \item Os materiais selecionados não podem impedir o funcionamento de qualquer um dos componentes eletrônicos, a exemplo de impedir a emissão ou recepção do radar.
 \end{itemize}
 
-\chapter{Riscos}
+\section{Riscos}
 
 \begin{itemize}
 \item RSN 1 - Atrasos por fornecimento de materiais;
@@ -63,7 +64,7 @@ Os requisitos de Estruturas são:
 \item RSN 7 - Fatores climáticos extremos.
 \end{itemize}
 
-\chapter{Solução Proposta}
+\section{Solução Proposta}
 
 A estrutura visa a acomodação dos componentes eletrônicos de forma segura e que seja possível a manutenção de forma ágil, quando necessário. Estudos sobre a fiação, esforços, tensões e dissipação de calor foram feitos para a construção de uma estrutura que cumpra seu papel sem falhas.
 
@@ -73,7 +74,7 @@ Foi definido para o projeto a utilização de caixas de painel de controle pois 
 
 Duas hastes de aço inox 304 com 2 polegadas de diâmetro (50,80 mm) serão utilizadas para suportar todos os módulos necessários da estrutura. Essas medidas foram selecionadas com base nos cálculos numéricos feitos para medir os esforços e tensões que elas serão submetidas (esse cálculos serão apresentados nesse relatório). As hastes também foram selecionadas como base nas suas propriedades de rigidez e resistência a corrosão e o fator comercial também foi algo decisivo na escolha do material. Cada haste terá 4 metros porém foi definido a utilização de 1 metro para que a estrutura fosse enterrada já que a fixação ou a criação de um fundação não será possível na fase de implementação do projeto. 
 
-\section{Desenho Industrial}
+\subsection{Desenho Industrial}
 
 Utilizou-se o software CATIA V5 para a criação do CAD (\textit{computer aided design}) da estrutura. A estrutura completa (figura \ref{estrucomp}) foi construída com base nas medidas das caixas comerciais e hastes selecionadas. Além disso, as medidas também foram baseadas para seguir uma proporção com os painéis solares. 
 
@@ -145,7 +146,7 @@ No ponto mais alto da estrutura, a 3 metros do chão teremos dois componentes. A
 
 As plantas detalhadas, com cotas, para a construção de todas as peças se encontram em Anexo. 
 
-\section{Diagrama de Fiação}
+\subsection{Diagrama de Fiação}
 
 Para o dimensionamento da parte elétrica, foi utilizada a NBR 5410, para instalações elétricas em circuitos de extra baixa tensão (figura \ref{circ}). A área de estruturas foi responsável por posicionar a fiação na estrutura. Como os componentes eletrônicos ficarão em compartimentos suspensos por abraçadeiras, a solução mais robusta e viável seria a utilização de eletrodutos (figura \ref{eletrod}) instalados nas colunas de sustentação comunicando os dois compartimentos (da bateria e do Nuand + Raspberry Pi 3+) e conectando os compartimentos aos instrumentos (radar, câmera, painel solar e holofote).
 
@@ -189,7 +190,7 @@ Como os circuitos utilizados são de extrema baixa tensão, a NBR-5410 diz que a
 
 
 
-\section{Análise Estática da Estrutura}
+\subsection{Análise Estática da Estrutura}
 
 Para o calculo estrutural, foi desenvolvida uma rotina em MATLAB que nos fornecesse o diâmetro das hastes em relação às tensões normais e cisalhantes nas mesmas de acordo com as propriedades mecânicas dos materiais selecionados (Anexo).
 
@@ -206,7 +207,7 @@ O material usado para o calculo foi o aço inox 304 com a tensão de escoamento 
 
 %\section{Estudo da Dissipação de Calor na Estrutura}
 
-\chapter{Trabalhos Futuros}
+\section{Trabalhos Futuros}
 
 Será realizada inicialmente a construção do suporte principal com as duas hastes para que já seja testado a rigidez do mesmo. Com as hastes montadas e soldadas na dimensões exatas será iniciado então o processo de acoplamento do painel solar para que também esse subsistema seja testado. Em seguida teremos o processo de acoplamento das caixas, superior e inferior, para estudar o comportamento da estrutura com seus componentes mais pesados instalados. A caixa superior precisará de processos de usinagem para a passagem dos fios, holofote e antenas de comunicação. Após isso será iniciado o processo final de integração com a parte eletrônica dentro da estrutura. Processos de usinagem e soldagem serão feitos no galpão da UnB.
 
