@@ -48,15 +48,27 @@ onde $d_t$ é o \emph{duty cicle} ou largura do pulso e $\tau$ é o tempo de tra
 \end{equation}
 %%%%%%%%%parametrôs de potencia e ruido%%%%%%%%%%%%%%
 A relação a seguir define a potência a ser recebida em função de diversos parâmetros:
+
 \begin{equation}\label{potencia_recebida}
-    P_r\, =\,    \frac{P_{t}\,\, G^{2}\,   \lambda^{2}\, \sigma }{(4\pi)^{3}\,  R^{4}} 
+    P_t\, =\,   P_r \frac{(4\pi)^{3}\,  R^{4}}{G^{2}\,   \lambda^{2}\, \sigma }  
 \end{equation}%
-Onde $P_r$ é a potência recebida, $P_t$ a potência transmitida, $G$ o ganho da antena, $\lambda$ o comprimento de onda do sinal a ser enviado, $\sigma$ a área de seção transversal média do alvo e $R$ a distância do alvo até a antena.
+Onde $P_t$ é a potência transmitida, $P_r$ a potência recebida, $G$ o ganho da antena, $\lambda$ o comprimento de onda do sinal a ser enviado, $\sigma$ a área de seção transversal média do alvo e $R$ a distância do alvo até a antena.
+Através das informações acerca do CI LMS6002 a sensitividade na entrada do receptor, mínima, é de -116 dBm que são -146 dB. Para estimar a potência a ser recebida à entrada do receptor, deve-se considerar uma análise do ruído no sistema a fim de tornar mais robusta a resposta obtida pelo cálculo da velocidade.
+A potência máxima a ser transmitida pelo  \emph{Software Defined Radio} (SDR) é de 6dBm, considerando este valor, a distância de 100 m , o ganho da antena que é de 9 dB, o comprimento de onda para a transmissão do pulso a 915 MHz que corresponde a 0,328 m e uma seção média de 1 $m^2$, através da relação \ref{potencia_recebida} podemos estimar quanto de potência deve ser transmitida para garantir uma potência mínima na entrada.
 
-A potência máxima a ser transmitida pelo \emph{Software Defined Radio - SDR} é de 6 dBm, considerando neste valor a distância de 100 m , o ganho da antena que é de 9 dB, o comprimento de onda para a transmissão do pulso a 915 MHz que corresponde a 0,328 m e uma seção média de 1 $m^2$ a relação \ref{potencia_recebida}.
 
-Através das informações acerca do CI LMS6002 a sensitividade na entrada do receptor é de -116 dBm.
-% descrever um caso de funcionamanto do radar para ilustrar a situação  
+Dividindo-se a a relação \ref{potencia_recebida} pela potência de ruído térmico \ref{potencia_ruido},ruído predominante no projeto, onde, $P_n$ é a potência de ruído após receptor, k a cosntante de Boltzman, $T_e$ a temperatura equivalente de ruído e B a largura de banda, encontra-se a relação entre \emph{Signal to Noise Ratio} (SNR), e a potência que deve ser transmitida para garantir uma boa SNR a entrada do receptor.
+
+\begin{equation}\label{potencia_ruido}
+    P_n = k\, T_e\,B
+\end{equation}
+A temperatura equivalente de ruído, $T_e$, corresponde a soma da temperatura equivalente de ruído da antena, aqui estimada como temperatura ambiente, 290 K, com a temperatura equivalente de ruído do sistema eletrônico, aqui considerados a relação entre figura de ruído e temperatura equivalente de ruído para obter, no final, uma temperatura equivalente de ruído do sistema de 659,23 K, o que implica, através de \ref{potencia_ruido}, uma potência de ruído de -170,41 dB, tendo em mãos a potência de ruído e a potência de sinal na entrada a SNR será de , aproximadamente, 24,41 dB .
+%citar livros sobre o assunto
+A expressão \ref{potencia_SNR_transmitida} relaciona a potência a ser transmitida considerando a SNR calculada e a relação \ref{potencia_recebida}, obtém-se uma expressão que indica, a partir de uma SNR desejada, qual a potência mínima a ser transmitida. A expressão \ref{potencia_SNR_transmitida} foi obitida dividindo-se a equação \ref{potencia_recebida} por $P_n$, descrito em \ref{potencia_ruido}.%[citar o richard livro].
+
+\begin{equation}\label{potencia_SNR_transmitida}
+    P_t = \frac{ SNR\,(4\pi)^{3}\,R^{4}\,K\,T_e\,B}{G^{2}\,   \lambda^{2}\, \sigma }  = -\,0,29\,dBm
+\end{equation}
 
 \subsection{Antena}
 A antena utilizada no projeto é uma antena dipolo com frequência central a 915 MHz e com uma largura de banda de 26 MHz. A Figura \ref{antena} mostra a antena que será utilizada. Sua polarização é linear. 
@@ -115,15 +127,15 @@ Onde $\Delta f$ é o desvio de frequência com relação a frequência central, 
 
 \subsubsection{Desvio mínimo de frequência para resolução da FFT}
 
- Considerando a relação da equação \ref{freq_desv}, um desvio equivalente a 1 $km/h$ corresponde a um desvio de frequência da ordem de 2 $Hz$ o que corresponde a resolução mínima para a FFT. Essa resolução de velocidade será suficiente para realizar a análise dos veículos que estarão travegando sobre a via.%Colocar mais coisa 
- \subsubsection{Taxa de repetição de pulso e período de repetição de pulso}
+ Considerando a relação da equação \ref{freq_desv}, um desvio equivalente a 1 $km/h$ corresponde a um desvio de frequência da ordem de 2 $Hz$ o que corresponde a resolução mínima para a FFT. Essa resolução de velocidade será suficiente para realizar a análise dos veículos que estarão travegando sobre a via. E poder averiguar se os mesmos se encontrão ou não acima do limite de velocidade. Para garantir isso é necessário a utilização de uma banda estreita com o intuído de diminuir o número de amostras que serão processadas pela FFT e como consequência obter uma menor latência no seu processamento.
+ %\subsubsection{Taxa de repetição de pulso e período de repetição de pulso}
  
  % duty cycle e interferência na latência máxima para determinar a velocidade
  
 \subsubsection{Métodos de melhoramento da SNR}%(add ao diagrama)
 %integração coerente
 A SNR pode ser melhorada através da soma de N pulsos recebidos pela antena, utilizando esta técnica conhecida como integração, %[livro do richard]
-e aumentando a SNR por um fator de N.
+e aumentando a SNR por um fator de N. Sendo a mesma podendo ser utilizada para somar os N pulsos transmitidos pelo veículo na via.
 
 
 \subsection{Arquitetura}
@@ -189,23 +201,79 @@ Para realizar a solução proposta para recepção e transmissão do sinal foi v
 
 \section{Processamento de Imagens}
 
-Este processo tem como objetivo "binarizar/simplificar" e extrair a placa do veículo da imagem capturada pela câmera para facilitar no reconhecimento de caracteres da placa que será feito pelo servidor. Para isso serão utilizadas algumas técnicas como mostrado no diagrama na Figura \ref{processamento}.
-
-
+Este processo tem como objetivo extrair da imagem a placa do veículo obtida pela câmera, facilitando no reconhecimento de caracteres da placa que será feito pelo servidor. Para isso, serão utilizadas algumas técnicas como mostrado no diagrama da Figura \ref{processamento_imagem}. Ao final deste processo são geradas duas imagens, uma contendo apenas a transformação de escala em cinza e a outra a placa a ser processada.
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.85]{processamento_imagem.pdf}
-    \caption{Diagrama dos processos realizados pelo sistema de processamento de imagem.}
-    \label{processamento}
+    \includegraphics[scale=0.9]{processamento_imagem.pdf}
+    \caption{Etapas do processamento de imagem a serem realizadas e seus elementos responsáveis pela execução. A câmera faz a aquisição da imagem, a \emph{Raspberry Pi 3} realiza o pré-processamento, segmentação e representação enquanto que o servidor realiza o reconhecimento da placa.} 
+    \label{processamento_imagem}
 \end{figure}
 
-   A aquisição de imagem acontecerá pela câmera, que fará a captura do veículo e enviará para a \emph{Raspberry} dar início ao pré processamento.  
-   
-\begin{itemize}
-    \item Pré - Processamento
-    \item Segmentação
-    \item Representação e descrição
-\end{itemize}
+A imagem captada pela câmera é pré-processada, e as operações que serão realizadas incluem a redução de borramento da imagem, sendo este o efeito encontrado em imagens onde a câmera está em posição fixa enquanto o objeto está em movimento, a mudança de imagem em cores para escala de tons de cinza, binarização e detector de bordas. Cada processo define uma operação, ou sequência de operações que visam preservar a informação necessária para o reconhecimento da placa, enquanto diminuem a quantidade de informação disponível nas regiões da imagem que não são de interesse.
+Exemplos de pré-processamento de imagem a serem utilizados no projeto, podem ser identificados nas imagens.
+
+\begin{figure}
+    \centering
+     \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{sem_flash.jpg}
+        \caption{Imagem original.}
+          \label{imagens_processadas:a}
+      \end{subfigure}
+        \hfill
+      \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{original_imagem.jpg}
+        \caption{Imagem original com uso de \emph{flash}.}
+          \label{imagens_processadas:b}
+      \end{subfigure}
+      \hfill
+      \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{gray.jpg}
+        \caption{Transformação da imagem sem \emph{flash} em escala de cinza.}
+          \label{imagens_processadas:c}
+      \end{subfigure}
+      \hfill
+      \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{sem_flash_gray.jpg}
+        \caption{Transformação da imagem com \emph{flash} em escala de cinza.}
+          \label{imagens_processadas:d}
+      \end{subfigure}
+      \hfill
+      \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{sem_flash_bin.jpg}
+        \caption{Binarização da imagem sem \emph{flash} em escala de cinza.}
+          \label{imagens_processadas:e}
+      \end{subfigure}
+      \hfill
+      \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{bin.jpg}
+        \caption{Binarização da imagem com \emph{flash} em escala de cinza.}
+          \label{imagens_processadas:f}
+      \end{subfigure}
+  
+    \label{imagens_processadas}
+    \caption{Imagens processadas através de binarização e transformação em escala de cinza}
+\end{figure}
+
+
+
+%\subsubsection{Redução do efeito de  borramento}
+%deconvolução e aplicação de filtro gaussiano
+%citar algoritmo da Danny
+\subsubsection{Transformação para escala de cinza}
+A escala de cinza é uma transformação de uma imagem colorida, o que equivale a uma representação matricial de MxNx3, onde M e N correspondem a quantidade de \emph{pixels} horizontais e verticais, respectivamente, em que cada pixel é transformado em um valor que corresponde a uma escala do branco ao preto. Essa transformação diminue a quantidade de informação na imagem que não nos é útil, pois cada \emph{pixel} agora é um número de 0 a 255, 8 \emph{bits} de representação, tornando a imagem uma matriz de MxN, enquanto que a informação é preservada como mostra as imagens \ref{imagens_processadas:c} e \ref{imagens_processadas:d}. Após a transformação foi observado nas imagens uma queda de até 50\% do tamanho, em Mega \emph{bytes}, da imagem das figura \ref{imagens_processadas:a} e \ref{imagens_processadas:b}.
+
+%Transformar a imagem em escala de cinza
+%como é feito e como reduz a quantidade de informação
+\subsubsection{Binarização}
+A partir de um aplicação de um limiar na imagem com escala em cinza, pixels com valores maiores que este limiar recebem o valor máximo da escala de cinza e \emph{pixels} com valor menor que o limiar, recebem o valor mínimo e o resultado obtido  pode ser visualizado nas figuras \ref{imagens_processadas:e} e \ref{imagens_processadas:f}.
+
+Nota-se que quando há reflexão da placa por causa da iluminação da imagem, figura \ref{imagens_processadas:b}, as operações de transformação em escala de cinza e binarização, figuras \ref{imagens_processadas:d} e \ref{imagens_processadas:f}, preservam a informação dos caracteres na placa ao mesmo tempo que retiram da imagem o efeito do \emph{flash}.
+
+%análise por histograma, efeito de filtros espacias(passa altas, passa baixas e etc)
+%\subsubsection{Detector de bordas}
+%Derivada para definir contorno
+% por que usar
+%usar detector de linhas
 
 
 
