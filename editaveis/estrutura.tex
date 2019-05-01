@@ -203,7 +203,7 @@ Como os circuitos utilizados são de extrema baixa tensão, a NBR-5410 \cite{pro
 
 \subsection{Análise Estática da Estrutura}
 
-Para o calculo estrutural, foi desenvolvida uma rotina em MATLAB que nos fornecesse o diâmetro das hastes em relação às tensões normais e cisalhantes nas mesmas de acordo com as propriedades mecânicas dos materiais selecionados (Anexo).
+Para o cálculo estrutural, foi desenvolvida uma rotina em MATLAB que nos fornecesse o diâmetro das hastes em relação às tensões normais e cisalhantes nas mesmas de acordo com as propriedades mecânicas dos materiais selecionados (Apêndice \ref{codigo_estatico}).
 
 A rotina considerou um apoio de engaste e calculou os esforços externos que a estrutura está submetida (esforços normais, cortantes e momento). Sendo os esforços normais causados pelo peso dos componentes acoplados às hastes de sustentação e o peso das próprias hastes, os esforços cortantes causados pelo efeitos dinâmicos sofridos por causa do vento. E o momento sendo a força gerada pelo braço de alavanca entre essas forças e as suas respectivas distâncias ao chão.
 
@@ -231,7 +231,7 @@ A Figura \ref{cooler}, mostra um esquemático do comportamento do fluxo de ar em
     \label{cooler}
 \end{figure}
 
-Desta forma, com uma rotina em Matlab, definindo como a temperatura nas superfícies da caixa como 60$^{\circ}C$, as propriedades do ar no ambiente da caixa como a média entre a temperatura de operação e a de superfície, e a partir de uma vazão do ventilador média de 25$m^3/h$, visto em catálogo, o número de Reynolds e Grashof são determinados. 
+Desta forma, com uma rotina em Matlab (Apêndice \ref{codigo_dissipacao}), definindo como a temperatura nas superfícies da caixa como 60$^{\circ}C$, as propriedades do ar no ambiente da caixa como a média entre a temperatura de operação e a de superfície, e a partir de uma vazão do ventilador média de 25$m^3/h$, visto em catálogo, o número de Reynolds e Grashof são determinados. 
 
 A Eq. \ref{reynolds}, descreve o cálculo para o número de Reynolds, para o comportamento forçado do escoamento, onde $v$ é a velocidade do ventilador, estimada a partir da vazão, $L_c$ é o comprimento característico de interesse, e $\upsilon$ é a viscosidade dinâmica do ar.
 
