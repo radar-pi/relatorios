@@ -1,7 +1,7 @@
 
 
-\section{Solução de suprimento de energia}
-Considerando que o sistema radar possui o funcionamento em regime permanente, o dimensionamento da fonte de alimentação para o produto comercial foi realizado considerando os consumos energéticos da iluminação e dos componentes eletrônicos. Porém, devido às limitações de orçamento e recursos disponíveis, o dimensionamento do protótipo a ser construído foi realizado considerando o funcionamento do radar durante 1/4 do dia,para a alimentação das cargas mostradas abaixo.
+\chapter{Solução de suprimento de energia}
+Considerando que o sistema radar possui o funcionamento em regime permanente, o dimensionamento da fonte de alimentação para o produto comercial foi realizado considerando os consumos energéticos da iluminação e dos componentes eletrônicos. Porém, devido às limitações de orçamento e recursos disponíveis, o dimensionamento do protótipo a ser construído foi realizado considerando o funcionamento do radar durante 1/4 do dia,para a alimentação das cargas mostradas na Figura \ref{fig:circ}.
 
 \begin{figure}[h!]
 \centering
@@ -10,16 +10,17 @@ Considerando que o sistema radar possui o funcionamento em regime permanente, o 
 \label{fig:circ}
 \end{figure}
 
-O diagrama acima representa as cargas que devem ser alimentadas pela geração fotovoltaica assim como os conversores adotados para garantir que chegue a tensão correta para as cargas. O conversor Step-up vai garantir que chegue os 12V nas cargas que necessitam de 12V e o conversor Step-down vai diminuir o valor da tensão para 5V para as cargas que precisam de apenas 5V, funcionando como uma proteção as cargas.
+O diagrama da Figura \ref{fig:circ} representa as cargas que devem ser alimentadas pela geração fotovoltaica assim como os conversores adotados para garantir que chegue a tensão correta para as cargas. O conversor Step-up vai garantir que chegue os 12V nas cargas que necessitam de 12V e o conversor Step-down vai diminuir o valor da tensão para 5V para as cargas que precisam de apenas 5V, funcionando como uma proteção as cargas.
+
+O diagrama da Figura \ref{fig:circ1} representa a integração entre o escopo da engenharia de energia e a engenharia eletrônica dentro do projeto do radar. Os itens em amarelo representa o escopo de energia e os itens em azul representa o escopo de eletrônica.
 
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.5]{energronica}
 \caption{Diagrama de integração energia-eletrônica }
-\label{fig:circ}
+\label{fig:circ1}
 \end{figure}
 
-O diagrama acima representa a integração entre o escopo da engenharia de energia e a engenharia eletrônica dentro do projeto do radar. Os itens em amarelo representa o escopo de energia e os itens em azul representa o escopo de eletrônica.
 
 \section{Recurso Solar}
 

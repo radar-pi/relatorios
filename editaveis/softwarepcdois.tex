@@ -110,21 +110,28 @@ Os requisitos não funcionais são:
 
 O diagrama de casos de uso tem como objetivo documentar o que o sistema faz do ponto de vista do usuário. Em outras palavras, ele descreve as principais funcionalidades do sistema e a interação dessas funcionalidades com os usuários do mesmo. Nesse diagrama não haverá aprofundamento dos detalhes técnicos que dizem como o sistema faz.
 
-Segue abaixo os diagramas de casos de uso do Aplicativo e do \textit{Dashboard}.
+A Figura \ref{fig:casos_de_uso} apresenta o diagrama de casos de uso do Aplicativo.
 
 \begin{figure}[ht]
 	\center{\includegraphics[scale=0.5]{caso_de_uso_app.pdf}}
 	\caption{\label{fig:casos_de_uso} Diagrama de casos de uso com as principais funcionalidades do aplicativo RaDop.}
 \end{figure}\newpage
 
+A Figura \ref{fig:diagrama-comm-soft} apresenta o diagrama de casos de uso do \textit{Dashboard}.
+
 \begin{figure}[ht]
-	\center{\includegraphics[scale=0.5]{caso_de_uso_dashboard.pdf}}
+	\center{\includegraphics[scale=0.4]{caso_de_uso_dashboard.pdf}}
 	\caption{\label{fig:diagrama-comm-soft} Diagrama de casos de uso com as principais funcionalidades do \textit{Dashboard}.}
 \end{figure}
 
 \section{\textit{Dashboard}}
 
 A arquitetura do \textit{Dashboard}, esquematizada na Figura \ref{fig:diagrama-arq-dashboard}, será principalmente a baseada em componentes. O motivo para isso se deve ao uso do \textit{Django Application} do \textit{framework Django}, que é a principal tecnologia que será usada com o \textit{Dashboard}.
+
+\begin{figure}[h]
+	\center{\includegraphics[scale=0.35]{diagrama-arq-dashboard.png}}
+	\caption{\label{fig:diagrama-arq-dashboard} Diagrama que mostra a arquitetura e tecnologias que serão usadas com o \textit{Dashboard}.}
+\end{figure}
 
 O uso de componentes permite uma série de vantagens. A primeira é construir componentes com alta coesão e baixo acoplamento, o que melhora a manutenibilidade do código. Outra é que eles podem ser totalmente independentes entre si. As vantangens citadas acabam permitindo que componentes criados possam ser reaproveitados em vários projetos, evitando retrabalho desnecessário e assim otimizando o tempo dos desenvolvedores envolvidos no projeto.
 
@@ -134,9 +141,21 @@ Uma tecnologia importante que também será utilizada em conjunto com o \textit{
 
 Conforme mostra a Figura \ref{fig:diagrama-arq-webApp}, o applicativo móvel que irá auxiliar a equipe de manutenção não irá acessar o radar diretamente, mas sim através dos microsserviços. Deste modo, os microsserviços funcionarão como uma espécie de interface entre o radar e o aplicativo.
 
+\begin{figure}[h]
+	\center{\includegraphics[width=\textwidth]{diagrama-arq-webApp.png}}
+	\caption{\label{fig:diagrama-arq-webApp} Diagrama que mostra a arquitetura e tecnologias que serão usadas com o \textit{WebApp}.}
+\end{figure}
+
 \section{Microsserviços}
 
 Conforme definido na fase de iniciação de projeto do radar RaDop, e anteriormente citado, além do aplicativo e do \textit{WebApp} de \textit{Dashboard}, alguns dos outros serviços de software serão montados no formato de microsserviços, cuja arquitetura está esquematizada na Figura \ref{fig:diagrama-arq-microsservicos}.
+
+\newpage
+
+\begin{figure}[h]
+	\center{\includegraphics[width=\textwidth]{diagrama-arq-microsservicos.png}}
+	\caption{\label{fig:diagrama-arq-microsservicos} Diagrama que mostra a arquitetura e tecnologias que serão usadas com os microsserviços.}
+\end{figure}
 
 Logo, a partir da elicitação dos requisitos, tanto do projeto quanto dos outros produtos de software, a equipe levantou quais são os microsserviços que devem ser construídos. Lembrando que microsserviço é uma abordagem para desenvolver uma única aplicação como uma suíte de serviços, cada um rodando em seu próprio processo e se comunicando entre eles através de mecanismos leves. Segundo Fowler e Lewis \cite{fowler2015}, estes serviços são construídos através de pequenas responsabilidades e publicados em produção de maneira independente.
 
@@ -235,7 +254,13 @@ A partir dessa escolha a equipe elaborou, com base nos requisitos e necessidades
 
 \subsection{Diagrama de Classes}
 
-A equipe de software do RaDop construiu a figura \ref{fig:diagrama-classe-soft} para tentar representar melhor como será o modelo de dados/objetos das aplicações de software. Devido ao fato que grande parte dos sistemas trabalham com tecnologias de JSON para o armazenamento de objetos, as classes derivaram destes arquivos definidos durante a execução dos sistemas.
+A equipe de software do RaDop construiu a Figura \ref{fig:diagrama-classe-soft} para tentar representar melhor como será o modelo de dados/objetos das aplicações de software. Devido ao fato que grande parte dos sistemas trabalham com tecnologias de JSON para o armazenamento de objetos, as classes derivaram destes arquivos definidos durante a execução dos sistemas.
+
+\begin{figure}[h]
+	\center{\includegraphics[scale=0.5]{diagrama-de-classes-PC2.pdf}}
+	\caption{\label{fig:diagrama-classe-soft} Diagrama UML de classes dos produtos de software.}
+\end{figure}
+
 
 JSON é um acrônimo de \textit{JavaScript Object Notation}, é um formato compacto, de padrão aberto independente, de troca de dados simples e rápida (\textit{parsing}) entre sistemas, especificado por Douglas Crockford em 2000, que utiliza texto legível a humanos, no formato atributo-valor (natureza auto-descritiva)\footnote{\cite{jsonorg}}.
 
@@ -308,50 +333,32 @@ Dentro do projeto RaDop, a equipe de software buscará seguir algumas das melhor
 
 Todas as telas referentes à construção da interface entre o sistema e o usuário foram desenhadas para auxiliar o time na construção do software e pensando também na melhor usabilidade para o usuário.
 
-Segue abaixo as telas da interface do aplicativo e do \textit{dashboard} do RaDop.
+A Figura \ref{fig:tela_inicial}, apresenta o protótipo da tela inicial do aplicativo RaDop.
 
 \begin{figure}[ht]
 	\center{\includegraphics[scale=0.5]{tela_inicial_aplicativo.pdf}}
 	\caption{\label{fig:tela_inicial} Protótipo da tela inicial do aplicativo RaDop.}
 \end{figure}\newpage
 
+A Figura \ref{fig:tela_status}, apresenta o protótipo da tela com os estados de funcionamento do radar.
+
 \begin{figure}[ht]
-	\center{\includegraphics[scale=0.5]{tela_status.pdf}}
+	\center{\includegraphics[scale=0.45]{tela_status.pdf}}
 	\caption{\label{fig:tela_status} Protótipo da tela com os estados de funcionamento do radar.}
-\end{figure}\newpage
+\end{figure}
+
+A Figura \ref{fig:tela_registro}, apresenta o protótipo da tela de registro para o usuário administrador poder cadastrar a manutenção do radar.
 
 \begin{figure}[ht]
 	\center{\includegraphics[scale=0.5]{tela_registro.pdf}}
 	\caption{\label{fig:tela_registro} Protótipo da tela de registro para o usuário administrador poder cadastrar a manutenção do radar.}
 \end{figure}\newpage
 
+A Figura \ref{fig:tela_dashboard}, apresenta o protótipo da tela principal do dashboard do radar.
+
 \begin{figure}[ht]
 	\center{\includegraphics[scale=0.5]{tela_dashboard.pdf}}
 	\caption{\label{fig:tela_dashboard} Protótipo da tela principal do dashboard do radar.}
 \end{figure}\newpage
 
-\chapter{Apêndices}
-\begin{figure}[h!]
-	\center{\includegraphics[width=\textwidth]{diagrama-arq-dashboard.png}}
-	\caption{\label{fig:diagrama-arq-dashboard} Diagrama que mostra a arquitetura e tecnologias que serão usadas com o \textit{Dashboard}.}
-\end{figure}
 
-\begin{figure}[h!]
-	\center{\includegraphics[width=\textwidth]{diagrama-arq-webApp.png}}
-	\caption{\label{fig:diagrama-arq-webApp} Diagrama que mostra a arquitetura e tecnologias que serão usadas com o \textit{WebApp}.}
-\end{figure}
-
-\begin{figure}[!h]
-	\center{\includegraphics[width=\textwidth]{diagrama-arq-microsservicos.png}}
-	\caption{\label{fig:diagrama-arq-microsservicos} Diagrama que mostra a arquitetura e tecnologias que serão usadas com os microsserviços.}
-\end{figure}
-
-\begin{figure}[ht]
-	\center{\includegraphics[scale=0.5]{diagrama-de-comunicacao-PC2.pdf}}
-	\caption{\label{fig:diagrama-comm-soft} Diagrama de comunicação dos serviços de software.}
-\end{figure}
-
-\begin{figure}[ht]
-	\center{\includegraphics[scale=0.5]{diagrama-de-classes-PC2.pdf}}
-	\caption{\label{fig:diagrama-classe-soft} Diagrama UML de classes dos produtos de software.}
-\end{figure}

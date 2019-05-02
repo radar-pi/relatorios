@@ -29,46 +29,43 @@ O projeto consiste em transmitir e receber um sinal para detectar a aproximaçã
 
 O primeiro parâmetro é a distância máxima que o radar vai conseguir captar um veículo. A partir disso foi estipulado uma distância de 100m, visto que com essa distância é possível alertar o motorista que vem em sentido contrário, além de dar tempo para que seja possível capturar uma imagem se o veículo estiver acima da velocidade da via. A partir disso foi possível realizar o cálculo dos demais parâmetros.
 
-Após isso foi calculado a frequência de repetição de pulso \emph{ (Pulse Repetition Frequency - PRF)},  que é o número de ciclos de transmissão e é calculado por:
+Após isso foi calculado, como mostra a Eq. \ref{R_MAX}, a frequência de repetição de pulso \emph{ (Pulse Repetition Frequency - PRF)},  que é o número de ciclos de transmissão.
 \begin{equation}\label{R_MAX}
     R_{max} =  \frac{c}{2PRF},
 \end{equation}
-onde \emph{c} é a velocidade da luz e $R_{max}$ é a distância máxima de alcance do radar. Com isso temos que a PRF é de:
-\begin{equation}\label{PRF}
-  PRF =  \frac{c}{2R_{max}} = \frac{3.10^8}{2.100} = 1.5MHz.
-\end{equation}
 
-Já o intervalo de repetição do pulso \emph{(Pulse Repetition Interval - PRI)} é o inverso da PRF que nesse caso é de $0.6\mu s$. Através desse intervalo de tempo podemos determinar o tempo de transmissão do pulso que é dado através de: 
+Onde \emph{c} é a velocidade da luz e $R_{max}$ é a distância máxima de alcance do radar. Com isso temos que o valor da PRF é 1.5MHz.
+
+Já o intervalo de repetição do pulso \emph{(Pulse Repetition Interval - PRI)} é o inverso da PRF que nesse caso é de $0.6\mu s$. Através desse intervalo de tempo podemos determinar o tempo de transmissão do pulso que é dado pela Eq. \ref{duty}. 
 \begin{equation}\label{duty}
   d_t = \tau . PRF,
 \end{equation}
-onde $d_t$ é o \emph{duty cicle} ou largura do pulso e $\tau$ é o tempo de transmissão do pulso. Considerando que o \emph{duty cicle} é de 50$\%$, ou seja, o pulso será mandado na metade do tempo e na outra metade será recebido, o tempo de transmissão é:
-\begin{equation}\label{tal}
-  \tau = \frac{d_t}{PRF} =  \frac{0.5}{1.510^6} = 0.33\mu s.
-\end{equation}
+
+
+Onde $d_t$ é o \emph{duty cicle} ou largura do pulso e $\tau$ é o tempo de transmissão do pulso. Considerando que o \emph{duty cicle} é de 50$\%$, ou seja, o pulso será mandado na metade do tempo e na outra metade será recebido, o tempo de transmissão é $0.33\mu s$.
+
 %%%%%%%%%parametrôs de potencia e ruido%%%%%%%%%%%%%%
-A relação a seguir define a potência a ser recebida em função de diversos parâmetros:
+A Eq. \ref{potencia_recebida}, define a potência a ser recebida, onde $P_t$ é a potência transmitida, $P_r$ a potência recebida, $G$ o ganho da antena, $\lambda$ o comprimento de onda do sinal a ser enviado, $\sigma$ a área de seção transversal média do alvo e $R$ a distância do alvo até a antena.
 
 \begin{equation}\label{potencia_recebida}
     P_t\, =\,   P_r \frac{(4\pi)^{3}\,  R^{4}}{G^{2}\,   \lambda^{2}\, \sigma }  
 \end{equation}%
-Onde $P_t$ é a potência transmitida, $P_r$ a potência recebida, $G$ o ganho da antena, $\lambda$ o comprimento de onda do sinal a ser enviado, $\sigma$ a área de seção transversal média do alvo e $R$ a distância do alvo até a antena.
+
 Através das informações acerca do CI LMS6002 a sensitividade na entrada do receptor, mínima, é de -116 dBm que são -146 dB. Para estimar a potência a ser recebida à entrada do receptor, deve-se considerar uma análise do ruído no sistema a fim de tornar mais robusta a resposta obtida pelo cálculo da velocidade.
-A potência máxima a ser transmitida pelo  \emph{Software Defined Radio} (SDR) é de 6dBm, considerando este valor, a distância de 100 m , o ganho da antena que é de 9 dB, o comprimento de onda para a transmissão do pulso a 915 MHz que corresponde a 0,328 m e uma seção média de 1 $m^2$, através da relação \ref{potencia_recebida} podemos estimar quanto de potência deve ser transmitida para garantir uma potência mínima na entrada.
+A potência máxima a ser transmitida pelo  \emph{Software Defined Radio} (SDR) é de 6dBm, considerando este valor, a distância de 100 m , o ganho da antena que é de 9 dB, o comprimento de onda para a transmissão do pulso a 915 MHz que corresponde a 0,328 m e uma seção média de 1 $m^2$, através da Eq. \ref{potencia_recebida} podemos estimar quanto de potência deve ser transmitida para garantir uma potência mínima na entrada.
 
 
-Dividindo-se a a relação \ref{potencia_recebida} pela potência de ruído térmico \ref{potencia_ruido},ruído predominante no projeto, onde, $P_n$ é a potência de ruído após receptor, k a cosntante de Boltzman, $T_e$ a temperatura equivalente de ruído e B a largura de banda, encontra-se a relação entre \emph{Signal to Noise Ratio} (SNR), e a potência que deve ser transmitida para garantir uma boa SNR a entrada do receptor.
+Dividindo-se a Eq. \ref{potencia_recebida} pela potência de ruído térmico, Eq. \ref{potencia_ruido}, sendo este o ruído predominante no projeto, onde $P_n$ é a potência de ruído após receptor, k a constante de Boltzman, $T_e$ a temperatura equivalente de ruído e B a largura de banda, encontra-se a Relação Sinal-Ruído (SNR), e a potência que deve ser transmitida para garantir uma boa SNR a entrada do receptor.
 
 \begin{equation}\label{potencia_ruido}
     P_n = k\, T_e\,B
 \end{equation}
-A temperatura equivalente de ruído, $T_e$, corresponde a soma da temperatura equivalente de ruído da antena, aqui estimada como temperatura ambiente, 290 K, com a temperatura equivalente de ruído do sistema eletrônico, aqui considerados a relação entre figura de ruído e temperatura equivalente de ruído para obter, no final, uma temperatura equivalente de ruído do sistema de 659,23 K, o que implica, através de \ref{potencia_ruido}, uma potência de ruído de -170,41 dB, tendo em mãos a potência de ruído e a potência de sinal na entrada a SNR será de , aproximadamente, 24,41 dB .
-%citar livros sobre o assunto
-A expressão \ref{potencia_SNR_transmitida} relaciona a potência a ser transmitida considerando a SNR calculada e a relação \ref{potencia_recebida}, obtém-se uma expressão que indica, a partir de uma SNR desejada, qual a potência mínima a ser transmitida. A expressão \ref{potencia_SNR_transmitida} foi obitida dividindo-se a equação \ref{potencia_recebida} por $P_n$, descrito em \ref{potencia_ruido}.%[citar o richard livro].
 
-\begin{equation}\label{potencia_SNR_transmitida}
-    P_t = \frac{ SNR\,(4\pi)^{3}\,R^{4}\,K\,T_e\,B}{G^{2}\,   \lambda^{2}\, \sigma }  = -\,0,29\,dBm
-\end{equation}
+A temperatura equivalente de ruído, $T_e$, corresponde a soma da temperatura equivalente de ruído da antena, aqui estimada como temperatura ambiente de 290 K, com a temperatura equivalente de ruído do sistema eletrônico, aqui considerados a relação entre o ruído e temperatura equivalente para obter, no final, uma temperatura equivalente de ruído do sistema de 659,23 K, o que implica, através da Eq. \ref{potencia_ruido}, uma potência de ruído de -170,41 dB, tendo em mãos a potência de ruído e a potência de sinal na entrada a SNR será aproximadamente 24,41 dB .
+%citar livros sobre o assunto
+
+
+Desta maneira, a potência a ser transmitida considerando a SNR calculada é de -0,29 dBm.
 
 \subsection{Antena}
 A antena utilizada no projeto é uma antena dipolo com frequência central a 915 MHz e com uma largura de banda de 26 MHz. A Figura \ref{antena} mostra a antena que será utilizada. Sua polarização é linear. 
