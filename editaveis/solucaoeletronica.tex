@@ -39,16 +39,17 @@ onde $d_t$ é o \emph{duty cicle} ou largura do pulso e $\tau$ é o tempo de tra
 %%%%%%%%%parametrôs de potencia e ruido%%%%%%%%%%%%%%
 A relação a seguir define a potência a ser recebida em função de diversos parâmetros:
 \begin{equation}\label{potencia_recebida}
-    P_t\, =\,   P_r \frac{(4\pi)^{3}\,  R^{4}}{G^{2}\,   \lambda^{2}\, \sigma }  
+    P_t\, =\,   P_r \frac{(4\pi)^{3}\,  R^{4}}{G^{2}\,   \lambda^{2}\, \sigma },
 \end{equation}%
 
-Onde $P_t$ é a potência transmitida, $P_r$ a potência recebida, $G$ o ganho da antena, $\lambda$ o comprimento de onda do sinal a ser enviado, $\sigma$ a área de seção transversal média do alvo e $R$ a distância do alvo até a antena.
+onde $P_t$ é a potência transmitida, $P_r$ a potência recebida, $G$ o ganho da antena, $\lambda$ o comprimento de onda do sinal a ser enviado, $\sigma$ a área de seção transversal média do alvo e $R$ a distância do alvo até a antena.
 Através das informações acerca do CI LMS6002 a sensitividade na entrada do receptor, mínima, é de -116 dBm que são -146 dB. Para estimar a potência a ser recebida à entrada do receptor, deve-se considerar uma análise do ruído no sistema a fim de tornar mais robusta a resposta obtida pelo cálculo da velocidade.
-A potência máxima a ser transmitida pelo  \emph{Software Defined Radio} (SDR) é de 6dBm, considerando este valor, a distância de 100 m , o ganho da antena que é de 9 dB, o comprimento de onda para a transmissão do pulso a 915 MHz que corresponde a 0,328 m e uma seção média de 1 $m^2$, através da relação \ref{potencia_recebida} podemos estimar quanto de potência deve ser transmitida para garantir uma potência mínima na entrada \cite{richards}.
+A potência máxima a ser transmitida pelo  \emph{Software Defined Radio} (SDR) é de 6dBm, considerando este valor, a distância de 100 m, o ganho da antena que é de 9 dB, o comprimento de onda para a transmissão do pulso a 915 MHz que corresponde a 0,328 m e uma seção média de 1 $m^2$, através da relação \ref{potencia_recebida} podemos estimar quanto de potência deve ser transmitida para garantir uma potência mínima na entrada \cite{richards}.
 Dividindo-se a a relação \ref{potencia_recebida} pela potência de ruído térmico \ref{potencia_ruido}, sendo este o ruído predominante no projeto, onde, $P_n$ é a potência de ruído após receptor, \emph{k} a cosntante de \emph{Boltzman}, $T_e$ a temperatura equivalente de ruído e B a largura de banda, encontra-se a relação entre \emph{Signal to Noise Ratio} (SNR) \cite{vasilescu}, e a potência que deve ser transmitida para garantir uma boa SNR a entrada do receptor:
 \begin{equation}\label{potencia_ruido}
-    P_n = k\, T_e\,B
+    P_n = k\, T_e\,B.
 \end{equation}
+
 A temperatura equivalente de ruído, $T_e$, corresponde a soma da temperatura equivalente de ruído da antena, aqui estimada como temperatura ambiente, 290 K, com a temperatura equivalente de ruído do sistema eletrônico, aqui considerados a relação entre figura de ruído e temperatura equivalente de ruído para obter, no final, uma temperatura equivalente de ruído do sistema de 659,23 K, o que implica, através de \ref{potencia_ruido}, uma potência de ruído de -170,41 dB, tendo em mãos a potência de ruído e a potência de sinal na entrada a SNR será de , aproximadamente, 24,41 dB .
 %citar livros sobre o assunto
 A expressão \ref{potencia_SNR_transmitida} relaciona a potência a ser transmitida considerando a SNR calculada e a relação \ref{potencia_recebida}, obtém-se uma expressão que indica, a partir de uma SNR desejada, qual a potência mínima a ser transmitida. A expressão \ref{potencia_SNR_transmitida} foi obtida dividindo-se a equação \ref{potencia_recebida} por $P_n$, descrito em \ref{potencia_ruido}  \cite{richards}:
