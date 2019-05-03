@@ -24,10 +24,8 @@ Após isso foi calculado a frequência de repetição de pulso \emph{ (Pulse Rep
     R_{max} =  \frac{c}{2PRF},
 \end{equation}
 
-onde \emph{c} é a velocidade da luz e $R_{max}$ é a distância máxima de alcance do radar. Com isso temos que a PRF é de:
-\begin{equation}\label{PRF}
-  PRF =  \frac{c}{2R_{max}} = \frac{3.10^8}{2.100} = 1.5MHz.
-\end{equation} \par
+onde \emph{c} é a velocidade da luz e $R_{max}$ é a distância máxima de alcance do radar. Com isso temos que a PRF é igual a 1.5MHz.
+
 Já o intervalo de repetição do pulso \emph{(Pulse Repetition Interval - PRI)} é o inverso da PRF que nesse caso é de $0.6\mu s$. Através desse intervalo de tempo podemos determinar o tempo de transmissão do pulso que é dado através de: 
 \begin{equation}\label{duty}
   d_t = \tau . PRF,
@@ -54,7 +52,7 @@ A temperatura equivalente de ruído, $T_e$, corresponde a soma da temperatura eq
 %citar livros sobre o assunto
 A expressão \ref{potencia_SNR_transmitida} relaciona a potência a ser transmitida considerando a SNR calculada e a relação \ref{potencia_recebida}, obtém-se uma expressão que indica, a partir de uma SNR desejada, qual a potência mínima a ser transmitida. A expressão \ref{potencia_SNR_transmitida} foi obtida dividindo-se a equação \ref{potencia_recebida} por $P_n$, descrito em \ref{potencia_ruido}  \cite{richards}:
 \begin{equation}\label{potencia_SNR_transmitida}
-    P_t = \frac{ SNR\,(4\pi)^{3}\,R^{4}\,K\,T_e\,B}{G^{2}\,   \lambda^{2}\, \sigma }  = -\,0,29\,dBm.
+    P_t = \frac{ SNR\,(4\pi)^{3}\,R^{4}\,K\,T_e\,B}{G^{2}\,   \lambda^{2}\, \sigma }  = -\,0,29\,dBm
 \end{equation}
 \subsection{Antena}
 A antena utilizada no projeto é uma antena dipolo com frequência central a 915 MHz e com uma largura de banda de 26 MHz. A Figura \ref{antena} mostra a antena que será utilizada. Sua polarização é linear \cite{balanis}.
@@ -97,7 +95,7 @@ Isolando a variável $\Delta v$, encontra-se a seguinte relação para o desvio 
   \Delta v = \frac{\Delta f c}{f_o},
 \end{equation}
 
-onde $\Delta f$ é o desvio de frequência com relação a frequência central, $\Delta v$: é o desvio de velocidade com relação ao desvio de frequência, \emph{c} é a velocidade da luz e $f_o$ é a frequência central do sinal. Uma vez implementado o algoritmo com a equação do efeito \emph{doppler} é possível encontrar a velocidade do veículo.
+Onde $\Delta f$ é o desvio de frequência com relação a frequência central, $\Delta v$: é o desvio de velocidade com relação ao desvio de frequência, \emph{c} é a velocidade da luz e $f_o$ é a frequência central do sinal. Uma vez implementado o algoritmo com a equação do efeito \emph{doppler} é possível encontrar a velocidade do veículo.
 \subsubsection{Desvio mínimo de frequência para resolução da FFT}
  Considerando a relação da equação \ref{freq_desv}, um desvio equivalente a 1 $km/h$ corresponde a um desvio de frequência da ordem de 2 $Hz$, que corresponde a resolução mínima para a FFT. Essa resolução de velocidade será suficiente para realizar a análise dos veículos que estarão travegando sobre a via, e poder averiguar se os mesmos se encontrão ou não acima do limite de velocidade. Para garantir isso é necessário a utilização de uma banda estreita com o intuído de diminuir o número de amostras que serão processadas pela FFT e como consequência obter uma menor latência no seu processamento \cite{fft}.
  %\subsubsection{Taxa de repetição de pulso e período de repetição de pulso}
@@ -119,7 +117,7 @@ Para realizar a solução proposta para recepção e transmissão do sinal foi v
     \begin{figure}[H]
     \centering
    \includegraphics[scale = 0.27]{raspberry.pdf}
-   \caption{Placa \emph{Raspberry Pi 3} que será responsável por fazer o controle dos módulos e o processamento da imagem. Fonte: \cite{rasp}.}
+   \caption{Placa \emph{Raspberry PI 3} que será responsável por fazer o controle dos módulos e o processamento da imagem. Fonte: \cite{rasp}.}
    \label{raspberry}
     \end{figure}
     \subsection{Tempo de latência}
