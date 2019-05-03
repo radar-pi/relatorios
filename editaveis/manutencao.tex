@@ -13,11 +13,11 @@ Como se trata de um sistema fotovoltaico de pequeno porte, a manutenção é rel
 
 Afim de previnir qualquer forma de dano ao radar e também de auxiliar a melhor manutenção, o aplicativo \textit{mobile} RaDop irá colaborar tanto com a manutenção preventiva quanto com a corretiva. O \textit{Web App, Dashboard}, também irá garantir melhor funcionamento desse radar e também irá auxiliar à realizar manuntenções corretivas.
 
-A ideia do aplicativo é evitar visitas desnecessárias ao radar e também auxiliar o mantenedor a entender como está o estado desse radar. Dessa forma a pessoa que for realizar a manutenção chegará ao local mais informada. Já o \textit{Dashboard} irá auxiliar na manutenção remota, essa manutenção tem carater de correção.
+A ideia do aplicativo é evitar visitas desnecessárias ao radar e também auxiliar o mantenedor a entender como está o estado desse radar. Dessa forma a pessoa que for realizar a manutenção chegará ao local mais informada. Já o \textit{Dashboard} irá auxiliar na manutenção remota, essa manutenção tem caráter de correção.
 
 A manutenção dos sistemas eletrônicos consistem em verificação e validação dos subsistemas, trocas dos cabos de alimentação, dos cabos de dados e dos componentes. Para realização destas tarefas faz-se necessário um multímetro com teste de continuidade, cabos RJ-45, cabos coaxiais, conectores SMA, fonte DC, cabos USB e cabos de comunicação entre os módulos NRF24 e GSM.
 
-A parte estrutural requer verificação visual de possiveis pontos de dano e corrosão causados pelas intempéries. A estrutura deve ser verificada, junto dos outros subsistemas, a fim de garantir o funcionamento adequado dos outros equipamentos. Não é necessario equipamentos especializados para a verificação da integridade estrutural, apenas a inspeção visual é suficiente para verificar a necessidade de substituição das peças, juntamente de EPIs para garantir a seguridade do trabalhador.
+A parte estrutural requer verificação visual de possíveis pontos de dano e corrosão causados pelas intempéries. A estrutura deve ser verificada, junto dos outros subsistemas, a fim de garantir o funcionamento adequado dos outros equipamentos. Não é necessário equipamentos especializados para a verificação da integridade estrutural, apenas a inspeção visual é suficiente para verificar a necessidade de substituição das peças, juntamente de EPIs para garantir a seguridade do trabalhador.
 
 A periodicidade mínima das visitas técnicas deve ocorrer a cada 12 meses no mínimo, segundo a portaria Inmetro n.º 156, de 25 de agosto de 2004, demais visitas técnicas serão agendadas conforme necessidade.
 
@@ -31,9 +31,9 @@ Ao iniciar os trabalhos em locais com instalações elétricas, especialmente co
 
 Os módulos fotovoltaicos produzem energia elétrica sempre que alguma luz solar incide sobre eles, logo se o objetivo for desenergizar o sistema fotovoltaico, é necessário cobrir o módulo com um material opaco.
 
-Quando for feito alguma troca de componente ou modificação na instalação, o sistema fotovoltaico deve estar desenergizado, para evitar riscos de choques elétricos e curtos circuitos acidentais. Lembrando que a desenergização do sistema fotovoltaico implica em desconexão do painel fotovoltaico e do banco de baterias, o que permite trabalhar com o restante do sistema totalmente desenergizado. Porém, para trabalhos no banco de baterias, não é possível desenergiza-lo, e, no caso do painel, somente quando há obstrução completa da incidência de luz.
+Quando for feito alguma troca de componente ou modificação na instalação, o sistema fotovoltaico deve estar desenergizado, para evitar riscos de choques elétricos e curtos circuitos acidentais. Lembrando que a desenergização do sistema fotovoltaico implica em desconexão do painel fotovoltaico e do banco de baterias, o que permite trabalhar com o restante do sistema totalmente desenergizado. Porém, para trabalhos no banco de baterias, não é possível desenergizá-lo, e, no caso do painel, somente quando há obstrução completa da incidência de luz.
 
-Durante a manutenção, o técnico deve manter-se isolado de partes energizadas do circuito ou de pontos de aterramento. Deve-se usar luvas e calçados isolantes durante a manutenção.
+Durante a manutenção, o técnico deve se manter isolado de partes energizadas do circuito ou de pontos de aterramento. Deve-se usar luvas e calçados isolantes durante a manutenção.
 
 Não deve colocar ferramentas ou outros objetos metálicos sobre as baterias para evitar curto circuito.
 
@@ -53,7 +53,7 @@ O aplicativo de manutenção deverá levar em consideração a operação do sis
 
 Além da informação transmitida pelo aplicativo de manutenção é recomendado fazer inspeções periódicas, já que desta forma pequenos problemas podem ser identificados presencialmente podendo ser notados, caso os dados não sejam notórios.
 
-Além da eficiência energética produzida pelo modulo fotovoltaico, deve-se verificar as condições físicas de cada modulo, certificando-se de que a superfície frontal está integra e limpa, as células não apresentam sinais de rachadura e descoloração, a estrutura de fixação do painel está fixa, sem pontos de corrosão e devidamente aterrada.
+Além da eficiência energética produzida pelo modulo fotovoltaico, deve-se verificar as condições físicas de cada módulo, certificando-se de que a superfície frontal está integra e limpa, as células não apresentam sinais de rachadura e descoloração, a estrutura de fixação do painel está fixa, sem pontos de corrosão e devidamente aterrada.
 
 Deve-se observar a presença de algum sombreamento causado pelo crescimento de vegetação próxima ao painel, algo que é comum no interior do Brasil.
 
@@ -116,7 +116,7 @@ sobreaquecimento é necessário a troca das baterias
 
 O pulso gerado para ser irradiado pela antena é modulado em quadratura e elevado à frequência de 915 MHz por um mixer. Quando esse sinal é refletido na porta \emph{receiver x (RX)} o sinal é demodulado utilizando um mixer e um defasador. Neste processo sinais de interferências e harmônicos podem ser levadas a frequência de 0Hz, ou seja, sinal DC gerando um deslocamento em amplitude do sinal.
 
-O CI LMS6002 do SDR BladeRFx115 tem um modo de contornar esse problema, para fazer isso será preciso rodar uma rotina no cliente  disponibilizado pela equipe de desenvolvimento de \emph{firmware} do fabricante. O  \textit{Dashboard} fará essa comunicação entre o software e a eletrônica. 
+O CI LMS6002 do \textit{SDR BladeRFx115} tem um modo de contornar esse problema, para fazer isso será preciso rodar uma rotina no cliente  disponibilizado pela equipe de desenvolvimento de \emph{firmware} do fabricante. O  \textit{Dashboard} fará essa comunicação entre o software e a eletrônica. 
 
 O usuário admnistrador do \textit{Dashboard} irá executar através de uma interface gráfica um \textit{script} que fará com que a \textit{Raspberry} execute essa rotina e estabelize a tensão de \emph{offset}.
 
