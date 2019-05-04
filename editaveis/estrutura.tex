@@ -29,39 +29,7 @@ TOTAL & - - & - - & R\$ 1.418,96 & - - \\ \hline
 \label{custosestruturas}
 \end{table}
 
-\section{Requisitos}
 
-Os requisitos de Estruturas são:
-
-
-\begin{itemize}
-\item A estrutura deve suportar o peso de todos os componentes, com margem de segurança para eventuais cargas não estimadas;
-\item Deve resistir à ação climática -- especificamente à radiação solar, temperatura elevada e corrosão devido à exposição à chuva;
-\item A placa solar que fornecerá a energia do sistema deve ficar na parte lateral do conjunto, oposta à caixa de painel de controle superior;
-\item Os sistemas de antena e câmera devem estar em montantes articulados à 3 metros de altura, para que a incidência possa ser ajustada e mais eficiente;
-\item A estrutura deve permitir o acesso aos componentes de maneira facilitada, para descomplicar a manutenção do radar;
-\item O vento incidente devido à região de instalação deve ser suportado pela estrutura.
-\end{itemize}
-
-\section{Restrições}
-\begin{itemize}
-\item Os materiais não podem ser suscetíveis à corrosão, à ruptura por radiação e temperatura solar;
-\item Os compartimentos de instalação dos eletrônicos não podem permitir a entrada de água ou detritos externos;
-\item Os compartimentos não podem estar totalmente isolados, permitindo acesso para reparos e manutenção;
-\item Os materiais selecionados não podem impedir o funcionamento de qualquer um dos componentes eletrônicos.
-\end{itemize}
-
-\section{Riscos}
-
-\begin{itemize}
-\item RSN 1 - Atrasos no fornecimento de materiais;
-\item RSN 2 - Montagem mal feita;
-\item RSN 3 - Interferência da estrutura nos equipamentos de radiofrequência;
-\item RSN 4 - Atrasos causados por problemas de simulações e modelagem;
-\item RSN 5 - Curto circuito de componentes eletrônicos causados pela estrutura;
-\item RSN 6 - Dimensionamento errado;
-\item RSN 7 - Fatores climáticos extremos.
-\end{itemize}
 
 \section{Solução Proposta}
 
@@ -86,13 +54,14 @@ Utilizou-se o software CATIA V5 para a criação do CAD (\textit{computer aided 
 
 
 Na Figura \ref{hastes}, vemos o suporte principal. Ele consiste em dois tubos de aço afastados entre si a uma distancia de 450 mm. Seu desenvolvimento foi pensado de forma a garantir a estabilidade da estrutura. Por isso é possível ver a utilização de barras chatas de aço soldadas nas hastes para que o sistema seja mais rígido.
-
+\newpage
 \begin{figure}[h]
 	\centering
     \includegraphics[scale=0.3]{hastes.jpeg}
     \caption{Hastes de suporte para acoplar os módulos da estrutura com cotas.}
     \label{hastes}
 \end{figure}
+
 
 A caixa inferior, apresentada na Figura \ref{caixainf}, será apoiada no chão, pois a mesma carregará a bateria do sistema. Por questões técnicas, se a mesma ficasse na caixa superior com os componentes eletrônicos poderia aquecê-los a uma temperatura que causaria o mal funcionamento do sistema por completo. A caixa inferior estará ligada através de 4 abraçadeiras do tipo união às hastes de suporte principal.
 
@@ -122,7 +91,7 @@ Em sua porta será fixado um holofote, apresentado na Figura \ref{holof}, que se
 \end{figure}
 
 O painel solar, apresentado na Figura \ref{painelsol}, se encontra logo atrás da caixa superior. Será necessário a construção de um suporte para o mesmo e será soldado às hastes em 4 ponto,s com uma angulação de 15 graus conforme solicitado pela equipe do projeto responsável pela área de energia. 
-
+\newpage
 \begin{figure}[h]
 	\centering
     \includegraphics[scale=0.3]{painelcomsup.jpeg}
@@ -140,7 +109,7 @@ No ponto mais alto da estrutura, a 3 metros do chão, teremos dois componentes. 
 \end{figure}
 
 Oposta à câmera, teremos a antena do radar \textit{Doppler}, apresentada na Figura \ref{antrad}. Ela possuirá um suporte que dará a ela dois graus de liberdade, possibilitando assim uma facilidade no ajuste necessário para uma maior eficiência. 
-
+\newpage
 \begin{figure}[h]
 	\centering
     \includegraphics[scale=0.3]{antenaradar.jpeg}
@@ -180,7 +149,7 @@ Disposição dos eletrodutos:
 \end{itemize}
 
 Como os circuitos utilizados são de extrema baixa tensão, a NBR-5410 \cite{protecao} diz que a seção mínima dos fios devem ser de 0,7mm$^2$, entretanto a equipe utilizou fios de 2,5mm$^2$ nos fios por terem uma maior resistência estrutural e facilitar a manutenção, como apresentado na Figura \ref{caixa1elet}.
-
+\newpage
 \begin{figure}[h]
 	\centering
     \includegraphics[keepaspectratio=true,scale=0.5]{caixa1elet.png}
@@ -221,7 +190,7 @@ O diâmetro mínimo gerado pela rotina foi de aproximadamente 0,05m (2 polegadas
 Analisando a estrutura em Ansys, foi possível a obtenção das tensões equivalente de \textit{Von-Mises} e o deslocamento da estrutura, sendo esta máxima em 14.56mm.
 
 A Figura \ref{fig:maximo} apresenta o local de esforço máximo e o comportamento da tensão nas presilhas que suportam as caixas.
-
+\newpage
 \begin{figure}[h]
 	\centering
     \includegraphics[scale=0.7]{max_tension}
@@ -239,7 +208,7 @@ A Figura \ref{fig:base}, apresenta o local de esforço máximo e o comportamento
 \end{figure}
 
 A Figura \ref{fig:painel}, apresenta o local de esforço máximo e o comportamento da tensão no suporte para o painel solar.
-
+\newpage
 \begin{figure}[h]
 	\centering
     \includegraphics[scale=0.6]{painel_tension}
