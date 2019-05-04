@@ -194,7 +194,7 @@ Como os circuitos utilizados são de extrema baixa tensão, a NBR-5410 \cite{pro
 
 \begin{figure}[h]
 	\centering
-    \includegraphics[keepaspectratio=true,scale=0.5]{caixa2elet.png}
+    \includegraphics[scale=0.5]{caixa2elet.png}
     \caption{Disposição do dimensionamento da fiação dos dispositivos eletrônicos dentro da caixa inferior com a bateria}
     \label{caixa2elet}
 \end{figure}
@@ -205,14 +205,48 @@ Como os circuitos utilizados são de extrema baixa tensão, a NBR-5410 \cite{pro
 
 Para o cálculo estrutural, foi desenvolvida uma rotina em MATLAB que nos fornecesse o diâmetro das hastes em relação às tensões normais e cisalhantes nas mesmas de acordo com as propriedades mecânicas dos materiais selecionados (Apêndice \ref{codigo_estatico}).
 
-A rotina considerou um apoio de engaste e calculou os esforços externos que a estrutura está submetida (esforços normais, cortantes e momento). Sendo os esforços normais causados pelo peso dos componentes acoplados às hastes de sustentação e o peso das próprias hastes, os esforços cortantes causados pelo efeitos dinâmicos sofridos por causa do vento. E o momento sendo a força gerada pelo braço de alavanca entre essas forças e as suas respectivas distâncias ao chão.
 
 A força dinâmica causada pela força do vento foi calculada segundo a norma NBR 6123 (jun/88) \cite{vento} e foram aplicadas à estrutura como cargas pontuais e constantes, o valor do vento para o projeto, também retirado da norma, é de 6m/s.	
 
-Os materiais prévios considerados para o trabalho eram: aços (inox 304, 1010, 1020, 1030 e 1045) e ferro. O ferro foi um material considerado pro projeto pois possui um peso específico menor que o do aço porém possui as propriedades mecânicas um pouco mais baixas, percebeu-se que seria necessário mais material para poder chegar às mesmas condições que os aços, e por isso foi desconsiderado. As propriedades dos aços são bem parecidas, mudando as tensões de escoamento, tensão última (propriedades principais para o projeto).
-	
-O material usado para o cálculo foi o aço inox 304 com a tensão de escoamento no valor de 215 MPa. O diâmetro mínimo gerado pela rotina foi de aproximadamente 0,05m (2 polegadas). Pelo o projeto contar com duas hastes estruturais, o valor do diâmetro encontrado é suficiente para as cargas aplicadas. A escolha do diâmetro, também se dá em função da facilidade comercial. Foram feitos levantamentos em 5 lojas sendo que os padrões de diâmetro variam apenas em números inteiros.
+Os materiais prévios considerados para o trabalho eram: aços (inox 304, 1010, 1020, 1030 e 1045) e ferro. O ferro foi um material considerado pro projeto pois possui um peso específico menor que o do aço porém possui as propriedades mecânicas mais restritas, percebeu-se que seria necessário mais material para poder chegar às mesmas condições que os aços, e por isso foi desconsiderado. As propriedades dos aços são bem parecidas, mudando as tensões de escoamento, tensão última (propriedades principais para o projeto).
 
+Para a modelagem do problema foi considerado uma estrutura simétrica, e a tensão máxima aceita pelos componentes estruturais sejam a tensão de escoamento do aço levando em consideração um fator de segurança. O material usado para o cálculo foi o aço inox 304 com a tensão de escoamento no valor de 215 MPa \cite{callister}. Estimando o peso de cada componente em Catia e utilizando a metodologia para os cálculos de tensão principais \cite{beer}, foi possível determinar os esforços na estrutura.
+
+A rotina ((Apêndice \ref{codigo_estatico}), considerou um apoio de engaste e calculou os esforços externos que a estrutura está submetida (esforços normais, cortantes e momento). Sendo os esforços normais causados pelo peso dos componentes acoplados às hastes de sustentação e o peso das próprias hastes, os esforços cortantes causados pelo efeitos dinâmicos sofridos por causa do vento. E o momento sendo a força gerada pelo braço de alavanca entre essas forças e as suas respectivas distâncias ao chão.
+
+
+A força dinâmica causada pela força do vento foi calculada segundo a norma NBR 6123 (jun/88) \cite{vento} e foram aplicadas à estrutura como cargas pontuais e constantes, o valor do vento para o projeto, também retirado da norma, é de 6m/s.	
+
+O diâmetro mínimo gerado pela rotina foi de aproximadamente 0,05m (2 polegadas). Pelo o projeto contar com duas hastes estruturais, o valor do diâmetro encontrado é suficiente para as cargas aplicadas. A escolha do diâmetro, também se dá em função da facilidade comercial. Foram feitos levantamentos em 5 lojas sendo que os padrões de diâmetro variam apenas em números inteiros.
+
+Analisando a estrutura em Ansys, foi possível a obtenção das tensões equivalente de \textit{Von-Mises} e o deslocamento da estrutura, sendo está máxima em 14.56mm.
+
+A Figura \ref{fig:maximo}, apresenta o local de esforço máximo e o comportamento da tensão nas presilhas que suportam as caixas.
+
+\begin{figure}[h]
+	\centering
+    \includegraphics[scale=0.7]{max_tension}
+    \caption{Tensão equivalente de \textit{Von-Mises} para as presilhas.}
+    \label{fig:maximo}
+\end{figure}
+
+A Figura \ref{fig:base}, apresenta o local de esforço máximo e o comportamento da tensão base da estrutura.
+
+\begin{figure}[h]
+	\centering
+    \includegraphics[scale=0.7]{base_tension}
+    \caption{Tensão equivalente de \textit{Von-Mises} na base.}
+    \label{fig:base}
+\end{figure}
+
+A Figura \ref{fig:painel}, apresenta o local de esforço máximo e o comportamento da tensão no suporte para o painel solar.
+
+\begin{figure}[h]
+	\centering
+    \includegraphics[scale=0.6]{painel_tension}
+    \caption{Tensão equivalente de \textit{Von-Mises} para o suporte para o painel solar.}
+    \label{fig:painel}
+\end{figure}
 
 %\section{Análise Dinâmica da Estrutura}
 
