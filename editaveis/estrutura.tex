@@ -1,7 +1,7 @@
 \chapter{Estruturas}
 \section{Custos}
 
-Um levantamento orçamentário foi feito para a compra do material de construção do RaDop. Os custos aqui apresentados foram feitos através de contato com os fornecedores. 
+Um levantamento orçamentário foi feito para a compra do material de construção do RaDop. Os custos aqui apresentados foram obtidos após contato com os fornecedores.
 
 \begin{table}[h]
 \resizebox{\textwidth}{!}{%
@@ -35,29 +35,28 @@ Os requisitos de Estruturas são:
 
 
 \begin{itemize}
-\item A estrutura deve suportar o peso de todos os componentes com margem de segurança para eventuais cargas não estimadas;
-\item Deve possuir resistência a ação climática, especificamente a radiação solar, temperatura elevada e corrosão devido a exposição a chuva;
-\item A placa solar que fornecerá a energia do sistema deverá ficar na parte lateral do conjunto oposta a caixa de painel de controle superior;
-\item Os sistemas de antena e câmera deverão estar em montantes articulados a 3 metros de altura para que a incidência possa ser ajustada e mais eficiente;
-\item A estrutura deve conter suporte para manutenção facilitada, permitindo o acesso aos componentes de maneira facilitada;
-\item O vento incidente devido a região de instalação deve também ser suportado pela estrutura.
+\item A estrutura deve suportar o peso de todos os componentes, com margem de segurança para eventuais cargas não estimadas;
+\item Deve resistir à ação climática -- especificamente à radiação solar, temperatura elevada e corrosão devido à exposição à chuva;
+\item A placa solar que fornecerá a energia do sistema deve ficar na parte lateral do conjunto, oposta à caixa de painel de controle superior;
+\item Os sistemas de antena e câmera devem estar em montantes articulados à 3 metros de altura, para que a incidência possa ser ajustada e mais eficiente;
+\item A estrutura deve permitir o acesso aos componentes de maneira facilitada, para descomplicar a manutenção do radar;
+\item O vento incidente devido à região de instalação deve ser suportado pela estrutura.
 \end{itemize}
 
 \section{Restrições}
 \begin{itemize}
-\item Os materiais não podem ser suscetíveis a corrosão, a ruptura por radiação e temperatura solar e não podem comprometer o funcionamento dos sistemas eletrônicos;
-\item A estrutura não pode ter área de contato com o vento muito elevado;
-\item Os compartimentos de instalação dos eletrônicos não pode possuir entrada para água ou detritos externos;
+\item Os materiais não podem ser suscetíveis à corrosão, à ruptura por radiação e temperatura solar;
+\item Os compartimentos de instalação dos eletrônicos não podem permitir a entrada de água ou detritos externos;
 \item Os compartimentos não podem estar totalmente isolados, permitindo acesso para reparos e manutenção;
-\item Os materiais selecionados não podem impedir o funcionamento de qualquer um dos componentes eletrônicos, a exemplo de impedir a emissão ou recepção do radar.
+\item Os materiais selecionados não podem impedir o funcionamento de qualquer um dos componentes eletrônicos.
 \end{itemize}
 
 \section{Riscos}
 
 \begin{itemize}
-\item RSN 1 - Atrasos por fornecimento de materiais;
+\item RSN 1 - Atrasos no fornecimento de materiais;
 \item RSN 2 - Montagem mal feita;
-\item RSN 3 - Interferência da estrutura com os equipamentos de radiofrequência;
+\item RSN 3 - Interferência da estrutura nos equipamentos de radiofrequência;
 \item RSN 4 - Atrasos causados por problemas de simulações e modelagem;
 \item RSN 5 - Curto circuito de componentes eletrônicos causados pela estrutura;
 \item RSN 6 - Dimensionamento errado;
@@ -66,99 +65,99 @@ Os requisitos de Estruturas são:
 
 \section{Solução Proposta}
 
-A estrutura visa a acomodação dos componentes eletrônicos de forma segura e que seja possível a manutenção de forma ágil, quando necessário. Estudos sobre a fiação, esforços, tensões e dissipação de calor foram feitos para a construção de uma estrutura que cumpra seu papel sem falhas.
+A estrutura visa a acomodação dos componentes eletrônicos de forma segura e possibilitando a manutenção de forma ágil, quando necessário. Estudos sobre a fiação, esforços, tensões e dissipação de calor foram feitos para a construção de uma estrutura que cumpra seu papel sem falhas.
 
 \section{Materiais Utilizados}
 
-Foi definido para o projeto a utilização de caixas de painel de controle pois esses possuíam todas as necessidades do projeto. A construção das caixas não era viável por conta da falta de maquinário necessário, além do fato de que caixas comerciais são mais leves e resistentes e possuem um preço mais acessível do que a compra de chapas de aço para usinar e contruir as caixas necessárias. As caixas são de aço e possuem 1 mm de espessura com dimensões de 500x500x250 mm. São rígidas e resistentes a corrosão com tratamento de fosfato de zinco e pintura a pó. Ambas possuem borrachas de vedação hermética e possuem grau de proteção IP54 conforme a ABNT NBR IEC 60529 \cite{material}. 
+Foi definido para o projeto a utilização de caixas de painel de controle, pois essas atendem todas as necessidades do projeto. A construção das caixas não era viável por conta da falta de maquinário necessário, além do fato de que caixas comerciais são mais leves e resistentes. Elas também possuem um preço mais acessível do que a compra de chapas de aço para usinar e contruí-las. As caixas são de aço e possuem 1 mm de espessura, com dimensões de 500x500x250 mm. São rígidas e resistentes à corrosão, com tratamento de fosfato de zinco e pintura a pó. Ambas possuem borrachas de vedação hermética e possuem grau de proteção IP54 conforme a ABNT NBR IEC 60529 \cite{material}. 
 
-Duas hastes de aço inox 304 com 2 polegadas de diâmetro (50,80 mm) serão utilizadas para suportar todos os módulos necessários da estrutura. Essas medidas foram selecionadas com base nos cálculos numéricos feitos para medir os esforços e tensões que elas serão submetidas (esse cálculos serão apresentados nesse relatório). As hastes também foram selecionadas como base nas suas propriedades de rigidez e resistência a corrosão e o fator comercial também foi algo decisivo na escolha do material. Cada haste terá 4 metros porém foi definido a utilização de 1 metro para que a estrutura fosse enterrada já que a fixação ou a criação de um fundação não será possível na fase de implementação do projeto. 
+Duas hastes de aço inox 304 com 2 polegadas de diâmetro (50,80 mm) serão utilizadas para suportar todos os módulos necessários da estrutura. Essas medidas foram selecionadas com base nos cálculos numéricos feitos para medir os esforços e tensões a que elas serão submetidas (esse cálculos serão apresentados neste relatório). As hastes também foram selecionadas com base nas suas propriedades de rigidez e resistência à corrosão. O fator comercial também foi algo decisivo na escolha do material. Cada haste terá 4 metros, porém foi definido a utilização de 1 metro para que a estrutura fosse enterrada já que a fixação ou a criação de um fundação não será possível na fase de implementação do projeto. 
 
 \subsection{Desenho Industrial}
 
-Utilizou-se o software CATIA V5 para a criação do CAD (\textit{computer aided design}) da estrutura. A estrutura completa, apresentado na Figura \ref{estrucomp} foi construída com base nas medidas das caixas comerciais e hastes selecionadas. Além disso, as medidas também foram baseadas para seguir uma proporção com os painéis solares. 
+Utilizou-se o software CATIA V5 para a criação do CAD (\textit{computer aided design}) da estrutura. A estrutura completa, apresentado na Figura \ref{estrucomp} foi construída com base nas medidas das caixas comerciais e hastes selecionadas. Além disso, as medidas também foram pensadas para terem uma proporção com os painéis solares. 
 
 \begin{figure}[h]
 	\centering
     \includegraphics[scale=0.3]{estruturacompleta.jpeg}
-    \caption{Design completo da estrutura com todos os seus módulos instalados}
+    \caption{Design completo da estrutura com todos os seus módulos instalados.}
     \label{estrucomp}
 \end{figure}
 
 
-Na figura \ref{hastes}, vemos o suporte principal. Ele consiste em dois tubos de aço afastados entre si a uma distancia de 450 mm. Seu desenvolvimento foi pensado de forma a garantir a estabilidade da estrutura, por isso é possível ver a utilização de barras chatas de aço soldadas nas hastes para que o sistema seja mais rígido.
+Na Figura \ref{hastes}, vemos o suporte principal. Ele consiste em dois tubos de aço afastados entre si a uma distancia de 450 mm. Seu desenvolvimento foi pensado de forma a garantir a estabilidade da estrutura. Por isso é possível ver a utilização de barras chatas de aço soldadas nas hastes para que o sistema seja mais rígido.
 
 \begin{figure}[h]
 	\centering
     \includegraphics[scale=0.3]{hastes.jpeg}
-    \caption{Hastes de suporte para acoplar os módulos da estrutura com cotas}
+    \caption{Hastes de suporte para acoplar os módulos da estrutura com cotas.}
     \label{hastes}
 \end{figure}
 
-A caixa inferior, apresentado na Figura \ref{caixainf}, será apoiada no chão, pois a mesma carregará a bateria do sistema e por questões técnicas se a mesma ficasse na caixa superior com os componentes eletrônicos poderia aquecê-los a uma temperatura que causaria o mal funcionamento do sistema por completo. A caixa inferior estará ligada através de 4 abraçadeiras do tipo união as hastes de suporte principal.
+A caixa inferior, apresentada na Figura \ref{caixainf}, será apoiada no chão, pois a mesma carregará a bateria do sistema. Por questões técnicas, se a mesma ficasse na caixa superior com os componentes eletrônicos poderia aquecê-los a uma temperatura que causaria o mal funcionamento do sistema por completo. A caixa inferior estará ligada através de 4 abraçadeiras do tipo união às hastes de suporte principal.
 
 \begin{figure}[h]
 	\centering
     \includegraphics[scale=0.3]{caixainferior.jpeg}
-    \caption{Caixa inferior aberta com bateria acoplada e seu isolamento hermético}
+    \caption{Caixa inferior aberta com bateria acoplada e seu isolamento hermético.}
     \label{caixainf}
 \end{figure}
 
-A caixa superior, apresentado na Figura \ref{caixasup}, será o local onde os componentes eletrônicos ficaram. Todo o transporte de informações acontecerá nela. Os componentes vão possuir um espaço de 300x300mm em uma placa de montagem para seus devidos acoplamentos. Um \textit{cooler} será instalado na lateral interna da caixa superior para ajudar na dissipação do calor. 
+A caixa superior, apresentado na Figura \ref{caixasup}, será o local onde os componentes eletrônicos ficarão. Todo o transporte de informações acontecerá nela. Os componentes vão possuir um espaço de 300x300mm em uma placa de montagem para seus devidos acoplamentos. Um \textit{cooler} será instalado na lateral interna da caixa superior para ajudar na dissipação do calor. 
 
 \begin{figure}[h]
 	\centering
     \includegraphics[scale=0.3]{caixasuperior.jpeg}
-    \caption{Caixa inferior aberta com furo na porta para o holofote, placa de montagem e seu isolamento hermético}
+    \caption{Caixa inferior aberta com furo na porta para o holofote, placa de montagem e seu isolamento hermético.}
     \label{caixasup}
 \end{figure}
 
-Em sua porta será fixado um holofote, apresentado na Figura \ref{holof}, que servirá de sinal luminoso para o motorista. Ambas as caixas possuem trancas com chaves para evitar a abertura de forma errada.
+Em sua porta será fixado um holofote, apresentado na Figura \ref{holof}, que servirá de sinal luminoso para o motorista. Ambas as caixas possuem trancas com chaves para evitar a abertura acidental ou por pessoa não autorizada.
 
 \begin{figure}[h]
 	\centering
     \includegraphics[scale=0.3]{holofote.jpeg}
-    \caption{Modelo do holofote comercial que sinalizará ao motorista}
+    \caption{Modelo do holofote comercial que servirá de sinal luminoso ao motorista.}
     \label{holof}
 \end{figure}
 
-O painel solar, apresentado na Figura \ref{painelsol}, se encontra logo atrás da caixa superior. Será necessário a construção de um suporte para o mesmo e será soldado a as hastes em 4 pontos com uma angulação de 15 graus como solicitado pelo grupo de energia. 
+O painel solar, apresentado na Figura \ref{painelsol}, se encontra logo atrás da caixa superior. Será necessário a construção de um suporte para o mesmo e será soldado às hastes em 4 ponto,s com uma angulação de 15 graus conforme solicitado pela equipe do projeto responsável pela área de energia. 
 
 \begin{figure}[h]
 	\centering
     \includegraphics[scale=0.3]{painelcomsup.jpeg}
-    \caption{Painel solar com suporte que será soldado as hastes da estrutura}
+    \caption{Painel solar com suporte que será soldado às hastes da estrutura.}
     \label{painelsol}
 \end{figure}
 
-No ponto mais alto da estrutura, a 3 metros do chão teremos dois componentes. A antena do radar \textit{Doppler} e a câmera. A câmera, apresentado na Figura \ref{camera}, possui apenas um grau de liberdade, sendo assim, necessário o acoplamento dela de forma correta para garantir a angulação necessária para capturar com eficiência as imagens dos carros. 
+No ponto mais alto da estrutura, a 3 metros do chão, teremos dois componentes. A antena do radar \textit{Doppler} e a câmera. A câmera, apresentado na Figura \ref{camera}, possui apenas um grau de liberdade. Sendo assim, é necessário o acoplamento dela de forma correta para garantir a angulação necessária para capturar com eficiência as imagens dos carros. 
 
 \begin{figure}[h]
 	\centering
     \includegraphics[scale=0.3]{camera.jpeg}
-    \caption{Modelo do câmera comercial para capturar a placa veicular}
+    \caption{Modelo da câmera comercial para capturar a placa veicular.}
     \label{camera}
 \end{figure}
 
-Oposta a câmera teremos a antena do radar \textit{Doppler}, apresentado na Figura \ref{antrad}. Ela possuirá um suporte que dará a ela dois graus de liberdade possibilitando assim uma facilidade para o ajuste necessário para maior eficiência. 
+Oposta à câmera, teremos a antena do radar \textit{Doppler}, apresentada na Figura \ref{antrad}. Ela possuirá um suporte que dará a ela dois graus de liberdade, possibilitando assim uma facilidade no ajuste necessário para uma maior eficiência. 
 
 \begin{figure}[h]
 	\centering
     \includegraphics[scale=0.3]{antenaradar.jpeg}
-    \caption{Antena para o radar doppler responsável pelo funcionamente total do projeto}
+    \caption{Antena para o radar \textit{Doppler}.}
     \label{antrad}
 \end{figure}
 
-As plantas detalhadas, com cotas, para a construção de todas as peças se encontram em Anexo. 
+As plantas detalhadas, com cotas, para a construção de todas as peças se encontram no Apêndice \ref{plantas_construcao}. 
 
 \subsection{Diagrama de Fiação}
 
-Para o dimensionamento da parte elétrica, foi utilizada a NBR 5410 \cite{protecao}, para instalações elétricas em circuitos de extra baixa tensão, apresentado na Figura \ref{circ}. A área de estruturas foi responsável por posicionar a fiação na estrutura. 
+Para o dimensionamento da parte elétrica, foi utilizada a NBR 5410 \cite{protecao} para instalações elétricas em circuitos de extra baixa tensão, apresentado na Figura \ref{circ}. A equipe de estruturas foi responsável por posicionar a fiação na estrutura. 
 
 \begin{figure}[h]
 	\centering
     \includegraphics[scale=0.3]{placademontagemcomcomp.jpeg}
-    \caption{Placa de montagem da caixa superior com componentes eletrônicos instalados}
+    \caption{Placa de montagem da caixa superior com componentes eletrônicos instalados.}
     \label{circ}
 \end{figure}
 
@@ -168,7 +167,7 @@ Como os componentes eletrônicos ficarão em compartimentos suspensos por abraç
 \begin{figure}[h]
 	\centering
     \includegraphics[scale=0.5]{eletrodutos.png}
-    \caption{Disposição dos eletrodutos na estrutura conectando as caixas superior e inferior, o radar, o painel solar e a câmera}
+    \caption{Disposição dos eletrodutos na estrutura conectando as caixas superior e inferior, o radar, o painel solar e a câmera.}
     \label{eletrod}
 \end{figure}
 
@@ -185,17 +184,17 @@ Como os circuitos utilizados são de extrema baixa tensão, a NBR-5410 \cite{pro
 \begin{figure}[h]
 	\centering
     \includegraphics[keepaspectratio=true,scale=0.5]{caixa1elet.png}
-    \caption{Disposição do dimensionamento da fiação dos dispositivos eletrônicos dentro da caixa superior}
+    \caption{Disposição do dimensionamento da fiação dos dispositivos eletrônicos dentro da caixa superior.}
     \label{caixa1elet}
 \end{figure}
 
 
- Na bateria, a fiação escolhida foi de 35mm$^2$ pois foi utilizado nos cálculos a corrente de descarga nominal da bateria. Entretanto a fiação da bateria não sairá do compartimento inferior, como apresentado na Figura \ref{caixa2elet}.
+ Na bateria, a fiação escolhida foi de 35mm$^2$ pois foi utilizado nos cálculos a corrente de descarga nominal da bateria. Entretanto a fiação da bateria sairá do compartimento inferior, como apresentado na Figura \ref{caixa2elet}.
 
 \begin{figure}[h]
 	\centering
     \includegraphics[scale=0.5]{caixa2elet.png}
-    \caption{Disposição do dimensionamento da fiação dos dispositivos eletrônicos dentro da caixa inferior com a bateria}
+    \caption{Disposição do dimensionamento da fiação dos dispositivos eletrônicos dentro da caixa inferior com a bateria.}
     \label{caixa2elet}
 \end{figure}
 
@@ -203,25 +202,25 @@ Como os circuitos utilizados são de extrema baixa tensão, a NBR-5410 \cite{pro
 
 \subsection{Análise Estática da Estrutura}
 
-Para o cálculo estrutural, foi desenvolvida uma rotina em MATLAB que nos fornecesse o diâmetro das hastes em relação às tensões normais e cisalhantes nas mesmas de acordo com as propriedades mecânicas dos materiais selecionados (Apêndice \ref{codigo_estatico}).
+Para o cálculo estrutural, foi desenvolvida uma rotina em MATLAB que fornecesse o diâmetro das hastes em relação às tensões normais e cisalhantes nas mesmas de acordo com as propriedades mecânicas dos materiais selecionados (Apêndice \ref{codigo_estatico}).
 
 
-A força dinâmica causada pela força do vento foi calculada segundo a norma NBR 6123 (jun/88) \cite{vento} e foram aplicadas à estrutura como cargas pontuais e constantes, o valor do vento para o projeto, também retirado da norma, é de 6m/s.	
+A força dinâmica causada pela força do vento foi calculada segundo a norma NBR 6123 (jun/88) \cite{vento} e foram aplicadas à estrutura como cargas pontuais e constantes. O valor do vento para o projeto, também retirado da norma, é de 6m/s.
 
-Os materiais prévios considerados para o trabalho eram: aços (inox 304, 1010, 1020, 1030 e 1045) e ferro. O ferro foi um material considerado pro projeto pois possui um peso específico menor que o do aço porém possui as propriedades mecânicas mais restritas, percebeu-se que seria necessário mais material para poder chegar às mesmas condições que os aços, e por isso foi desconsiderado. As propriedades dos aços são bem parecidas, mudando as tensões de escoamento, tensão última (propriedades principais para o projeto).
+Os materiais prévios considerados para o trabalho eram aços (inox 304, 1010, 1020, 1030 e 1045) e ferro. O ferro foi um material considerado para o projeto pois possui um peso específico menor que o do aço, porém possui as propriedades mecânicas mais restritas. Percebeu-se que seria necessário mais material para poder chegar às mesmas condições que os aços, e por isso foi desconsiderado. As propriedades dos aços são bem parecidas, mudando as tensões de escoamento e tensão última (propriedades principais para o projeto).
 
-Para a modelagem do problema foi considerado uma estrutura simétrica, e a tensão máxima aceita pelos componentes estruturais sejam a tensão de escoamento do aço levando em consideração um fator de segurança. O material usado para o cálculo foi o aço inox 304 com a tensão de escoamento no valor de 215 MPa \cite{callister}. Estimando o peso de cada componente em Catia e utilizando a metodologia para os cálculos de tensão principais \cite{beer}, foi possível determinar os esforços na estrutura.
+Para a modelagem do problema foi considerado uma estrutura simétrica, e a tensão admissível pelos componentes estruturais é a tensão de escoamento do aço levando em consideração um fator de segurança. O material usado para o cálculo foi o aço inox 304 com a tensão de escoamento no valor de 215 MPa \cite{callister}. Estimando o peso de cada componente em Catia e utilizando a metodologia para os cálculos de tensão principais \cite{beer}, foi possível determinar os esforços na estrutura.
 
-A rotina ((Apêndice \ref{codigo_estatico}), considerou um apoio de engaste e calculou os esforços externos que a estrutura está submetida (esforços normais, cortantes e momento). Sendo os esforços normais causados pelo peso dos componentes acoplados às hastes de sustentação e o peso das próprias hastes, os esforços cortantes causados pelo efeitos dinâmicos sofridos por causa do vento. E o momento sendo a força gerada pelo braço de alavanca entre essas forças e as suas respectivas distâncias ao chão.
+A rotina ((Apêndice \ref{codigo_estatico}), considerou um apoio de engaste e calculou os esforços externos que a estrutura está submetida (esforços normais, cortantes e momento). Sendo os esforços normais causados pelo peso dos componentes acoplados às hastes de sustentação e o peso das próprias hastes, e os esforços cortantes causados pelo efeitos dinâmicos sofridos por causa do vento. O momento é a força gerada pelo braço de alavanca entre essas forças e as suas respectivas distâncias ao chão.
 
 
 A força dinâmica causada pela força do vento foi calculada segundo a norma NBR 6123 (jun/88) \cite{vento} e foram aplicadas à estrutura como cargas pontuais e constantes, o valor do vento para o projeto, também retirado da norma, é de 6m/s.	
 
 O diâmetro mínimo gerado pela rotina foi de aproximadamente 0,05m (2 polegadas). Pelo o projeto contar com duas hastes estruturais, o valor do diâmetro encontrado é suficiente para as cargas aplicadas. A escolha do diâmetro, também se dá em função da facilidade comercial. Foram feitos levantamentos em 5 lojas sendo que os padrões de diâmetro variam apenas em números inteiros.
 
-Analisando a estrutura em Ansys, foi possível a obtenção das tensões equivalente de \textit{Von-Mises} e o deslocamento da estrutura, sendo está máxima em 14.56mm.
+Analisando a estrutura em Ansys, foi possível a obtenção das tensões equivalente de \textit{Von-Mises} e o deslocamento da estrutura, sendo esta máxima em 14.56mm.
 
-A Figura \ref{fig:maximo}, apresenta o local de esforço máximo e o comportamento da tensão nas presilhas que suportam as caixas.
+A Figura \ref{fig:maximo} apresenta o local de esforço máximo e o comportamento da tensão nas presilhas que suportam as caixas.
 
 \begin{figure}[h]
 	\centering
@@ -252,11 +251,11 @@ A Figura \ref{fig:painel}, apresenta o local de esforço máximo e o comportamen
 
 \section{Estudo da Dissipação de Calor na Estrutura}
 
-O fato da escolha do material para a estrutura ser metálico e o Brasil ter abundância em incidência solar, deve-se garantir a temperatura de operação, que deve ser entre 20 e $30\%$ abaixo da temperatura limite dos componentes \cite{temperatura}. Tendo em vista que a temperatura limite de operação é 50$^{\circ}C$, a temperatura de operação foi fixada em 36$^{\circ}C$. Para modelagem do problema é proposto um ventilador elétrico, para a indução de dissipação por convecção combinada (natural e forçada) e dissipador de calor no processador da \textit{Raspberry}, devido a sua maior temperatura de operação.
+Devido ao fato da escolha do material para a estrutura ser metálico e o Brasil ter abundância em incidência solar, deve-se garantir que a temperatura de operação estará entre 20 e $30\%$ abaixo da temperatura limite dos componentes \cite{temperatura}. Tendo em vista que a temperatura limite de operação é 50$^{\circ}C$, a temperatura de operação foi fixada em 36$^{\circ}C$. Para modelagem do problema é proposto um ventilador elétrico, para a indução de dissipação por convecção combinada (natural e forçada) e dissipador de calor no processador da \textit{Raspberry}, devido à sua maior temperatura de operação.
 
-Para o dimensionamento do ventilador, foi inicialmente considerado em regime permanente, a 1 atm, o ar sendo um gás ideal e a radiação negligenciável, já que é um ambiente fechado.
+Para o dimensionamento do ventilador, foi inicialmente considerado em regime permanente, a 1 atm, o ar sendo um gás ideal e a radiação negligenciável, tendo em vista que é um ambiente fechado.
 
-A Figura \ref{cooler}, mostra um esquemático do comportamento do fluxo de ar em torno de uma placa plana, quando ela quente, gerando um fluxo de ar forçado devido ao ventilador e quando frio um refluxo contrário ao ventilador gerando um efeito de convecção natural \cite{livro_transcal}.
+A Figura \ref{cooler}, mostra um esquemático do comportamento do fluxo de ar em torno de uma placa plana, quando quente, gerando um fluxo de ar forçado devido ao ventilador e quando frio um refluxo contrário ao ventilador gerando um efeito de convecção natural \cite{livro_transcal}.
 
 \begin{figure}[h]
 	\centering
@@ -265,26 +264,26 @@ A Figura \ref{cooler}, mostra um esquemático do comportamento do fluxo de ar em
     \label{cooler}
 \end{figure}
 
-Desta forma, com uma rotina em Matlab (Apêndice \ref{codigo_dissipacao}), definindo como a temperatura nas superfícies da caixa como 60$^{\circ}C$, as propriedades do ar no ambiente da caixa como a média entre a temperatura de operação e a de superfície, e a partir de uma vazão do ventilador média de 25$m^3/h$, visto em catálogo, o número de Reynolds e Grashof são determinados. 
+Desta forma, com uma rotina em Matlab (Apêndice \ref{codigo_dissipacao}), definindo a temperatura nas superfícies da caixa como 60$^{\circ}C$, as propriedades do ar no ambiente da caixa como a média entre a temperatura de operação e a de superfície, e a partir de uma vazão do ventilador média de 25$m^3/h$, visto em catálogo, o número de Reynolds e Grashof são determinados. 
 
 A Eq. \ref{reynolds}, descreve o cálculo para o número de Reynolds, para o comportamento forçado do escoamento, onde $v$ é a velocidade do ventilador, estimada a partir da vazão, $L_c$ é o comprimento característico de interesse, e $\upsilon$ é a viscosidade dinâmica do ar.
 
 \begin{equation}
-	Re= \frac{v \times L_c}{\upsilon}
+	Re= \frac{v \times L_c}{\upsilon}.
 	\label{reynolds}
 \end{equation}
 
 A Eq. \ref{grashof}, descreve o cálculo para o número de Grashof, para o comportamento natural do escoamento, onde $g$ é a gravidade, $\beta$ é o inverso da temperatura média em Kelvin, $T_S$ é a temperatura na superfície e $T_{\infty}$ é a temperatura ambiente desejada.
 
 \begin{equation}
-	Gr= \frac{g \beta (T_S-T_{\infty})L_c^3}{\upsilon^2}
+	Gr= \frac{g \beta (T_S-T_{\infty})L_c^3}{\upsilon^2}.
 	\label{grashof}
 \end{equation}
 
-A eficiência entre o escoamento natural (Grashof) e o quadrado do escoamento forçado (Reynolds), da qual o número de Nusselt correto (natural, forçado ou combinado) para a definição da potência dissipada, considerando parede vertical ou horizontal \cite{livro_transcal}. Tendo o Nusselt, se determina o coeficiente de transferência de calor de convecção $h$, e se determina a potência dissipada pela Eq. \ref{potencia}.
+A eficiência entre o escoamento natural (Grashof) sobre o quadrado do escoamento forçado (Reynolds), da qual o número de Nusselt correto (natural, forçado ou combinado) para a definição da potência dissipada, considerando parede vertical ou horizontal \cite{livro_transcal}. Tendo o Nusselt, determina-se o coeficiente de transferência de calor de convecção $h$ e a potência dissipada pela Eq. \ref{potencia}.
 
 \begin{equation}
-	\dot{Q}= hA_s(T_S-T_{\infty})
+	\dot{Q}= hA_s(T_S-T_{\infty}).
 	\label{potencia}
 \end{equation}
 
