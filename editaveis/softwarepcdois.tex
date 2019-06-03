@@ -97,20 +97,20 @@ Os diagramas de casos de uso tem como objetivo documentar o que o sistema faz, d
 A Figura \ref{fig:casos_de_uso} apresenta o diagrama de casos de uso do Aplicativo.
 
 \begin{figure}[H]
-	\center{\includegraphics[scale=0.5]{caso_de_uso_2.pdf}}
+	\center{\includegraphics[scale=0.4]{caso_de_uso_2.pdf}}
 	\caption{\label{fig:casos_de_uso} Diagrama de casos de uso com as principais funcionalidades do aplicativo RaDop.}
-\end{figure}\newpage
+\end{figure}
 
 A Figura \ref{fig:diagrama-comm-soft} apresenta o diagrama de casos de uso do \textit{Dashboard}.
 
 \begin{figure}[H]
-	\center{\includegraphics[scale=0.4]{caso_de_uso_1.pdf}}
+	\center{\includegraphics[scale=0.45]{caso_de_uso_1.pdf}}
 	\caption{\label{fig:diagrama-comm-soft} Diagrama de casos de uso com as principais funcionalidades do \textit{Dashboard}.}
 \end{figure}
 
 \section{\textit{Dashboard}}
 
-A arquitetura do \textit{Dashboard}, esquematizada na Figura \ref{fig:diagrama-arq-dashboard}, será principalmente a baseada em componentes. O motivo para isso se deve ao uso do \textit{Django Application} do \textit{framework Django}, que é a principal tecnologia que será usada com o \textit{Dashboard}.
+A arquitetura do \textit{Dashboard}, esquematizada na Figura \ref{fig:diagrama-arq-dashboard}, será principalmente baseada em componentes. O motivo para isso se deve ao uso do \textit{Django Application} do \textit{framework Django}, que é a principal tecnologia que será usada com o \textit{Dashboard}.
 
 \begin{figure}[H]
 	\center{\includegraphics[scale=0.35]{diagrama-arq-dashboard.png}}
@@ -184,7 +184,7 @@ A Figura \ref{fig:radar} apresenta a página de cadastro dos radares. Lembrando 
 	\caption{\label{fig:radar} Tela de cadastro dos radares do \textit{Dashboard} RaDop.}
 \end{figure}
 
-A Figura \ref{fig:mapa} apresenta a página de visualização dos radares no mapa. Foi usada a \textit{API} do \textit{Google Maps} para mostrar a localização de cada radar no mapa.\footnote{\textit{API}:Interface de Programação de Aplicação (português brasileiro)), cujo acrônimo API provém do Inglês Application Programming Interface, é um conjunto de rotinas e padrões estabelecidos por um software para a utilização das suas funcionalidades por aplicativos que não pretendem envolver-se em detalhes da implementação do software, mas apenas usar seus serviços.};
+A Figura \ref{fig:mapa} apresenta a página de visualização dos radares no mapa. Foi usada a \textit{API} do \textit{Google Maps} para mostrar a localização de cada radar no mapa.\footnote{\textit{API}:Interface de Programação de Aplicação (português brasileiro)), cujo acrônimo API provém do Inglês \textit{Application Programming Interface}, é um conjunto de rotinas e padrões estabelecidos por um software para a utilização das suas funcionalidades por aplicativos que não pretendem envolver-se em detalhes da implementação do software, mas apenas usar seus serviços.};
 
 \begin{figure}[H]
 	\center{\includegraphics[scale=0.5]{Mapa.pdf}}
@@ -193,7 +193,7 @@ A Figura \ref{fig:mapa} apresenta a página de visualização dos radares no map
 
 \section{Aplicativo RaDop}
 
-Conforme mostra a Figura \ref{fig:diagrama-arq-webApp}, o aplicativo móvel que irá auxiliar a equipe de manutenção não irá acessar o radar diretamente, mas sim através dos microsservi-ços. Deste modo, os microsserviços funcionarão como uma interface entre o radar e o aplicativo.
+Conforme mostra a Figura \ref{fig:diagrama-arq-webApp}, o aplicativo móvel que irá auxiliar a equipe de manutenção não irá acessar o radar diretamente, mas sim através dos microsserviços. Deste modo, os microsserviços funcionarão como uma interface entre o radar e o aplicativo.
 
 \begin{figure}[H]
 	\center{\includegraphics[width=\textwidth]{diagrama-arq-webApp.png}}
@@ -202,7 +202,7 @@ Conforme mostra a Figura \ref{fig:diagrama-arq-webApp}, o aplicativo móvel que 
 
 \subsection{Execução}
 
-Após a fase de definição do projeto RaDop, a construção da aplicação foi iniciada conforme o esperado. Durante a execução da construção surgiu a necessidade de criar um outro microsserviço de suporte para o aplicativo. Se trata de uma \textit{API Rest} para persistir os dados do funcionamento do app e para auxiliar em outras funções, como o registro e autenticação de usuários. Esse serviço será melhor explicado na próxima seção deste documento.
+Após a fase de definição do projeto RaDop, a construção da aplicação foi iniciada conforme o esperado. Durante a execução da construção surgiu a necessidade de criar um outro microsserviço de suporte para o aplicativo. Se trata de uma \textit{API Rest} para persistir os dados do funcionamento do \textit{app} e para auxiliar em outras funções, como o registro e autenticação de usuários. Esse serviço será melhor explicado na próxima seção deste documento.
 
 A execução da construção dos requisitos da aplicação foram custosas a equipe, devido ao aprendizado demorado nas tecnologias e dificuldades enfrentadas. Na Tabela \ref{tab:app-radop-status} está o estado da execução de cada um dos requisitos e as imagens da execuções implementadas.
 
@@ -223,17 +223,23 @@ CRUD Radar                       & \begin{tabular}[c]{@{}c@{}}Não \\Iniciado\en
 }
 \end{table}
 
-\begin{figure}[!h]
+A Figura \ref{fig:app-sign-up} apresenta a tela construída para cadastro.
+
+\begin{figure}[H]
 	\center{\includegraphics[scale=0.5]{signup.png}}
 	\caption{\label{fig:app-sign-up} Tela construída para cadastrado de usuários no aplicativo.}
 \end{figure}
 
-\begin{figure}[!h]
+A Figura \ref{fig:app-log-in} apresenta a tela construída para autenticação de usuários.
+
+\begin{figure}[H]
 	\center{\includegraphics[scale=0.5]{login.png}}
 	\caption{\label{fig:app-log-in} Tela construída para autenticação de usuários no aplicativo.}
 \end{figure}
 
-\begin{figure}[!h]
+A Figura \ref{fig:app-tela-principal} apresenta a tela construída para mostrar todos os radares próximos aos funcionários.
+
+\begin{figure}[H]
 	\center{\includegraphics[scale=0.5]{tela-principal.png}}
 	\caption{\label{fig:app-tela-principal} Tela construída para mostrar todos os radares próximos aos funcionários mantenedores (a partir do mapa).}
 \end{figure}
@@ -243,9 +249,9 @@ CRUD Radar                       & \begin{tabular}[c]{@{}c@{}}Não \\Iniciado\en
 
 Conforme definido na fase de iniciação de projeto do radar RaDop e anteriormente citado, além do aplicativo e do \textit{WebApp} de \textit{Dashboard}, alguns dos outros serviços de software serão montados no formato de microsserviços, cuja arquitetura está esquematizada na Figura \ref{fig:diagrama-arq-microsservicos}.
 
-\newpage
 
-\begin{figure}[!h]
+
+\begin{figure}[H]
 	\center{\includegraphics[width=\textwidth]{diagrama-arq-microsservicos.png}}
 	\caption{\label{fig:diagrama-arq-microsservicos} Diagrama que mostra a arquitetura e tecnologias que serão usadas com os microsserviços.}
 \end{figure}
@@ -283,7 +289,7 @@ Recebida a mensagem, o orquestrador aciona os microsserviços necessários para 
 
 Na Tabela \ref{tab:maestro-status}, estão o estado atual do desenvolvimento de componentes do Maestro.
 
-\begin{table}[!h]
+\begin{table}[H]
 \centering
 \caption{Funcionalidades do Maestro e seus estados.}
 \label{tab:maestro-status}
@@ -291,20 +297,20 @@ Na Tabela \ref{tab:maestro-status}, estão o estado atual do desenvolvimento de 
 \begin{tabular}{|c|c|c|}
 \hline
 Funcionalidade & Estado & Descrição \\ \hline
-\begin{tabular}[c]{@{}c@{}}Comunicação com a \\fila de mensagens.\end{tabular} & Feito & \begin{tabular}[c]{@{}c@{}}A funcionalidade inclui: estabelecer conexão, \\um canal e contato com a fila do \\gerenciador de mensagens.\end{tabular} \\ \hline
-\begin{tabular}[c]{@{}c@{}}Processamento das mensagens \\recebidas.\end{tabular} & Feito & \begin{tabular}[c]{@{}c@{}}A funcionalidade consiste em extrair o \textit{JSON} \\do \textit{payload} da  mensagem que é repassada \\pelo microsserviço gerenciador de mensagens.\end{tabular} \\ \hline
-\begin{tabular}[c]{@{}c@{}}Integração com os outros \\microsserviços.\end{tabular} & Iniciado & \begin{tabular}[c]{@{}c@{}}A funcionalidade permite estabelecer a comunicação \\entre o Maestro e os demais microsserviços \\para que possa haver a orquestração desses.\end{tabular} \\ \hline
-\begin{tabular}[c]{@{}c@{}}Comunicação com serviços \\externos.\end{tabular} & \begin{tabular}[c]{@{}c@{}}Não \\Iniciado\end{tabular} & \begin{tabular}[c]{@{}c@{}}A funcionalidade consiste em enviar \\dados do orquestrador para o radar, \\\textit{Dashboard} ou o \textit{WebApp}.\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}c@{}}Comunicação com a \\fila de mensagens.\end{tabular} & Feito. & \begin{tabular}[c]{@{}c@{}}A funcionalidade inclui: estabelecer conexão, \\um canal e contato com a fila do \\gerenciador de mensagens.\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}c@{}}Processamento das mensagens \\recebidas.\end{tabular} & Feito. & \begin{tabular}[c]{@{}c@{}}A funcionalidade consiste em extrair o \textit{JSON} \\do \textit{payload} da  mensagem que é repassada \\pelo microsserviço gerenciador de mensagens.\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}c@{}}Integração com os outros \\microsserviços.\end{tabular} & Iniciado. & \begin{tabular}[c]{@{}c@{}}A funcionalidade permite estabelecer a comunicação \\entre o Maestro e os demais microsserviços \\para que possa haver a orquestração desses.\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}c@{}}Comunicação com serviços \\externos.\end{tabular} & \begin{tabular}[c]{@{}c@{}}Não \\Iniciado.\end{tabular} & \begin{tabular}[c]{@{}c@{}}A funcionalidade consiste em enviar \\dados do orquestrador para o radar, \\\textit{Dashboard} ou o \textit{WebApp}.\end{tabular} \\ \hline
 \end{tabular}%
 }
 \end{table}
 
-Na Figura \ref{fig:maestro-tela} está uma tela que mostra o maestro em funcionamento após receber e processar uma imagem recebida do gerenciador de mensagens.
+%Na Figura \ref{fig:maestro-tela} está uma tela que mostra o maestro em funcionamento após receber e processar uma imagem recebida do gerenciador de mensagens.
 
-\begin{figure}[!h]
-	\center{\includegraphics[scale=0.24]{maestro-tela.png}}
-	\caption{\label{fig:maestro-tela} Imagem do console mostrando as saídas do Maestro após receber e processar uma mensagem.}
-\end{figure}
+%\begin{figure}[!h]
+%	\center{\includegraphics[scale=0.24]{maestro-tela.png}}
+%	\caption{\label{fig:maestro-tela} Imagem do console mostrando as saídas do Maestro após receber e processar uma mensagem.}
+%\end{figure}
 
 \subsection{ALPR}
 
@@ -314,7 +320,7 @@ ALPR são tecnologias que utilizam o OCR (\textit{Optical Character Recognition}
 
 Dentro do projeto do radar RaDop, a equipe levantou a necessidade de fazer uso de tecnologias de reconhecimento de placas para informar às autoridades competentes sobre veículos infratores registrados pelo radar.
 
-Com isso, imagens dos veículos infratores serão capturadas por uma câmera conectada ao radar. Em seguida, serão enviadas para o processamento e reco-nhecimento por um serviço que será construído pela equipe de software do projeto.
+Com isso, imagens dos veículos infratores serão capturadas por uma câmera conectada ao radar. Em seguida, serão enviadas para o processamento e reconhecimento por um serviço que será construído pela equipe de software do projeto.
 
 A equipe de software, após analisar ferramentas de OCR e ALPR optou por usar o \textit{OpenALPR}, devido à completude da ferramenta e à restrições financeiras -- o \textit{OpenALPR} apresenta um subproduto gratuito que atende às necessidades da equipe.
 
@@ -334,7 +340,7 @@ Para sanar a necessidade de identificação das placas foi construído o serviç
 
 A Tabela \ref{tab:fn-alpr-status} possui o estado de construção e as funcionalidades do \textit{ALPR}.
 
-\begin{table}[!h]
+\begin{table}[H]
 \centering
 \caption{Tabela de funcionalidades e estado da construção do serviço do Fn-ALPR}
 \label{tab:fn-alpr-status}
@@ -353,14 +359,14 @@ Funcionalidade & Estado & Descrição\\ \hline
 
 Para validação da função criada para reconhecer as placas dos veículos, foram feitos testes com uso de imagens feitas pela camêra que vai ser usada no radar. Na Figura \ref{fig:teste-alpr-foto-carro} está presente a imagem de um dos testes, assim como a representação do resultado obtido quando invocada a função \textit{Fn-ALPR}.
 
-\begin{figure}[!h]
+\begin{figure}[H]
 	\center{\includegraphics[scale=0.21]{teste-alpr.jpg}}
 	\caption{\label{fig:teste-alpr-foto-carro} Imagem tirada com a camêra do radar e que foi enviada ao serviço para reconhecimento da placa.}
 \end{figure}
 
 Abaixo está o código de resposta do servido após a execução da \textit{Fn-ALPR} com os resultados que foram capturados a partir da imagem. Dentro da chave \textit{results} tem o objeto JSON com o resultado provável da análise da imagem. Caso necessário, abaixo existe a chave \textit{candidates}, que são outros prováveis resultados para a placa do carro.
 
-% Colocar em apêndice
+\textcolor{red}{Colocar em apêndice} 
 \begin{lstlisting}
 {
   "status_code": 200,
@@ -476,7 +482,6 @@ Abaixo está o código de resposta do servido após a execução da \textit{Fn-A
 }
 \end{lstlisting}
 
-
 \subsection{SINESP}
 
 Após a execução do processamento de imagem através do \textit{ALPR}, é preciso obter informações do veículo flagrado. Para obter essas informações será preciso se comunicar com o SINESP.
@@ -487,13 +492,14 @@ Dentro do projeto do Radar, a equipe percebeu a necessidade de um microsserviço
 
 Foram efetuados diversos testes de comunicação do microsserviço SINESP. A Figura \ref{fig:sinesp} tem um registro de como é feita a busca no banco de dados do SINESP e as informações retornadas por ele.
 
-\begin{figure}[!h]
+\begin{figure}[H]
 	\center{\includegraphics[width=\textwidth]{fn-sinesp.png}}
 	\caption{\label{fig:sinesp} Resultado encontrado pelo SINESP ao pesquisar a placa JGG-3482.}
 \end{figure}
 
+A Tabela \ref{tab:fn-sinesp-status} apresenta as funcionalidades e estado da construção do serviço do Fn-SINESP.
 
-\begin{table}[!h]
+\begin{table}[H]
 \centering
 \caption{Tabela de funcionalidades e estado da construção do serviço do Fn-SINESP}
 \label{tab:fn-sinesp-status}
@@ -535,19 +541,23 @@ Permitir a deleção de dados                                                   
 }
 \end{table}
 
-As Figuras \ref{fig:rdm-server}, \ref{fig:rdm-cliente} e \ref{fig:explorer-rethinkdb} mostram imagens da execução do serviço \textit{Rethink Data Manager} e do banco de dados \textit{RethinkDB}.\newpage
+A Figura \ref{fig:rdm-server} mostra os \textit{logs} de execução do servidor do RDM. 
 
-\begin{figure}[!h]
+\begin{figure}[H]
 	\center{\includegraphics[scale=0.4]{rethink-manager-server.png}}
 	\caption{\label{fig:rdm-server} Terminal com \textit{logs} de execução do servidor do RDM.}
 \end{figure}
 
-\begin{figure}[!h]
+A Figura \ref{fig:rdm-cliente} mostra os \textit{logs} de execução de um cliente executando comandos no RDM. 
+
+\begin{figure}[H]
 	\center{\includegraphics[scale=0.4]{rethink-manager-client.png}}
 	\caption{\label{fig:rdm-cliente} Terminal com \textit{logs} de execução de um cliente executando comandos no RDM.}
-\end{figure}\newpage
+\end{figure}
 
-\begin{figure}[!h]
+A Figura  \ref{fig:explorer-rethinkdb} mostra a tela de exploração do banco de dados \textit{RethinkDB}.
+
+\begin{figure}[H]
 	\center{\includegraphics[scale=0.4]{rethinkdb-data-explorer.png}}
 	\caption{\label{fig:explorer-rethinkdb} Tela de exploração de dados no banco de dados \textit{RethinkDB}.}
 \end{figure}
@@ -558,9 +568,9 @@ O RaDop App \textit{Server}, ou RAS, é o serviço responsável pelo \textit{bac
 
 Com isso, o RAS dá o suporte necessário para a persistência de dados da aplicação do RaDop, além de fornecer um serviço de autenticação seguro. Isso permitirá que o app seja mais completo e atenda todas as necessidades levantadas pela equipe do projeto.
 
-Na Tabela \ref{tab:app-server-status} está representado os estados da construção das funcionalidades esperadas desse microsserviço, equanto que a Figura \ref{fig:radop-app-server} apresenta a execução do serviço dentro do servidor RaDop por meio de \textit{logs} de funcionamento.\newpage
+Na Tabela \ref{tab:app-server-status} está representado os estados da construção das funcionalidades esperadas desse microsserviço. 
 
-\begin{table}[!h]
+\begin{table}[H]
 \centering
 \caption{Tabela de funcionalidades e estado da construção do serviço RaDop App \textit{Server}}
 \label{tab:app-server-status}
@@ -577,7 +587,9 @@ Autenticação de Usuários & Feito & \begin{tabular}[c]{@{}c@{}}Autenticar usu�
 }
 \end{table}
 
-\begin{figure}[!h]
+A Figura \ref{fig:radop-app-server} apresenta a execução do serviço dentro do servidor RaDop por meio de \textit{logs} de funcionamento.
+
+\begin{figure}[H]
 	\center{\includegraphics[scale=0.4]{radop-app-server.png}}
 	\caption{\label{fig:radop-app-server} \textit{Logs} de execução do RaDop App \textit{Server} indicando a sua disponibilidade.}
 \end{figure}
@@ -615,7 +627,7 @@ Para o correto funcionamento do radar e dos programas que apoiam o funcionamento
 
 A Figura \ref{fig:diagrama-com-soft-radar} mostra a representação da comunicação software - radar:
 
-\begin{figure}[ht]
+\begin{figure}[H]
 	\center{\includegraphics[width=\textwidth]{diagrama-comunicacao-software-radar.png}}
 	\caption{\label{fig:diagrama-com-soft-radar} Representação de como será a comunicação entre o servidor RaDop e o radar.}
 \end{figure}
@@ -640,13 +652,13 @@ A partir dessa escolha a equipe elaborou, com base nos requisitos e necessidades
 
 A equipe de software do RaDop construiu a Figura \ref{fig:diagrama-classe-soft} para representar como será o modelo de dados/objetos das aplicações de software. Devido ao fato de que grande parte dos sistemas trabalham com tecnologias de JSON para o armazenamento de objetos, as classes derivaram destes arquivos definidos durante a execução dos sistemas.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\center{\includegraphics[scale=0.5]{diagrama-de-classes-PC2.pdf}}
 	\caption{\label{fig:diagrama-classe-soft} Diagrama UML de classes dos produtos de software.}
 \end{figure}
 
 
-O JSON é um acrônimo de \textit{JavaScript Object Notation}. É um formato compacto, de padrão simples, rápido, aberto e independente de troca de dados (\textit{parsing}) entre sistemas. Ele foi especificado por Douglas Crockford em 2000 e utiliza texto legível a humanos, no formato atributo-valor (natureza auto-descritiva)\footnote{\cite{jsonorg}}.
+O JSON é um acrônimo de \textit{JavaScript Object Notation}. É um formato compacto, de padrão simples, rápido, aberto e independente de troca de dados (\textit{parsing}) entre sistemas. Ele foi especificado por Douglas Crockford em 2000 e utiliza texto legível a humanos, no formato atributo-valor (natureza auto-descritiva)\cite{jsonorg}.
 
 A partir disso, a equipe elaborou de uma forma simples e explicativa de como se darão as classes de objetos e suas relações por meio da representação em UML. Cabe lembrar que novas classes e relacionamentos podem ser criados na medida em que for necessário.
 
@@ -719,28 +731,29 @@ Todas as telas referentes à construção da interface entre o sistema e o usuá
 
 A Figura \ref{fig:tela_inicial}, apresenta o protótipo da tela inicial do aplicativo RaDop.
 
-\begin{figure}[!h]
+\begin{figure}[H]
 	\center{\includegraphics[scale=0.5]{tela_inicial_aplicativo.pdf}}
 	\caption{\label{fig:tela_inicial} Protótipo da tela inicial do aplicativo RaDop.}
-\end{figure}\newpage
+\end{figure}
 
 A Figura \ref{fig:tela_status}, apresenta o protótipo da tela com os estados de funcionamento do radar.
 
-\begin{figure}[!h]
+\begin{figure}[H]
 	\center{\includegraphics[scale=0.42]{tela_status.pdf}}
 	\caption{\label{fig:tela_status} Protótipo da tela com os estados de funcionamento do radar.}
 \end{figure}
 
 A Figura \ref{fig:tela_registro}, apresenta o protótipo da tela de registro para o usuário administrador poder cadastrar a manutenção do radar.
 
-\begin{figure}[!h]
+\begin{figure}[H]
 	\center{\includegraphics[scale=0.42]{tela_registro.pdf}}
 	\caption{\label{fig:tela_registro} Protótipo da tela de registro para o usuário administrador poder cadastrar a manutenção do radar.}
-\end{figure}\newpage
+\end{figure}
 
 A Figura \ref{fig:tela_dashboard}, apresenta o protótipo da tela principal do dashboard do radar.
 
-\begin{figure}[!h]
+\begin{figure}[H]
 	\center{\includegraphics[scale=0.5]{tela_dashboard.pdf}}
 	\caption{\label{fig:tela_dashboard} Protótipo da tela principal do dashboard do radar.}
 \end{figure}
+
