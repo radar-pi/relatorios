@@ -22,9 +22,9 @@ A Figura \ref{fig31} representa a integração entre o escopo da engenharia de e
 
 \section{Recurso Solar}
 
-O projeto será instalado e testado inicialmente no Campus FGA da Universidade de Brasília, localizado no Gama, cujas as coordenadas são: 15º59’24”S e 49º02’43”.A partir das coordenadas, é possível verificar os valores de irradiação solar diária média do local mais próximo na base de dados do CRESESB \cite{solar}.
+O projeto será instalado e testado inicialmente no Campus FGA da Universidade de Brasília, localizado no Gama, cujas as coordenadas são: 15º59’24”S e 49º02’43”O. A partir das coordenadas, é possível verificar os valores de irradiação solar diária média do local mais próximo na base de dados do CRESESB \cite{solar}.
 
-O radar tem a ideia de ser instalado em todas as regiões serranas do Brasil, com isso recomenda-se um estudo de caso sobre a irradiação solar diária em cada região que o radar for implantado, para se obter um melhor rendimento solar do sistema fotovoltaico implantado. 
+Pretende-se que o radar seja instalado em diversas regiões do Brasil, em trechos de estradas perigosas, com isso recomenda-se um estudo de caso sobre a irradiação solar diária em cada região que o radar for implantado, para se obter um melhor rendimento solar do sistema fotovoltaico. 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.5]{grafico}
@@ -130,7 +130,7 @@ Com os valores observados na Tabela \ref{tab24}, é possível calcular a capacid
 
 
 
-Onde $C_{Bat}$ é a capacidade total da bateria, $CB$ é a energia diária solicitada pelas cargas por dia em Ah, $N$ é o número de dias de autonomia, $Pd$ é a máxima profundidade de descarga da bateria (tipicamente varia de 50 a 80\%) e $Ef$ é a eficiência da bateria.
+Onde $C_{Bat}$ é a capacidade total da bateria, $CB$ é a energia diária solicitada pelas cargas por dia em Ah (ampere hora), $N$ é o número de dias de autonomia, $Pd$ é a máxima profundidade de descarga da bateria (tipicamente varia de 50 a 80\%) e $Ef$ é a eficiência da bateria.
 
 Sendo 12 V a tensão padrão das baterias comerciais, obtemos o valor de consumo diário de 151.2 Ah. Fixando-se um valor de $N$ igual a 1 dia e um valor de $Pd$ igual a 70\% e o valor da eficiência como 90\% obtém-se os valores de capacidade de $CB = 240 Ah$. 
 
@@ -187,7 +187,7 @@ Para o protótipo, um controlador de carga da mesma marca e capacidade de 30 A s
 
 \section{Dimensionamento da Iluminação}
 
-Com o objetivo de alertar o motorista quando houver outro veículo em sentido contrário, a solução para o subsistema iluminação foi que cada totem terá um holofote com lâmpada LED da marca SR,onde a fonte de alimentação é um barramento infinito alimentado pela bateria, onde a energia é transferida do barramento para a luminária através de um condutor conectado com um relé. 
+Com o objetivo de alertar o motorista quando houver outro veículo em sentido contrário, a solução para o subsistema iluminação foi que cada totem terá um holofote com lâmpada LED da marca SR, onde a fonte de alimentação é um barramento infinito alimentado pela bateria, onde a energia é transferida do barramento para a luminária através de um condutor conectado com um relé. 
 
 Tendo em vista o custo-benefício, foi escolhido para a iluminação um holofote LED com função RGBW para o subsistema iluminação. Na Figura \ref{fig:holofotergbw} será apresentada a luminária escolhida.
 
@@ -407,8 +407,3 @@ Relé       & R\$ 9,90 & 1          & R\$ 9,90 & Eletrogate         \\ \hline
 Total & - & - & R\$ 151,50 & - \\ \hline
 \end{tabular}
 \end{table}
-
-
-
-
-
