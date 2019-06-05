@@ -1,46 +1,38 @@
 \chapter{Software}
 
-O subsistema de software do projeto é parte fundamental do projeto por proporcionar a interação entre o usuário e o radar. Para explicar a estrutura e funcionamento, falaremos dos requisitos, casos de uso, microsserviços, banco de dados, resiliência na comunicação do software, comunicação entre software e eletrônica e representação arquitetural dele. Além disso, apresentaremos protótipos para deixar mais claro como será a interface de usuário.
+O subsistema de software do projeto é parte fundamental do projeto, por proporcionar a interação entre o usuário e o radar. Para explicar a estrutura e funcionamento, este capítulo falará dos requisitos, casos de uso, microsserviços, banco de dados, resiliência na comunicação do software, comunicação entre software e eletrônica e sua representação arquitetural. Além disso, serão apresentados protótipos de como serão algumas das interfaces de usuário.
 
 \section{Requisitos}
 
-Para a construção dos produtos de software, a equipe do projeto RaDop levantou -- por meio da técnica \textit{brainstorming} (elicitação com os membros do projeto e reuniões presenciais) -- os requisitos que guiarão o desenvolvimento das soluções para o radar.
+Para a construção dos produtos de software, a equipe do projeto RaDop levantou -- por meio da técnica \textit{brainstorming} (elicitação com os membros do projeto durante reuniões presenciais) -- os requisitos que guiarão o desenvolvimento das soluções para o radar.
 
-Os requisitos estão dividos por sistemas de software, sendo eles o aplicativo da manutenção (de nome RaDop) e o \textit{WebApp} do \textit{Dashboard}. Também estão englobados requisitos que serão transformados em microsserviços específicos para o funcionamento do radar.
+Os requisitos estão divididos por sistemas de software, sendo eles o aplicativo da manutenção (de nome RaDop) e o \textit{WebApp} do \textit{Dashboard}. Também estão englobados requisitos que serão transformados em microsserviços específicos para o funcionamento do radar.
 
 \subsection{Aplicativo RaDop}
 
-Abaixo estão listados os requisitos funcionais e não funcionais do aplicativo móvel que será usado pela equipe de manutenção do RaDop. Começando pelos requisitos funcionais temos:
-
-
-\begin{itemize}
-  \item O aplicativo da manutenção deve receber dados do radar. Esses dados são:
-  \begin{enumerate}
-    \item Informação de calibração DC\footnote{Integração com a \textit{BladeRF} para calibração de parâmetros de funcionamento da placa, os sistemas de calibração serão produzidos pela equipe de eletrônica do projeto RaDop.};
-    \item Operacionalidade: câmera, radiofrequência (Doppler) e \textit{Raspberry};
-    \item Temperatura do equipamento;
-    \item Nível de carga da bateria;
-    \item Relatório de operação com falhas ocorridas em virtude de algum equipamento eletrônico apresentar problemas de funcionamento;
-    \item Funcionamento do radar.
-  \end{enumerate}
-\end{itemize}
+Abaixo estão listados os requisitos funcionais e não funcionais do aplicativo móvel que será usado pela equipe de manutenção do RaDop. Começando pelos requisitos funcionais, tem-se:
 
 \begin{itemize}
+    \item O aplicativo da manutenção deve receber dados do radar. Esses dados são:
+    \begin{enumerate}
+        \item Operacionalidade: câmera, radiofrequência (Doppler) e \textit{Raspberry};
+        \item Temperatura do equipamento;
+        \item Nível de carga da bateria;
+        \item Relatório de operação com falhas ocorridas em virtude de algum equipamento eletrônico apresentar problemas de funcionamento;
+        \item Funcionamento do radar.
+    \end{enumerate}
+    
+    \textbf{Observação}: Devido as dificuldades de medição ocasionadas pela escolha do equipamento utilizado para controlar o fornecimento de energia, as informações sobre o nível de bateria e temperatura do equipamento não poderão ser enviadas para o aplicativo, sendo esses retirados do escopo de apresentação dos dados do radar.
+
     \item O aplicativo deve enviar notificações para o usuário nos seguintes casos:
     \begin{enumerate}
-        \item Quando a carga da bateria estiver igual ou menor que 20\%;
+        \item Quando a carga da bateria for igual ou menor do que 20\%;
         \item Em caso de falha de comunicação do aplicativo com o radar.
     \end{enumerate}
-\end{itemize}
-
-
-\begin{itemize}
-    \item O aplicativo deve ter um registro de manutenção (\textit{CRUD}\footnote{\textit{CRUD}: Sigla em inglês para \textit{Create}, \textit{Read}, \textit{Update} e \textit{Delete}. Se trata do gerenciamento do objeto.}), anotando a data e o hórario de acesso ao radar, além do usuário que acessou.
-\end{itemize}
-
-\begin{itemize}
+    
+    \item O aplicativo deve ter um registro de manutenção (\textit{CRUD}\footnote{\textit{CRUD}: Sigla em inglês para \textit{Create}, \textit{Read}, \textit{Update} e \textit{Delete}. Se trata do gerenciamento do objeto.}), anotando a data e o hórario de acesso ao radar, além do usuário que o acessou;
     \item O aplicativo deve ter um sistema de usuários (\textit{CRUD}) para identificação, cadastro e gerenciamento dos usuários do aplicativo.
-    \item O aplicativo deve ter a capacidade de calibrar o radar a fim de auxiliar na manutenção corretiva do radar.
+    \item O aplicativo deve ter um registro dos radares (\textit{CRUD}) para identificação, cadastro, gerenciamento dos radares e como auxílio das manutenções (indicando qual radar sofreu manutenção).
 \end{itemize}
 
 Os requisitos não funcionais do aplicativo do RaDop são:
@@ -48,10 +40,9 @@ Os requisitos não funcionais do aplicativo do RaDop são:
 \begin{itemize}
     \item O aplicativo deve ter acesso à internet para funcionar;
     \item O aplicativo deve ter um banco de dados para armazenar os dados e as manutenções;
-    \item O radar não deve permitir que pessoas sem autorização o acesse;
-    \item O usuário deve ter um aparelho com o sistema operacional Android para usar a aplicação (versão mínima: 5);
-    \item A interface de usuário deve ter usabilidade e ser amigável;
-    \item Deve haver um banco de dados para as informações do aplicativo.
+    \item O radar não deve permitir que uma pessoa sem autorização o acesse;
+    \item O usuário deve ter um aparelho com o sistema operacional Android -- versão mínima 5 -- para usar a aplicação;
+    \item A interface de usuário deve ter boa usabilidade e ser amigável.
 \end{itemize}
 
 \subsection{\textit{WebApp Dashboard}}
@@ -63,19 +54,15 @@ Abaixo estão listados os requisitos funcionais e não funcionais do \textit{Web
     \begin{enumerate}
         \item Quantidade de carros fotografados;
         \item Fotos tiradas dos carros;
-        \item Quantidade de veículos acima da velocidade máxima e a velocidade deles no momento do flagrante;
+        \item Quantidade de veículos pegos acima da velocidade máxima e a velocidade deles no momento do flagrante;
         \item Data e horário das capturas;
         \item Notificações de automóveis flagrados;
         \item Notificações de possível acidente;
         \item Identificação do equipamento que enviou os dados.
     \end{enumerate}
-\end{itemize}
 
-\begin{itemize}
-    \item O \textit{Dashboard} deve possibilitar a visualização dos dados enviados (gráficos e tabelas).
-\end{itemize}
+    \item O \textit{Dashboard} deve possibilitar a visualização dos dados enviados (gráficos e tabelas);
 
-\begin{itemize}
     \item O \textit{Dashboard} deve recuperar os seguintes dados, a partir da placa do veículo:
     \begin{enumerate}
         \item Situação do carro (roubado/sem restrição);
@@ -85,15 +72,12 @@ Abaixo estão listados os requisitos funcionais e não funcionais do \textit{Web
         \item Modelo;
         \item Registro.
     \end{enumerate}
-\end{itemize}
 
-\begin{itemize}
-    \item O \textit{Dashboard} deve possibilitar obter informações complementares a partir dos dados recebidos para realizar \textit{data mining}\footnote{Data Mining: A partir dos dados recebidos extrair dados terciários a fim de obter novos conhecimentos, identificar padrões, relacionamentos sistemáticos e etc.}.
+    \item O \textit{Dashboard} deve possibilitar obter informações complementares a partir dos dados através de \textit{data mining}\footnote{\textit{Data mining}: A partir dos dados recebidos extrair dados terciários a fim de obter novos conhecimentos, identificar padrões, relacionamentos sistemáticos, etc.};
     \item O \textit{Dashboard} deve exibir a localização dos radares (mapa);
     \item O \textit{Dashboard} deve ter um sistema de usuários (\textit{CRUD});
     \item O \textit{Dashboard} deve ter um sistema de visualização/notificação de veículos irregulares;
-    \item O \textit{Dashboard} deve ter um sistema de visualização/notificação de acidentes;
-    \item O aplicativo deve ter a capacidade de calibrar o radar a fim de auxiliar na manutenção corretiva do radar.
+    \item O \textit{Dashboard} deve ter um sistema de visualização/notificação de acidentes.
 \end{itemize}
 
 Os requisitos não funcionais são:
@@ -101,144 +85,440 @@ Os requisitos não funcionais são:
 \begin{itemize}
     \item O \textit{Dashboard} deve manter comunicação com os microsserviços;
     \item O \textit{Dashboard} deve ter de um banco de dados para armazenar os dados e as manutenções;
-    \item O \textit{Dashboard} não deve permitir que pessoas sem a autorização correta o acesse;
-    \item A interface de usuário deve ter usabilidade e ser amigável;
+    \item O \textit{Dashboard} não deve permitir que uma pessoa sem autorização o acesse;
+    \item A interface de usuário deve ter boa usabilidade e ser amigável;
     \item O \textit{Dashboard} deve ter um banco de dados para armazenar as suas informações.
 \end{itemize}
 
 \section{Casos de Uso}
 
-O diagrama de casos de uso tem como objetivo documentar o que o sistema faz do ponto de vista do usuário. Em outras palavras, ele descreve as principais funcionalidades do sistema e a interação dessas funcionalidades com os usuários do mesmo. Nesse diagrama não haverá aprofundamento dos detalhes técnicos que dizem como o sistema faz.
+Os diagramas de casos de uso tem como objetivo documentar o que o sistema faz, do ponto de vista do usuário. Em outras palavras, ele descreve as principais funcionalidades do sistema e a interação dessas funcionalidades com os usuários do mesmo. Nesses diagramas não haverá aprofundamento dos detalhes técnicos do que o sistema fará.
 
 A Figura \ref{fig:casos_de_uso} apresenta o diagrama de casos de uso do Aplicativo.
 
-\begin{figure}[ht]
-	\center{\includegraphics[scale=0.5]{caso_de_uso_app.pdf}}
+\begin{figure}[H]
+	\center{\includegraphics[scale=0.4]{caso_de_uso_2.pdf}}
 	\caption{\label{fig:casos_de_uso} Diagrama de casos de uso com as principais funcionalidades do aplicativo RaDop.}
-\end{figure}\newpage
+\end{figure}
 
 A Figura \ref{fig:diagrama-comm-soft} apresenta o diagrama de casos de uso do \textit{Dashboard}.
 
-\begin{figure}[ht]
-	\center{\includegraphics[scale=0.4]{caso_de_uso_dashboard.pdf}}
+\begin{figure}[H]
+	\center{\includegraphics[scale=0.45]{caso_de_uso_1.pdf}}
 	\caption{\label{fig:diagrama-comm-soft} Diagrama de casos de uso com as principais funcionalidades do \textit{Dashboard}.}
 \end{figure}
 
 \section{\textit{Dashboard}}
 
-A arquitetura do \textit{Dashboard}, esquematizada na Figura \ref{fig:diagrama-arq-dashboard}, será principalmente a baseada em componentes. O motivo para isso se deve ao uso do \textit{Django Application} do \textit{framework Django}, que é a principal tecnologia que será usada com o \textit{Dashboard}.
+A arquitetura do \textit{Dashboard}, esquematizada na Figura \ref{fig:diagrama-arq-dashboard}, será principalmente baseada em componentes. O motivo para isso se deve ao uso do \textit{Django Application} do \textit{framework Django}, que é a principal tecnologia que será usada com o \textit{Dashboard}.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\center{\includegraphics[scale=0.35]{diagrama-arq-dashboard.png}}
 	\caption{\label{fig:diagrama-arq-dashboard} Diagrama que mostra a arquitetura e tecnologias que serão usadas com o \textit{Dashboard}.}
 \end{figure}
 
-O uso de componentes permite uma série de vantagens. A primeira é construir componentes com alta coesão e baixo acoplamento, o que melhora a manutenibilidade do código. Outra é que eles podem ser totalmente independentes entre si. As vantangens citadas acabam permitindo que componentes criados possam ser reaproveitados em vários projetos, evitando retrabalho desnecessário e assim otimizando o tempo dos desenvolvedores envolvidos no projeto.
+O uso de componentes permite uma série de vantagens. A primeira é construir componentes com alta coesão e baixo acoplamento, melhorando a manutenibilidade do código. Outra é que eles podem ser totalmente independentes entre si. As vantagens citadas acabam permitindo que componentes criados possam ser reaproveitados em vários projetos, evitando retrabalho desnecessário e assim otimizando o tempo dos desenvolvedores envolvidos no projeto.
 
-Uma tecnologia importante que também será utilizada em conjunto com o \textit{Dashboard} é o NGINX. Ele será utilizado para fazer o proxy reverso da aplicação. De modo resumido, ele vai atuar como uma espécie de organizador, redirecionando as requisições que chegam dos clientes para os contêineres corretos.
+Uma tecnologia importante que também será utilizada em conjunto com o \textit{Dashboard} é o NGINX. Ele será utilizado para fazer o \textit{proxy} reverso da aplicação. Explicando de modo resumido, ele vai atuar como uma espécie de organizador, redirecionando as requisições que chegam dos clientes para os contêineres corretos.
+
+\subsection{Execução}
+
+Como mencionado anteriormente, o \textit{Dashboard} irá funcionar como um \textit{Business Intelligence}, onde todas as informações importantes para o radar estarão dispostas tanto para o administrador do radar quanto para o usuário que só esteja buscando por informações.
+
+Pensando nesses dois tipos de usuários, algumas funcionalidades do sistema foram planejadas com cuidado para garantir a segurança dos dados. O cadastro dos radares, bem como a sua localização, só poderá ser efetuada pelo administrador. Isso garante a fidelidade e segurança nos dados.
+
+O usuário comum não poderá realizar o cadastro do radar, mas poderá ter acesso as informações dos radares e dos carros.
+
+Na Tabela \ref{tab:Modulo-do-Dashboard} está o estado da execução de cada um dos requisitos do \textit{Dashboard}.
+
+\begin{table}[H]
+\centering
+\caption{Tabela com as funcionalidades do \textit{Dashboard} e seus estados.}
+\label{tab:Modulo-do-Dashboard}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|}
+\hline
+Funcionalidade & Estado & Descrição \\ \hline
+\begin{tabular}[c]{@{}c@{}}Cadastro do usuário \\ (Administrador).\end{tabular} & Feito. & \begin{tabular}[c]{@{}c@{}}A funcionalidade inclui: cadastrar, listar, editar \\ e excluir o usuário. O usuário administrador é aquele \\ responsável por cadastrar os radares e suas informações.\end{tabular} \\ \hline
+Cadastro dos radares. & Feito. & \begin{tabular}[c]{@{}c@{}}A funcionalidade inclui: cadastrar, listar, editar e \\ excluir os radares. O cadastro do radar, bem como \\as outras funcionalidades, só podem ser executadas pelo \\administrador do sistema. O usuário comum só pode \\visualizar o radar e suas informações.\end{tabular} \\ \hline
+Mapa com os radares. & Feito. & \begin{tabular}[c]{@{}c@{}}Para efetuar o cadastro dos radares é preciso informar \\ a latitude e a longitude deste para que depois seja possível \\encontrar todos os radares pelo \textit{Google Maps}.\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}c@{}}Informação dos carros.\end{tabular} & \begin{tabular}[c]{@{}c@{}}Iniciado. \\ Microsserviços \\ feitos, mas falta\\  a integração \\ com o \textit{Dashboard}.\end{tabular} & \begin{tabular}[c]{@{}l@{}}Após efetuar o processamento de imagem pelo \\microsserviço do \textit{ALPR} e identificar essa placa com o \\microsserviço que acessa o SINESP, serão coletada \\algumas informações do carro, como por exemplo: \\Placa, Cor, Marca, Modelo, Chassi, Ano, Cidade, \\ Estado, Data e Hora da requisição no SINESP.\end{tabular} \\ \hline
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Notificação da infração \\ e de possível acidente.\end{tabular}} & Não iniciado. & \multicolumn{1}{l|}{} \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+
+A Figura \ref{fig:home} apresenta a página inicial do \textit{Dashboard}. Algumas das informações contidas na figura são meramente ilustrativas pois a funcionalidade de captar as informações dos carros não está totalmente feita.
+
+\begin{figure}[H]
+	\center{\includegraphics[scale=0.5]{HomePage.pdf}}
+	\caption{\label{fig:home} Página inicial do \textit{Dashboard} RaDop.}
+\end{figure}
+
+A Figura \ref{fig:login} apresenta a página para o usuário administrador fazer o seu acesso ao \textit{Dashboard}. 
+
+\begin{figure}[H]
+	\center{\includegraphics[scale=0.5]{Login.pdf}}
+	\caption{\label{fig:login} Página de acesso \textit{Dashboard} RaDop.}
+\end{figure}
+
+A Figura \ref{fig:loginadmin} apresenta a página para o usuário administrador fazer o seu acesso à área restrita do \textit{Dashboard}. Apenas o administrador do radar e administrador do \textit{web site} terão acesso à essa página. 
+
+\begin{figure}[H]
+	\center{\includegraphics[scale=0.5]{LoginAdmin.pdf}}
+	\caption{\label{fig:loginadmin} Tela de acesso à área restrita do \textit{Dashboard} RaDop.}
+\end{figure}
+
+A Figura \ref{fig:user} apresenta a página de criação de novos usuários.
+
+\begin{figure}[H]
+	\center{\includegraphics[scale=0.5]{CRUDUser.pdf}}
+	\caption{\label{fig:user} Tela de cadastro dos usuários do \textit{Dashboard} RaDop.}
+\end{figure}
+
+A Figura \ref{fig:radar} apresenta a página de cadastro dos radares. Lembrando que apenas o usuário administrador pode cadastrar tais radares.
+
+\begin{figure}[H]
+	\center{\includegraphics[scale=0.5]{CRUDRadar.pdf}}
+	\caption{\label{fig:radar} Tela de cadastro dos radares do \textit{Dashboard} RaDop.}
+\end{figure}
+
+A Figura \ref{fig:mapa} apresenta a página de visualização dos radares no mapa. Foi usada a \textit{API} do \textit{Google Maps} para mostrar a localização de cada radar no mapa.\footnote{\textit{API}:Interface de Programação de Aplicação (português brasileiro)), cujo acrônimo API provém do Inglês \textit{Application Programming Interface}, é um conjunto de rotinas e padrões estabelecidos por um software para a utilização das suas funcionalidades por aplicativos que não pretendem envolver-se em detalhes da implementação do software, mas apenas usar seus serviços.};
+
+\begin{figure}[H]
+	\center{\includegraphics[scale=0.5]{Mapa.pdf}}
+	\caption{\label{fig:mapa} Tela visualização dos radares do \textit{Dashboard} RaDop.}
+\end{figure}
 
 \section{Aplicativo RaDop}
 
-Conforme mostra a Figura \ref{fig:diagrama-arq-webApp}, o applicativo móvel que irá auxiliar a equipe de manutenção não irá acessar o radar diretamente, mas sim através dos microsserviços. Deste modo, os microsserviços funcionarão como uma espécie de interface entre o radar e o aplicativo.
+Conforme mostra a Figura \ref{fig:diagrama-arq-webApp}, o aplicativo móvel que irá auxiliar a equipe de manutenção não irá acessar o radar diretamente, mas sim através dos microsserviços. Deste modo, os microsserviços funcionarão como uma interface entre o radar e o aplicativo.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\center{\includegraphics[width=\textwidth]{diagrama-arq-webApp.png}}
 	\caption{\label{fig:diagrama-arq-webApp} Diagrama que mostra a arquitetura e tecnologias que serão usadas com o \textit{WebApp}.}
 \end{figure}
 
+\subsection{Execução}
+
+Após a fase de definição do projeto RaDop, a construção da aplicação foi iniciada conforme o esperado. Durante a execução da construção surgiu a necessidade de criar um outro microsserviço de suporte para o aplicativo. Se trata de uma \textit{API Rest} para persistir os dados do funcionamento do \textit{app} e para auxiliar em outras funções, como o registro e autenticação de usuários. Esse serviço será melhor explicado na próxima seção deste documento.
+
+A execução da construção dos requisitos da aplicação foram custosas a equipe, devido ao aprendizado demorado nas tecnologias e dificuldades enfrentadas. Na Tabela \ref{tab:app-radop-status} está o estado da execução de cada um dos requisitos e as imagens da execuções implementadas.
+
+\begin{table}[H]
+\centering
+\caption{Tabela de funcionalidades e estado da construção do aplicativo RaDop.}
+\label{tab:app-radop-status}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|}
+\hline
+Funcionalidade                   & Estado       & Descrição                                                                                                                                                                                         \\ \hline
+Receber dados do radar           & Iniciado     & \begin{tabular}[c]{@{}c@{}}Construção iniciada faltando apenas \\algumas lógicas no serviço da API\end{tabular}                                                                                   \\ \hline
+\begin{tabular}[c]{@{}c@{}}Enviar notificações \\aos usuários\end{tabular} & \begin{tabular}[c]{@{}c@{}}Não \\Iniciado\end{tabular} & \begin{tabular}[c]{@{}c@{}}Por depender da finalização da \\funcionalidade do recebimento dos dados\\ esta funcionalidade ainda não foi iniciada\end{tabular}                                     \\ \hline
+CRUD Manutenção                  & Iniciado     & \begin{tabular}[c]{@{}c@{}}Toda lógica de gerenciamento das\\ manutenções estão feitas, faltando apenas\\ construir as telas na aplicação\end{tabular}                                            \\ \hline
+CRUD Usuário                     & Feito        & \begin{tabular}[c]{@{}c@{}}O gerenciamento de usuários está\\ completo\end{tabular}                                                                                                               \\ \hline
+CRUD Radar                       & \begin{tabular}[c]{@{}c@{}}Não \\Iniciado\end{tabular} & \begin{tabular}[c]{@{}c@{}}Funcionalidade não era prevista e foi criada\\ durante a execução das demais, será iniciada\\ na próxima iteração da construção de módulos\\ da aplicação\end{tabular} \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+A Figura \ref{fig:app-sign-up} apresenta a tela construída para cadastro.
+
+\begin{figure}[H]
+	\center{\includegraphics[scale=0.5]{signup.png}}
+	\caption{\label{fig:app-sign-up} Tela construída para cadastrado de usuários no aplicativo.}
+\end{figure}
+
+A Figura \ref{fig:app-log-in} apresenta a tela construída para autenticação de usuários.
+
+\begin{figure}[H]
+	\center{\includegraphics[scale=0.5]{login.png}}
+	\caption{\label{fig:app-log-in} Tela construída para autenticação de usuários no aplicativo.}
+\end{figure}
+
+A Figura \ref{fig:app-tela-principal} apresenta a tela construída para mostrar todos os radares próximos aos funcionários.
+
+\begin{figure}[H]
+	\center{\includegraphics[scale=0.5]{tela-principal.png}}
+	\caption{\label{fig:app-tela-principal} Tela construída para mostrar todos os radares próximos aos funcionários mantenedores (a partir do mapa).}
+\end{figure}
+
+
 \section{Microsserviços}
 
-Conforme definido na fase de iniciação de projeto do radar RaDop, e anteriormente citado, além do aplicativo e do \textit{WebApp} de \textit{Dashboard}, alguns dos outros serviços de software serão montados no formato de microsserviços, cuja arquitetura está esquematizada na Figura \ref{fig:diagrama-arq-microsservicos}.
+Conforme definido na fase de iniciação de projeto do radar RaDop e anteriormente citado, além do aplicativo e do \textit{WebApp} de \textit{Dashboard}, alguns dos outros serviços de software serão montados no formato de microsserviços, cuja arquitetura está esquematizada na Figura \ref{fig:diagrama-arq-microsservicos}.
 
-\newpage
 
-\begin{figure}[h]
+
+\begin{figure}[H]
 	\center{\includegraphics[width=\textwidth]{diagrama-arq-microsservicos.png}}
 	\caption{\label{fig:diagrama-arq-microsservicos} Diagrama que mostra a arquitetura e tecnologias que serão usadas com os microsserviços.}
 \end{figure}
 
 Logo, a partir da elicitação dos requisitos, tanto do projeto quanto dos outros produtos de software, a equipe levantou quais são os microsserviços que devem ser construídos. Lembrando que microsserviço é uma abordagem para desenvolver uma única aplicação como uma suíte de serviços, cada um rodando em seu próprio processo e se comunicando entre eles através de mecanismos leves. Segundo Fowler e Lewis \cite{fowler2015}, estes serviços são construídos através de pequenas responsabilidades e publicados em produção de maneira independente.
 
-Alguns dos microsserviços serão produzidos no formato de \textit{FaaS} (\textit{Function as a Service}), função como serviço, segundo Freitas \cite{freitas2018} estas funções são um serviço de computação em nuvem que busca abstrair a questão de servidor e máquinas onde rodam os seus programas. Em detalhes, ela deriva da filosofia \textit{Servless}, que delega ao provedor de computação em nuvem (\textit{Cloud Provider}) provisionar uma plataforma que permita ao cliente: desenvolver, rodar e gerenciar aplicações. Nestes moldes, reduz-se a complexidade de uma pessoa ter que montar e manter a infraestrutura, atual padrão de todo mercado corporativo. Montando uma aplicação com este padrão, implementamos a teoria \textit{Servless} e criamos uma arquitetura nativa de microsserviços.
-
-Alguns dos microsserviços serão produzidos no formato de \textit{FaaS} (\textit{Function as a Service}), função como serviço. Segundo Freitas (2018) estas funções são um serviço de computação em nuvem que buscam abstrair a questão de servidor e máquinas onde rodam os seus programas. Em detalhes, ela deriva da filosofia \textit{Servless}, que delega ao provedor de computação em nuvem (\textit{Cloud Provider}) provisionar uma plataforma que permita ao cliente: desenvolver, rodar e gerenciar aplicações. Nesses moldes, reduz-se a complexidade de uma pessoa ter que montar e manter a infraestrutura, atual padrão de todo mercado corporativo. Montando uma aplicação com este padrão, será implementada a teoria \textit{Servless} e criada uma arquitetura nativa de microsserviços.
+Alguns dos microsserviços serão produzidos no formato de \textit{FaaS} (\textit{Function as a Service}), função como serviço. Segundo Freitas \cite{freitas2018}, essas funções são um serviço de computação em nuvem que busca abstrair a questão de servidor e máquinas onde rodam os seus programas. Em detalhes, ela deriva da filosofia \textit{Servless}, que delega ao provedor da computação em nuvem (\textit{Cloud Provider}) provisionar uma plataforma que permita ao cliente: desenvolver, rodar e gerenciar aplicações. Nestes moldes, reduz-se a complexidade de uma pessoa ter que montar e manter a infraestrutura, atual padrão de todo mercado corporativo. Montando uma aplicação com este padrão, será implementada a teoria \textit{Servless} e criada uma arquitetura nativa de microsserviços.
 
 Os microsserviços que serão construídos para este projeto são:
 
 \begin{itemize}
+    \item Microsserviço para a orquestração dos demais microsserviços (Maestro);
     \item Microsserviço para processar imagens de automóveis enviados radar (ALPR);
     \item Microsserviço para verificar a situação de veículos no banco de placas do SINESP;
     \item Microsserviço de banco de dados para armazenamentos de informações dos serviços (\textit{RethinkDB});
     \item Microsserviço de fila de mensagens (\textit{MQ - Message Queue});
-    \item Microsserviço de banco de dados para o aplicativo RaDop (armazena as manutenções e informações relacionadas com a aplicação);
+    \item Microsserviço de servidor para o aplicativo RaDop (armazena as manutenções e informações relacionadas com a aplicação);
     \item Microsserviço de notificação de veículos flagrados excedendo a velocidade da via ou identificados como em situação irregular;
     \item Microsserviço de notificação de possíveis/prováveis acidentes.
 \end{itemize}
 
 Devido à filosofia dos microsserviços e às necessidades específicas de cada serviço, cada um será programado na linguagem e utilizando o \textit{framework} que melhor atenda à equipe e às expectativas do produto.
-Caso haja necessidade de remoção, criação ou especialização dos serviços, a equipe de software fará as devidas alterações e comunicará aos demais membros equipe, assim como fará as devidas alterações nas documentações do projeto.
+Caso haja necessidade de remoção, criação ou especialização dos serviços, a equipe de software fará as devidas alterações e comunicará aos demais membros equipe que possam ser afetados, assim como fará as devidas alterações nas documentações do projeto.
+
+\subsection{Maestro}
+Para o funcionamento bem sucedido dos microsserviços do projeto, eles terão que interagir entre si e também com sistemas externos -- radar, \textit{Dashboard} e \textit{WebApp}. Mas a maneira como se dará essa relação irá variar de acordo com a situação. Como a base dos microsserviços é mantê-los granulares e o mais independentes possível, será usado no projeto um orquestrador, chamado Maestro.
+
+\subsubsection{Uso no RaDop}
+A função do orquestrador será articular os diversos subsistemas e o radar, de modo a alcançar um determinado objetivo. Esse objetivo será determinado pela mensagem que for recebida pelo Maestro, que é o ponto de partida para ele começar a orquestrar o trabalho. Por isso, ele terá conhecimento de todos os microsserviços e sistemas externos, pois terá que se comunicar com eles para completar suas tarefas.
+
+\subsubsection{Execução}
+Para o correto funcionamento do Maestro, foi necessário primeiro fazer com que ele se comunique com o RabbitMQ. Isso porque as mensagens, que carregam as ordens de trabalho e dados para o orquestrador, chegarão através desse gerenciador de mensagens.
+
+Recebida a mensagem, o orquestrador aciona os microsserviços necessários para cumprirem a tarefa. Quais e em que momento eles serão acionados vai depender de qual foi a mensagem recebida inicialmente. Caso algum dado deva ser passado entre microsserviços ou entre esses e sistemas externos, é o orquestrador que o fará.
+
+Na Tabela \ref{tab:maestro-status}, estão o estado atual do desenvolvimento de componentes do Maestro.
+
+\begin{table}[H]
+\centering
+\caption{Funcionalidades do Maestro e seus estados.}
+\label{tab:maestro-status}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|}
+\hline
+Funcionalidade & Estado & Descrição \\ \hline
+\begin{tabular}[c]{@{}c@{}}Comunicação com a \\fila de mensagens.\end{tabular} & Feito. & \begin{tabular}[c]{@{}c@{}}A funcionalidade inclui: estabelecer conexão, \\um canal e contato com a fila do \\gerenciador de mensagens.\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}c@{}}Processamento das mensagens \\recebidas.\end{tabular} & Feito. & \begin{tabular}[c]{@{}c@{}}A funcionalidade consiste em extrair o \textit{JSON} \\do \textit{payload} da  mensagem que é repassada \\pelo microsserviço gerenciador de mensagens.\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}c@{}}Integração com os outros \\microsserviços.\end{tabular} & Iniciado. & \begin{tabular}[c]{@{}c@{}}A funcionalidade permite estabelecer a comunicação \\entre o Maestro e os demais microsserviços \\para que possa haver a orquestração desses.\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}c@{}}Comunicação com serviços \\externos.\end{tabular} & \begin{tabular}[c]{@{}c@{}}Não \\Iniciado.\end{tabular} & \begin{tabular}[c]{@{}c@{}}A funcionalidade consiste em enviar \\dados do orquestrador para o radar, \\\textit{Dashboard} ou o \textit{WebApp}.\end{tabular} \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+%Na Figura \ref{fig:maestro-tela} está uma tela que mostra o maestro em funcionamento após receber e processar uma imagem recebida do gerenciador de mensagens.
+
+%\begin{figure}[!h]
+%	\center{\includegraphics[scale=0.24]{maestro-tela.png}}
+%	\caption{\label{fig:maestro-tela} Imagem do console mostrando as saídas do Maestro após receber e processar uma mensagem.}
+%\end{figure}
 
 \subsection{ALPR}
 
-ALPR são tecnologias que utilizam o OCR (\textit{Optical Character Recognition} ou reconhecimento óptico de caracteres) em imagens para reconhecer placas de veículos automotores regulados. A sigla ALPR significa \textit{Automated License Plate Recognition}, ou seja, sistemas que a partir da leitura de caracteres reconhecem placas de veículos automotores.
+ALPR são tecnologias que utilizam o OCR (\textit{Optical Character Recognition} ou reconhecimento óptico de caracteres) em imagens para reconhecer placas de veículos automotores regulados. A sigla ALPR significa \textit{Automated License Plate Recognition}, que são sistemas que a partir da leitura de caracteres reconhecem placas de veículos automotores.
 
 \subsubsection{Uso no RaDop}
 
 Dentro do projeto do radar RaDop, a equipe levantou a necessidade de fazer uso de tecnologias de reconhecimento de placas para informar às autoridades competentes sobre veículos infratores registrados pelo radar.
 
-Com isso, imagens serão capturadas por uma câmera conectada ao radar. Em seguida, serão enviadas para o processamento e reconhecimento por um serviço que será construído pela equipe de software do projeto.
+Com isso, imagens dos veículos infratores serão capturadas por uma câmera conectada ao radar. Em seguida, serão enviadas para o processamento e reconhecimento por um serviço que será construído pela equipe de software do projeto.
 
-A equipe de software, após analisar ferramentas de OCR e ALPR optou por usar o \textit{OpenALPR}, devido a completude da ferramenta e devido à restrições financeiras, onde o OpenALPR apresenta um subproduto gratuito que atende às necessidade da equipe.
+A equipe de software, após analisar ferramentas de OCR e ALPR optou por usar o \textit{OpenALPR}, devido à completude da ferramenta e à restrições financeiras -- o \textit{OpenALPR} apresenta um subproduto gratuito que atende às necessidades da equipe.
 
-Outros fatores relevantes para a decisão do uso do \textit{OpenALPR} foram o tempo e as dificuldades caso seja feito o treinamento de uma máquina em OCR para realizar o ALPR dentro do prazo disponível. Se a equipe optasse por realizar esse treinamento, o custo do projeto aumentaria consideravelmente e possivelmente teriam atrasos no cronograma da equipe, correndo-se o risco até do aprendizado da máquina não ser completamente executado. Os principais complicadores são:
+Outros fatores relevantes para a decisão do uso do \textit{OpenALPR} foram o tempo curto disponível e as dificuldades caso seja feito o treinamento de uma máquina em OCR para realizar o ALPR dentro do prazo disponível. Se a equipe optasse por realizar esse treinamento, o custo do projeto aumentaria consideravelmente e possivelmente teriam atrasos no cronograma da equipe, correndo-se o risco até do aprendizado da máquina não ser completamente executado. Os principais complicadores são:
 
 \begin{itemize}
-    \item Necessidade de ter muitas imagens de placas automobilísticas do Brasil para que seja obtido um bom modelo a partir do treinamento;
-    \item Tempo necessário para realizar treinamentos e reajustes no algoritmo usado (e, dependendo do caso, até mudança de algoritmo) para que seja obtido um modelo confiável (ou seja, com muitos acertos e boa generalização para imagens que não tenham sido usadas no aprendizado) para ser utilizado com as fotos que serão enviadas pelos radares;
-    \item Requerimentos de hardware (em especial placa de vídeo, memória RAM e processador) para o treinamento da máquina e no reconhecimento das placas. No presente momento, a equipe não possui esse equipamento à disposição e a compra dele não cabe no orçamento do projeto.
+    \item Necessidade de ter muitas imagens de placas automobilísticas usadas no Brasil para que seja obtido um bom modelo a partir do treinamento;
+    \item Tempo necessário para realizar treinamentos e reajustes no algoritmo usado -- e, dependendo do caso, até mudança de algoritmo -- para que seja obtido um modelo confiável (ou seja, com muitos acertos e boa generalização para imagens que não tenham sido usadas no aprendizado) para ser utilizado com as fotos que serão enviadas pelos radares;
+    \item Requerimentos de hardware (em especial placa de vídeo, memória RAM e processador) para o treinamento da máquina e no reconhecimento das placas. No presente momento, a equipe não possui esse equipamento à disposição e a compra dele encareceria bastante o orçamento do projeto.
 \end{itemize}
 
-O sistema será integrado ao servidor de serviços do RaDop com a construção de uma API que se comunica com o \textit{OpenALPR} e é tratada dentro dos demais serviços de apoio do RaDop.
+O sistema será integrado ao servidor de serviços do RaDop com a construção de uma API que se comunicará com o \textit{OpenALPR} e é tratada dentro dos demais serviços de apoio do RaDop.
+
+\subsubsection{Execução}
+
+Para sanar a necessidade de identificação das placas foi construído o serviço \textit{Fn-ALPR}. A \textit{Fn-ALPR} é a função responsável por tratar as imagens recebidas do radar e enviar à API do \textit{ALPR} para que seja feito o reconhecimento (OCR) dos caracteres da placa. Logo, com o dado enviado para este serviço será retornado um relatório com as placas encontradas na imagem. Portanto o serviço foi criado e integrado aos demais serviços para satisfazer as necessidades do radar.
+
+A Tabela \ref{tab:fn-alpr-status} possui o estado de construção e as funcionalidades do \textit{ALPR}.
+
+\begin{table}[H]
+\centering
+\caption{Tabela de funcionalidades e estado da construção do serviço do Fn-ALPR}
+\label{tab:fn-alpr-status}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|}
+\hline
+Funcionalidade & Estado & Descrição\\ \hline
+\begin{tabular}[c]{@{}c@{}}Pré-processar imagem recebida\\ e decriptar chave da API do ALPR\end{tabular} & Feito  & \begin{tabular}[c]{@{}c@{}}A partir da chamada da função com os dados,\\ executar o pré-processamento e a decriptação\\ da chave de comunicação com API\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}c@{}}Reconhecer placa e caracteres de\\ imagens geradas pelo radar\end{tabular}    & Feito  & \begin{tabular}[c]{@{}c@{}}A partir da imagem gerada no radar,\\ reconhecer caracteres e enviar informações\\ para os outros serviços\end{tabular}                   \\ \hline
+\begin{tabular}[c]{@{}c@{}}Permitir conexão e comunicação\\ com os demais microsserviços\end{tabular}    & Feito  & \begin{tabular}[c]{@{}c@{}}Estar implementado e disponível para a arqui-\\tetura dos demais serviços do RaDop\end{tabular}                                             \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+\subsubsection{Testes}
+
+Para validação da função criada para reconhecer as placas dos veículos, foram feitos testes com uso de imagens feitas pela camêra que vai ser usada no radar. Na Figura \ref{fig:teste-alpr-foto-carro} está presente a imagem de um dos testes, assim como a representação do resultado obtido quando invocada a função \textit{Fn-ALPR}.
+
+\begin{figure}[H]
+	\center{\includegraphics[scale=0.21]{teste-alpr.jpg}}
+	\caption{\label{fig:teste-alpr-foto-carro} Imagem tirada com a camêra do radar e que foi enviada ao serviço para reconhecimento da placa.}
+\end{figure}
+
+No apêndice \ref{teste_alpr} está o código de resposta do servidor após a execução da \textit{Fn-ALPR} com os resultados que foram capturados a partir da imagem. Dentro da chave \textit{results} há o objeto JSON com o resultado provável da análise da imagem. Caso necessário, abaixo, existe a chave \textit{candidates}, que são outros prováveis resultados para a placa do carro.
+
+\subsection{SINESP}
+
+Após a execução do processamento de imagem através do \textit{ALPR}, é preciso obter informações do veículo flagrado. Para obter essas informações será preciso se comunicar com o SINESP.
+
+Dentro do projeto do Radar, a equipe percebeu a necessidade de um microsserviço para efetuar a comunicação com o banco de dados do SINESP. A Função SINESP, ou Fn-SINESP, é a responsável por avaliar junto com esse banco de dados a situação de cada veículo. Dado o modelo de dados enviado, o serviço irá pesquisar junto ao SINESP informação cadastrais, assim como situação, restrições, ano, modelo, cor e outras informações sobre o veículo informado.
+
+\subsubsection{Teste}
+
+Foram efetuados diversos testes de comunicação do microsserviço SINESP. A Figura \ref{fig:sinesp} tem um registro de como é feita a busca no banco de dados do SINESP e as informações retornadas por ele.
+
+\begin{figure}[H]
+	\center{\includegraphics[width=\textwidth]{fn-sinesp.png}}
+	\caption{\label{fig:sinesp} Resultado encontrado pelo SINESP ao pesquisar a placa JGG-3482.}
+\end{figure}
+
+A Tabela \ref{tab:fn-sinesp-status} apresenta as funcionalidades e estado da construção do serviço do Fn-SINESP.
+
+\begin{table}[H]
+\centering
+\caption{Tabela de funcionalidades e estado da construção do serviço do Fn-SINESP}
+\label{tab:fn-sinesp-status}
+\begin{tabular}{|c|c|c|}
+\hline
+Funcionalidade & Estado & Descrição \\ \hline
+\begin{tabular}[c]{@{}c@{}}Comunicação com \\ SINESP\end{tabular} & Feito. & \begin{tabular}[c]{@{}c@{}}Comunicação com o banco de dados\\ do SINESP para identificação\\ das placas dos carros capturadas\\ pela camêra.\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}c@{}}Permitir conexão e\\ comunicação com\\ os demais \\ microsserviços\end{tabular} & Feito. & \begin{tabular}[c]{@{}c@{}}Estar implantado e disponível para a \\ arquitetura dos demais serviços\\ do RaDop.\end{tabular} \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{\textit{Rethink Data Manager}}
+
+O microsserviço \textit{Rethink Data Manager}, ou RDM,  é o serviço responsável por comunicar todos os sistemas com o banco de dados \textit{RethinkDB} do projeto (banco de dados NoSQL), além de suprir, via \textit{websocket}, um servidor para todas as operações do banco de dados.
+
+Com isso, o RDM supre os demais sistemas com todas as operações comuns de um banco de dados -- as quais a equipe julgou necessário estar presente no sistema -- para que fosse possível persistir os dados dos microsserviços. 
+
+A tecnologia \textit{websocket} é um protocolo que permite a comunicação bidirecional entre um cliente e um servidor. O modelo trabalha com um soquete TCP e foi inicialmente projetado para ser executado em navegadores web. O objetivo dessa tecnologia é fornecer um mecanismo para aplicações que precisam de comunicações bidirecionais com servidores que não dependam da abertura de várias conexões HTTP. O RDM utiliza desse formato de comunicação para receber e enviar dados que ele gerencia do banco de dados.
+
+Na Tabela \ref{tab:rdm-status} está representado os estados da construção das funcionalidades esperadas desse microsserviço.
+
+\begin{table}[!h]
+\centering
+\caption{Tabela de funcionalidades e estado da construção do serviço do \textit{Rethink Data Manager}.}
+\label{tab:rdm-status}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|}
+\hline
+Funcionalidade & Estado & Descrição\\ \hline
+\begin{tabular}[c]{@{}c@{}}Permitir a conexão de clientes\\ via \textit{WebSocket}\end{tabular}               & Feito  & \begin{tabular}[c]{@{}c@{}}Manter um soquete no qual seja possível\\ conectar diversos clientes\end{tabular}                           \\ \hline
+\begin{tabular}[c]{@{}c@{}}Conseguir enviar e receber\\ dados via \textit{WebSocket}\end{tabular}             & Feito  & \begin{tabular}[c]{@{}c@{}}Manter um canal no soquete no qual seja\\ possível enviar e receber informações\\ dos clientes\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}c@{}}Conseguir se comunicar com\\ o \textit{RethinkDB}\end{tabular}                     & Feito  & \begin{tabular}[c]{@{}c@{}}Conseguir acessar o banco de dados para\\ realizar as operações desejadas\end{tabular}                      \\ \hline
+Permitir a inserção de dados                                                                         & Feito  & \begin{tabular}[c]{@{}c@{}}Permitir a inserção de novos dados no\\ \textit{RethinkDB}\end{tabular}                                              \\ \hline
+Permitir a alteração de dados                                                                        & Feito  & \begin{tabular}[c]{@{}c@{}}Permitir a alteração de dados no\\ \textit{RethinkDB}\end{tabular}                                                   \\ \hline
+Permitir a seleção de dados                                                                          & Feito  & \begin{tabular}[c]{@{}c@{}}Permitir a busca e seleção de dados\\ no \textit{RethinkDB}\end{tabular}                                             \\ \hline
+Permitir a deleção de dados                                                                          & Feito  & \begin{tabular}[c]{@{}c@{}}Permitir a remoção de dados no\\ \textit{RethinkDB}\end{tabular}                                                     \\ \hline
+\begin{tabular}[c]{@{}c@{}}Permitir a verificação do estado\\ do serviço (\textit{health check})\end{tabular} & Feito  & \begin{tabular}[c]{@{}c@{}}Manter um canal no qual os clientes\\ consigam verificar o estado de execução\\ do serviço\end{tabular}     \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+A Figura \ref{fig:rdm-server} mostra os \textit{logs} de execução do servidor do RDM. 
+
+\begin{figure}[H]
+	\center{\includegraphics[scale=0.4]{rethink-manager-server.png}}
+	\caption{\label{fig:rdm-server} Terminal com \textit{logs} de execução do servidor do RDM.}
+\end{figure}
+
+A Figura \ref{fig:rdm-cliente} mostra os \textit{logs} de execução de um cliente executando comandos no RDM. 
+
+\begin{figure}[H]
+	\center{\includegraphics[scale=0.4]{rethink-manager-client.png}}
+	\caption{\label{fig:rdm-cliente} Terminal com \textit{logs} de execução de um cliente executando comandos no RDM.}
+\end{figure}
+
+A Figura  \ref{fig:explorer-rethinkdb} mostra a tela de exploração do banco de dados \textit{RethinkDB}.
+
+\begin{figure}[H]
+	\center{\includegraphics[scale=0.4]{rethinkdb-data-explorer.png}}
+	\caption{\label{fig:explorer-rethinkdb} Tela de exploração de dados no banco de dados \textit{RethinkDB}.}
+\end{figure}
+
+\subsection{RaDop App \textit{Server}}
+
+O RaDop App \textit{Server}, ou RAS, é o serviço responsável pelo \textit{back-end} do aplicativo RaDop. Nesse serviço está contemplado os \textbf{CRUDs} (\textit{Create}, \textit{Read}, \textit{Update} e \textit{Delete}) necessário para o funcionamento do RaDop App, assim como as funções de autenticação de usuário.
+
+Com isso, o RAS dá o suporte necessário para a persistência de dados da aplicação do RaDop, além de fornecer um serviço de autenticação seguro. Isso permitirá que o app seja mais completo e atenda todas as necessidades levantadas pela equipe do projeto.
+
+Na Tabela \ref{tab:app-server-status} está representado os estados da construção das funcionalidades esperadas desse microsserviço. 
+
+\begin{table}[H]
+\centering
+\caption{Tabela de funcionalidades e estado da construção do serviço RaDop App \textit{Server}}
+\label{tab:app-server-status}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|}
+\hline
+Funcionalidade & Estado & Descrição\\ \hline
+CRUD Radar & Não Iniciado & \begin{tabular}[c]{@{}c@{}}Gerenciar os radares permitindo criar, atualizar,\\ deletar e consultar informações. Atividade não\\ iniciada devido sua necessidade ter sido constatada\\ durante a construção de outros serviços\end{tabular} \\ \hline
+CRUD Usuário & Feito & \begin{tabular}[c]{@{}c@{}}Gerenciar os usuários permitindo criar,\\ atualizar, deletar e consultar informações de\\ conta\end{tabular} \\ \hline
+CRUD Manutenção & Feito & \begin{tabular}[c]{@{}c@{}}Gerenciar as manutenções permitindo criar,\\ atualizar, deletar e consultar informações de\\ manutenções\end{tabular} \\ \hline
+Autenticação de Usuários & Feito & \begin{tabular}[c]{@{}c@{}}Autenticar usuários por meio de identificação\\ única e senha\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}c@{}}Permitir conexão e comunicação\\ com os demais microsserviços\end{tabular} & Feito        & \begin{tabular}[c]{@{}c@{}}Estar implantado e disponível para o\\ App RaDop\end{tabular} \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+A Figura \ref{fig:radop-app-server} apresenta a execução do serviço dentro do servidor RaDop por meio de \textit{logs} de funcionamento.
+
+\begin{figure}[H]
+	\center{\includegraphics[scale=0.4]{radop-app-server.png}}
+	\caption{\label{fig:radop-app-server} \textit{Logs} de execução do RaDop App \textit{Server} indicando a sua disponibilidade.}
+\end{figure}
 
 \subsection{Protocolo de Comunicação de Software}
 
-O \textit{stack} de produtos de software que serão produzidos deverão, em certos momentos da execução, se comunicar internamente. Para a correta execução destes a equipe de software previu interfaces para a comunicação dos produtos de software, algumas que posteriormente serão utilizadas comumente pela equipe de eletrônica.
-Os tipos de interfaces para a comunicação dos serviços, com uma breve explanação, são:
+O \textit{stack} de produtos de software que serão produzidos deverão, em certos momentos da execução, comunicarem-se internamente. Para a correta execução, a equipe de software previu interfaces para a comunicação dos produtos de software, algumas que posteriormente serão utilizadas também para a integração com a equipe de eletrônica.
+Os tipos de interfaces para a comunicação dos serviços são:
 \begin{itemize}
     \item \textbf{HTTP}:
-    A sigla para \textit{Hypertext Transfer Protocol}, se trata de um protocolo de comunicação (na camada de aplicação segundo o Modelo OSI) de tranferência de hipertexto utilizado para sistemas de informação de hipermídia, distribuídos e colaborativos.
+    A sigla para \textit{Hypertext Transfer Protocol}, se trata de um protocolo de comunicação (na camada de aplicação segundo o Modelo OSI) de transferência de hipertexto utilizado para sistemas de informação de hipermídia, distribuídos e colaborativos.
     \begin{enumerate}
-        \item \textbf{Aplicativo RaDop}: Se comunicará com a nuvem de serviços a partir do HTTP. Fazendo requisições de serviços via HTTP.
+        \item \textbf{Aplicativo RaDop}: Se comunicará com a nuvem de serviços a partir do HTTP, usando ele para fazer requisições de serviços;
         \item \textbf{\textit{WebApp Dashboard}}: Se comunicará com os serviços no mesmo formato do aplicativo, através de requisições com envio de pacotes HTTP.
     \end{enumerate}
+
     \item \textbf{HTTPS}:
-    Uma evolução do \textit{HTTP}, o \textit{Hypertext Transfer Protocol Secure}, ou HTTPS, é uma implementação do HTTP sobre uma camada adicional de segurança que utiliza o protocolo SSL/TLS.
+    Uma evolução do HTTP, o \textit{Hypertext Transfer Protocol Secure}, ou HTTPS, é uma implementação do HTTP sobre uma camada adicional de segurança que utiliza o protocolo SSL/TLS.
     \begin{enumerate}
-        \item \textbf{Banco de Dados NoSQL}: Esse protocolo será utilizado para a comunicação da nuvem de serviços com o banco de dados (\textit{RethinkDB\footnote{\textit{RethinkDB é um banco de dados \textit{NoSQL} utilizado para aplicações em tempo real.}}}) e vice versa. Ele trabalha de uma forma similar aos serviços acima, mas como implementado no próprio protocolo, necessita de uma camada adicional de segurança devido à natureza dos dados.
+        \item \textbf{Banco de Dados NoSQL}: Esse protocolo será utilizado para a comunicação entre a nuvem de serviços e o banco de dados (\textit{RethinkDB\footnote{\textit{RethinkDB é um banco de dados \textit{NoSQL} utilizado para aplicações em tempo real.}}}). Ele trabalha de uma forma similar aos serviços acima mas, como implementado no próprio protocolo, necessita de uma camada adicional de segurança devido à natureza dos dados.
     \end{enumerate}
+
     \item \textbf{TCP/IP}:
-    A abrevição de \textit{Transmission Control Protocol}, que complementado pelo protocolo da internet, \textit{IP} (\textit{Internet Protocol}), é um dos protocolos os quais assenta a internet. O TCP é um protocolo da camada de transporte (camada 4) do Modelo OSI, que padroniza o envio de conteúdo via rede da internet. Ele provê a confiabilidade devido a padronização do envio em sequência da informação, verificação de erro nos pacotes de dados e formato de recebimento em nós conectados à rede.
+    A abreviação de \textit{Transmission Control Protocol}, que complementado pelo protocolo da internet \textit{IP} (\textit{Internet Protocol}), é um dos protocolos nos quais se assenta a internet. O TCP é um protocolo da camada de transporte (camada 4) do Modelo OSI, que padroniza o envio de conteúdo via rede da internet. Ele provê a confiabilidade devido à padronização do envio em sequência da informação, da verificação de erro nos pacotes de dados e do formato de recebimento em nós conectados à rede.
     \begin{enumerate}
-        \item \textbf{Banco de Dados SQL}: Esse protocolo será utilizado para a comunicação do banco de dados da aplicação do \textit{Dashboard}, devido as estes serviços serem executados em nós de rede diferentes. Dessa forma a comunicação se dará diretamente entre a aplicação e a máquina executora do banco de dados SQL (\textit{PostgreSQL}).
+        \item \textbf{Banco de Dados SQL}: Esse protocolo será utilizado para a comunicação do banco de dados da aplicação do \textit{Dashboard}, devido à esses serviços serem executados em nós de rede diferentes. Dessa forma, a comunicação se dará diretamente entre a aplicação e a máquina executora do banco de dados SQL (\textit{PostgreSQL}).
     \end{enumerate}
 \end{itemize}
 
-Para representar as comunicações acima descritas a equipe de software elaborou um diagrama UML componente/comunicação que pode ser analisado na Figura \ref{fig:diagrama-comm-soft}. Ele retrata as interfaces e os componentes previstos para os produtos de software.
+Para representar as comunicações acima descritas, a equipe de software elaborou uma representação arquitetural componente/comunicação que pode ser visto na Figura \ref{fig:diagrama-comm-soft}. Ele retrata as interfaces e os componentes previstos para os produtos de software.
 
 \subsection{Protocolo de Comunicação Software - Radar}
 
-Para o correto funcionamento do radar e dos softwares que apoiam o funcionamento desse, será necessário que haja comunicação entre eles. Por isso, foi-se pensado e criado um protocolo de comunicação radar - softwares, para orientar as equipes responsáveis por essas partes do projeto.
+Para o correto funcionamento do radar e dos programas que apoiam o funcionamento dele, será necessário haver comunicação entre eles. Por isso, foi-se pensado e criado um protocolo de comunicação radar - software, para orientar as equipes responsáveis fazer a integração da parte eletrônica do radar com os softwares.
 
-A Figura \ref{fig:diagrama-com-soft-radar} mostra o diagrama da comunicação software - radar:
+A Figura \ref{fig:diagrama-com-soft-radar} mostra a representação da comunicação software - radar:
 
-\begin{figure}[ht]
+\begin{figure}[H]
 	\center{\includegraphics[width=\textwidth]{diagrama-comunicacao-software-radar.png}}
-	\caption{\label{fig:diagrama-com-soft-radar} Diagrama que mostra como será a comunicação entre o servidor RaDop e o radar.}
+	\caption{\label{fig:diagrama-com-soft-radar} Representação de como será a comunicação entre o servidor RaDop e o radar.}
 \end{figure}
 
 A comunicação será feita entre o servidor do RaDop e o Radar via protocolo TCP/IP. Ambos terão um endereço IP pelo do qual serão acessados. Esses endereços terão um único \textit{endpoint} para ser acessado nas comunicações, independente do tipo de dado enviado.
 
-Como haverá um único \textit{endpoint} de ambos os lados, a diferenciação do tipo de comunicação sendo realizada será feita por intermédio do JSON enviado. Nele, haverá um atributo denominado "tipo", e através dele será determinado sobre qual tipo de comunicação aquele dado se trata.
+Como haverá um único \textit{endpoint} de ambos os lados, a diferenciação do tipo de comunicação sendo realizada será por intermédio do JSON que estará no \textit{payload} da mensagem enviada. Nele, haverá um atributo denominado "type", e através dele será determinado do que se trata a comunicação que está sendo feita.
 
 Por fim, para confirmar o recebimento de um pacote, o recebedor deverá mandar uma resposta que irá atestar que o dado foi recebido.
 
@@ -246,33 +526,33 @@ Por fim, para confirmar o recebimento de um pacote, o recebedor deverá mandar u
 
 Os produtos de software desenvolvidos pela equipe terão os seus dados divididos em dois bancos de dados, devido ao formato da construção de alguns sistemas.
 
-Os sistemas de microsserviços trabalham de forma descentralizada e, em sua maioria, trabalharão com objetos JSON. Devido a este formato de trabalho, o banco de dados escolhido foi o \textit{RethinkDB}. Ele é um banco de dados \textit{NoSQL} de chave e valor, muito parecido com a natureza descritiva do JSON. Por consequência, a aplicação RaDop -- que estará fortemente apoiada nos microsserviços -- fará uso do mesmo banco de dados mas em um domínio próprio para os seus dados.
+Os sistemas de microsserviços trabalham de forma descentralizada e, em sua maioria, trabalharão com objetos JSON. Devido a este formato de trabalho, o banco de dados escolhido foi o \textit{RethinkDB}. Ele é um banco de dados \textit{NoSQL} de chave e valor, muito parecido com a natureza descritiva do JSON. Por consequência, a aplicação RaDop -- que estará fortemente apoiada nos microsserviços -- fará uso do mesmo banco de dados, mas em um domínio próprio para os próprios dados.
 
-O sistema do \textit{Dashboard}, devido ao estilo arquitetural MVT (\textit{Model}, \textit{View} e \textit{Template}) e o mapeamento objeto-relacional, ORM (\textit{Object-Relational Mapping}), do \textit{Django}, a aplicação trabalha melhor com bancos de dados relacionais. Por isso, a equipe optou por usar um banco de dado relacional SQL, o \textit{PostgreSQL}. Ele fará parte do \textit{stack} de serviços que darão apoio ao \textit{Dashboard}.
+O sistema do \textit{Dashboard}, devido ao estilo arquitetural MVT (\textit{Model}, \textit{View} e \textit{Template}) e o mapeamento objeto-relacional (ORM, ou \textit{Object-Relational Mapping}) do \textit{Django}, a aplicação trabalha melhor com bancos de dados relacionais. Por isso, optou-se por usar um banco de dado relacional SQL, o \textit{PostgreSQL}. Ele fará parte do \textit{stack} de serviços que darão apoio ao \textit{Dashboard}.
 
 A partir dessa escolha a equipe elaborou, com base nos requisitos e necessidades até aqui levantados, um modelo de classe que englobe os dois bancos de dados, que está melhor descrito na subseção abaixo.
 
 \subsection{Diagrama de Classes}
 
-A equipe de software do RaDop construiu a Figura \ref{fig:diagrama-classe-soft} para tentar representar melhor como será o modelo de dados/objetos das aplicações de software. Devido ao fato que grande parte dos sistemas trabalham com tecnologias de JSON para o armazenamento de objetos, as classes derivaram destes arquivos definidos durante a execução dos sistemas.
+A equipe de software do RaDop construiu a Figura \ref{fig:diagrama-classe-soft} para representar como será o modelo de dados/objetos das aplicações de software. Devido ao fato de que grande parte dos sistemas trabalham com tecnologias de JSON para o armazenamento de objetos, as classes derivaram destes arquivos definidos durante a execução dos sistemas.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\center{\includegraphics[scale=0.5]{diagrama-de-classes-PC2.pdf}}
 	\caption{\label{fig:diagrama-classe-soft} Diagrama UML de classes dos produtos de software.}
 \end{figure}
 
 
-JSON é um acrônimo de \textit{JavaScript Object Notation}, é um formato compacto, de padrão aberto independente, de troca de dados simples e rápida (\textit{parsing}) entre sistemas, especificado por Douglas Crockford em 2000, que utiliza texto legível a humanos, no formato atributo-valor (natureza auto-descritiva)\footnote{\cite{jsonorg}}.
+O JSON é um acrônimo de \textit{JavaScript Object Notation}. É um formato compacto, de padrão simples, rápido, aberto e independente de troca de dados (\textit{parsing}) entre sistemas. Ele foi especificado por Douglas Crockford em 2000 e utiliza texto legível a humanos, no formato atributo-valor (natureza auto-descritiva)\cite{jsonorg}.
 
-A partir disso a equipe elaborou de uma forma simples e explicativa como se dariam as classes de objetos e suas relações por meio da representação em UML. Lembrando que novas classes e relacionamentos podem ser criados.
+A partir disso, a equipe elaborou de uma forma simples e explicativa de como se darão as classes de objetos e suas relações por meio da representação em UML. Cabe lembrar que novas classes e relacionamentos podem ser criados na medida em que for necessário.
 
 As classes representadas como \textit{Response} e \textit{Package} serão as classes representativas dos objetos de mensagem que serão trocados entre o Radar e o servidor de microsserviços, e posteriormente às aplicações.
 
 \section{Resiliência na Comunicação do Software}
 
-A comunicação dos diversos softwares entre si e com o radar são essenciais para o funcionamento do sistema neste projeto. Por isso, deve-se tornar o sistema criado o mais resiliente possível com relação à problemas de comunicação, para que o impacto desses seja o menor possível, caso ocorreram.
+A comunicação dos diversos softwares entre si e com o radar são essenciais para o funcionamento do sistema neste projeto. Por isso, deve-se tornar o sistema criado o mais resiliente possível com relação à problemas de comunicação, para que o impacto desses seja o menor possível, caso ocorram.
 
-Por isso, foram levantados os principais problemas de comunicação entre os softwares ou destes com o radar, que poderão ocorrer dentro do escopo do presente projeto. A partir disso, foi-se definido que tipo de mecanismos estarão presentes para mitigar os efeitos dessas falhas para o funcionamento do sistema como um todo.
+Por isso, foram levantados os principais problemas possíveis de ocorrer, dentro do escopo do presente projeto, na comunicação entre os softwares ou destes com o radar. A partir disso, foi-se definido que tipo de mecanismos estarão presentes para mitigar os efeitos dessas falhas para o funcionamento do sistema como um todo.
 
 Abaixo estão listadas as falhas possíveis de ocorrerem, assim como as medidas para mitigar os efeitos delas:
 
@@ -297,7 +577,7 @@ Abaixo estão listadas as falhas possíveis de ocorrerem, assim como as medidas 
 
     \item \textbf{Mecanismo para mitigar a falha:}
 
-    Toda nova requisição, independente se o serviço está ou não sem comunicação, será colocada em uma fila de execução. Esta fila permitirá com que o microsserviço não deixe de executar uma requisição em virtude de ter ficado sem comunicação.
+    Toda nova requisição, independente se o serviço está ou não sem comunicação, será colocada em uma fila de execução. Esta fila permitirá com que o microsserviço não perca uma requisição em virtude de ter ficado sem comunicação.
 
     Além disso, o uso da fila proporcionará uma organização na ordem de execução dos pedidos. A ferramenta que será utilizada para gerenciar essas filas será o \textit{RabbitMQ}.
 \end{itemize}
@@ -311,9 +591,9 @@ Abaixo estão listadas as falhas possíveis de ocorrerem, assim como as medidas 
 
     \item \textbf{Mecanismo para mitigar a falha:}
 
-    Os microsserviços serão colocados em contêineres da tecnologia \textit{Docker}. Isso permitirá que novas instâncias de microsserviços indisponíveis sejam criadas rapidamente, fazendo com que o tempo indisponível deles seja reduzido.
+    Os microsserviços serão colocados em contêineres da tecnologia \textit{Docker}. Isso permitirá que novas instâncias de microsserviços indisponíveis sejam criadas rapidamente, fazendo com que o tempo de indisponibilidade deles seja reduzido.
 
-    Além disso, o uso dos contêineres permitirá que várias instâncias idênticas de um microsserviço estejam em funcionamento ao mesmo tempo e sejam criadas ou removidas a qualquer momento. Desse modo, será possível ter uma alta disponibilidade dos microsserviços, assim como escalabilidade.
+    Além disso, o uso dos contêineres permitirá que várias instâncias semelhantes de um microsserviço estejam em funcionamento ao mesmo tempo e sejam criadas ou removidas a qualquer momento. Desse modo, será possível ter uma alta disponibilidade dos microsserviços, assim como escalabilidade.
 \end{itemize}
 
 \section{\textit{DevOps}}
@@ -324,9 +604,9 @@ Segundo Ebert \cite{ebert2016devops} o \textit{DevOps} trata de processos de neg
 
 Dentro do projeto RaDop, a equipe de software buscará seguir algumas das melhores práticas do processo para garantir agilidade e segurança durante o desenvolvimento dos produtos. As práticas implementadas serão:
 \begin{itemize}
-    \item Integração Contínua (CI): Para garantir a qualidade e a uniformidade de todo o código novo que entra no sistema, os produtos de softwares estarão inseridos num \textit{pipeline}, onde passarão por testes de padrão de desenvolvimento, testes de código, testes estáticos, testes de segurança e testes de construção de serviços. Com a execução exitosa de todos os testes nos novos serviços, assim como nas evoluções dos antigos, estes serão integrados com as versões anteriores e os demais serviços.
-    \item Entrega Contínua (CD): Com a garantia de que as novas versões, e evoluções, estão de acordo com o planejado, esses novos produtos, ou subprodutos, serão entregues e implementados no seu destino (serviço do servidor, aplicativo ou \textit{Dashboard}) mais rapidamente e estarão prontamente disponíveis para uso.
-    \item \textit{Docker}: Para provisionamento dos serviços, implantação e isolamento dos ambientes e requerimentos. Além de auxiliar na escalabilidde dos serviços e possibilitar ações ágeis sobre erros e dificuldades.
+    \item Integração Contínua (CI): Para garantir a qualidade e a uniformidade de todo o código novo que entra no sistema, os produtos de softwares estarão inseridos em um \textit{pipeline}, no qual passarão por testes de padrão de desenvolvimento, de código, estáticos, de segurança e de construção de serviços. Com a execução exitosa de todos os testes nos novos serviços, assim como nas evoluções dos antigos, eles serão integrados com as versões anteriores e os demais serviços.
+    \item Entrega Contínua (CD): Com a garantia de que as novas versões e evoluções estão de acordo com o planejado, esses novos produtos, ou subprodutos, serão entregues e implementados no destino (serviço do servidor, aplicativo ou \textit{Dashboard}) mais rapidamente e estarão prontamente disponíveis para uso.
+    \item \textit{Docker}: Para provisionamento dos serviços, implantação e isolamento dos ambientes e requerimentos. Também irá auxiliar na escalabilidade dos serviços e possibilitar ações ágeis sobre erros e dificuldades.
 \end{itemize}
 
 \section{Protótipos}
@@ -335,30 +615,29 @@ Todas as telas referentes à construção da interface entre o sistema e o usuá
 
 A Figura \ref{fig:tela_inicial}, apresenta o protótipo da tela inicial do aplicativo RaDop.
 
-\begin{figure}[ht]
+\begin{figure}[H]
 	\center{\includegraphics[scale=0.5]{tela_inicial_aplicativo.pdf}}
 	\caption{\label{fig:tela_inicial} Protótipo da tela inicial do aplicativo RaDop.}
-\end{figure}\newpage
+\end{figure}
 
 A Figura \ref{fig:tela_status}, apresenta o protótipo da tela com os estados de funcionamento do radar.
 
-\begin{figure}[ht]
-	\center{\includegraphics[scale=0.45]{tela_status.pdf}}
+\begin{figure}[H]
+	\center{\includegraphics[scale=0.42]{tela_status.pdf}}
 	\caption{\label{fig:tela_status} Protótipo da tela com os estados de funcionamento do radar.}
 \end{figure}
 
 A Figura \ref{fig:tela_registro}, apresenta o protótipo da tela de registro para o usuário administrador poder cadastrar a manutenção do radar.
 
-\begin{figure}[ht]
-	\center{\includegraphics[scale=0.5]{tela_registro.pdf}}
+\begin{figure}[H]
+	\center{\includegraphics[scale=0.42]{tela_registro.pdf}}
 	\caption{\label{fig:tela_registro} Protótipo da tela de registro para o usuário administrador poder cadastrar a manutenção do radar.}
-\end{figure}\newpage
+\end{figure}
 
 A Figura \ref{fig:tela_dashboard}, apresenta o protótipo da tela principal do dashboard do radar.
 
-\begin{figure}[ht]
+\begin{figure}[H]
 	\center{\includegraphics[scale=0.5]{tela_dashboard.pdf}}
 	\caption{\label{fig:tela_dashboard} Protótipo da tela principal do dashboard do radar.}
-\end{figure}\newpage
-
+\end{figure}
 
