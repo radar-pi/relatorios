@@ -75,7 +75,7 @@ Isso implica que a variação estabelecida na Eq \ref{Doppler} é dada como send
 Outro parâmetro é a distância máxima que o radar vai conseguir detectar um veículo, pois será necessário alertar ao motorista que vem em direção oposta a possibilidade de uma colisão frontal. Pois será necessário capturar a imagem do automóvel caso o mesmo ultrapasse a velocidade limite da via. De acordo com esses parâmetros foi definido uma distância de 100 m atendendo o tempo necessário para realizar os processos embarcados no totem, entre eles o cálculo da velocidade do veículo e o comando para captura da imagem. Uma vez estipulada a distância máxima para captura foi possível realizar o cálculo dos demais parâmetros.
 
 %%%%%%%%%parametrôs de potencia e ruido%%%%%%%%%%%%%%
-A Eq. \ref{potencia_recebida} define a potência a ser recebida em função do ganho da antena, distância do alvo, da potência transmitida, do comprimento da onda transmitida e da área de seção transversal do alvo. \textcolor{red}{4}\cite{Richards}:
+A Eq. \ref{potencia_recebida} define a potência a ser recebida em função do ganho da antena, distância do alvo, da potência transmitida, do comprimento da onda transmitida e da área de seção transversal do alvo\cite{Richards}.
 \begin{equation}\label{potencia_recebida}
     P_t\, =\,   P_r \frac{(4\pi)^{3}\,  R^{4}}{G^{2}\,   \lambda^{2}\, \sigma }.
 \end{equation}%
@@ -84,7 +84,7 @@ Onde $P_t$ é a potência transmitida, $P_r$ a potência recebida, $G$ o ganho d
 
 Através das informações acerca da USRP-NI2901 \cite{RDS}  a potência miníma no canal de recepção RX é de -85 dBm, porém para realização dos cálculos foi estipulado uma sinal na recepção com potencia de -50 dBm utilizando os dados onde: $R=100 \, m$, $G=9 \, dB$ Fig.\ref{antena}, $\lambda=0.328 \, m$ Eq\ref{Doppler} e $\sigma=1 \, m^{2}$ \cite{Richards}. A partir desses dados e da Eq. \ref{potencia_recebida} podemos chegar a um resultado de $P_t=14.66 \, dBm$ de potência serão necessário para enviar o sinal a um alvo localizado a 100m.
 
-A potência de ruído térmico, predominante no projeto é definida na Eq. \ref{potencia_ruido}, onde $P_n$ é a potência de ruído, definida no receptor, $k$ a constante de Boltzman = $1.38 \times 10^{-23} \, J/K$ , $T_e$ a temperatura equivalente de ruído e $B$ a largura de banda. \textcolor{red}{4}
+A potência de ruído térmico, predominante no projeto é definida na Eq. \ref{potencia_ruido}, onde $P_n$ é a potência de ruído, definida no receptor, $k$ a constante de Boltzman = $1.38 \times 10^{-23} \, J/K$ , $T_e$ a temperatura equivalente de ruído e $B$ a largura de banda \cite{Richards}.
 
 \begin{equation}\label{potencia_ruido}
     P_n = k\, T_e\,B.
@@ -135,7 +135,7 @@ uma resolução de 1,7 Hz para uma determinada quantidade de amostras, neste pro
     \item \emph{VCO (complex):} Bloco que realiza a modulação da portadora na frequência central de 500 KHz e possui uma sensibilidade de 5 KHz, fazendo com que a frequência do sinal varie de 495 KHz a 505 KHz.
     \item \emph{UHD USRP Sink:}  Responsável por realizar o \emph{upconverter} do sinal de entrada para frequência central da antena que foi definido como 915 MHz com uma largura de banda de 5 MHz.
     \item \emph{UHD USRP Source:} Responsável por realizar o \emph{downconverter} do sinal que é captado pela antena, possibilitando com que o mesmo seja processado pelo software.
-    \item \emph{AGC:} Ganho controlado para manter o sinal de saída da antena receptorana mesma margem de tensão do sinal de entrada.
+    \item \emph{AGC:} Ganho controlado para manter o sinal de saída da antena receptora na mesma margem de tensão do sinal de entrada.
     \item \emph{Multiply Conjugate:} Realiza a convolução do sinal modulado pelo VCO com o sinal recebido pela antena, fazendo com que a frequência central seja deslocada para mais ou menos em relação a frequência da portadora movendo-a para zero e também para duas vezes a frequência da portadora.
     \item\emph{Low Pass Filter:} Faz com que somente a informação presente em torno da frequência zero seja preservada, fazendo com que seja mais visível a variação de frequência uma vez que a banda utilizada foi de 500 Hz com uma janela do tipo \emph{Blackman}.
     \item \emph{Waterfall Sink:}Modo de visualização no qual o desvio de frequência pode ser visualizado mais facilmente.
@@ -158,35 +158,40 @@ onde no centro temos o pico de maior ganho que representa frequência de transmi
 Com isso foi possível validar a transmissão e recepção do sinal à distância estipulada na seção de cálculos do radar. 
 
 O segundo teste realizado com o radar consistiu em
-medir a variação de velocidade radial na qual um sinal refletido por um ventilador é captado pela antena, por se tratar de uma velocidade angular irá aparecer no espectro do sinal várias frequências que estão relacionadas com a velocidade linear do ventilador ao longo da pá do mesmo, como mostrado nas Figuras \ref{Vel0} a \ref{Vel3}.
+medir a variação de velocidade radial na qual um sinal refletido por um ventilador é captado pela antena, por se tratar de uma velocidade angular irá aparecer no espectro do sinal várias frequências que estão relacionadas com a velocidade linear do ventilador ao longo da pá do mesmo, como mostrado na Figura \ref{fig:velocidade}.
 
 
 \begin{figure}[H]
+
     \centering
-    \includegraphics[scale=0.3]{Ventilador_desligado.png}
+      \begin{subfigure}{\textwidth}
+        \includegraphics[scale=0.3]{Ventilador_desligado}
     \caption{Imagem da captação do radar com o ventilador desligado.}
     \label{Vel0}
+      \end{subfigure}
+
+
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[H]\ContinuedFloat
     \centering
-    \includegraphics[scale=0.3]{Ventilador_vel1.png}
+          \begin{subfigure}{\textwidth}
+       \includegraphics[scale=0.3]{Ventilador_vel1}
     \caption{Imagem da captação do radar em velocidade 1.}
     \label{Vel1}
-\end{figure}
-      
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.3]{Ventilador_vel2.png}
+      \end{subfigure}
+      \begin{subfigure}{\textwidth}
+        \includegraphics[scale=0.3]{Ventilador_vel2}
     \caption{Imagem da captação do radar em velocidade 2.}
     \label{Vel2}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.3]{Ventilador_vel3.png}
+      \end{subfigure}
+\begin{subfigure}{\textwidth}
+       \includegraphics[scale=0.3]{Ventilador_vel3}
     \caption{Imagem da captação do radar em velocidade 3.}
     \label{Vel3}
+      \end{subfigure}
+      \caption{Captação de diferentes velocidades no radar.}
+      \label{fig:velocidade}
 \end{figure}
 
 De acordo com o a Figura \ref{Vel0} onde pode ser verificado somente um pico na frequência de transmissão da antena, concluindo que não ha nenhum objeto com velocidade radial próximo do radar. Já na Figura \ref{Vel1} pode verificar um espalhamento espectral do sinal na recepção, pelo fato de que quando o sinal refletir sobre o ventilador a antena irá captar um grande número de velocidades devido ao aumento gradual da velocidade linear de acordo com que o sinal refletido está mais afastado do centro do ventilador fazendo com que isso seja enxergado como um espalhamento na FFT do sinal na recepção. De acordo como são analisadas as Figuras \ref{Vel2} e \ref{Vel3}, pode-se notar a expansão do espalhamento espectral devido ao aumento da velocidade angular do ventilador.
@@ -281,8 +286,8 @@ A Tabela \ref{tabcap} relaciona o tamanho da imagem gerada com o tempo de captur
 
 \begin{table}[H]
 \centering
-\caption{Relação entre o tamanho da imagem pelo tempo de captura, onde se pode notar que quanto maior o tamanho da imagem, maior o tempo de captura.}
-\label{undefined}
+\caption{\label{tabcap}Relação entre o tamanho da imagem pelo tempo de captura, onde se pode notar que quanto maior o tamanho da imagem, maior o tempo de captura.}
+
 \begin{tabular}{|c|c|}
 \hline
 Tamanho da imagem (KB) & Tempo de captura (ms) \\ \hline
@@ -290,7 +295,7 @@ Tamanho da imagem (KB) & Tempo de captura (ms) \\ \hline
 173                    & 130                   \\ \hline
 151                    & 110                   \\ \hline
 179                    & 170                   \\ \hline
-\label{tabcap}
+
 \end{tabular}
 \end{table}
 
@@ -325,7 +330,7 @@ O servidor receberá alguns dados do veículo que estiver transitando acima do l
     \label{servidor}
 \end{figure}
 
-O estado do código de conexão HTTP com o servidor retornou o valor de 200 , indicando que a requisição foi bem sucedida (OK) \textcolor{red}{13}, o tempo de envio é o resultando de todo o processamento de criação do pacote, envio para o servidor e retorno do estado HTTP e o tamanho do pacote resultante foi de 472 KB.
+O estado do código de conexão HTTP com o servidor retornou o valor de 200 , indicando que a requisição foi bem sucedida (OK), o tempo de envio é o resultando de todo o processamento de criação do pacote, envio para o servidor e retorno do estado HTTP e o tamanho do pacote resultante foi de 472 KB.
 
 \section{Processamento de imagem}
 
@@ -341,7 +346,7 @@ A Figura \ref{fig:proc_img} trata da sequência de operações relacionadas a lo
 %\begin{figure}[H]
   %  \centering
   %  \includegraphics[scale=0.4]{Diagrama_logico_imagem.pdf}
-  %  \caption{Etapas do processamento de imagem a serem realizadas e seus elementos responsáveis pela execução. A câmera faz a aquisição da imagem, a \emph{Raspberry Pi 3} faz o pré-processamento, segmentação e representação, e o servidor realiza o reconhecimento da placa. \textcolor{red}{10}} 
+  %  \caption{Etapas do processamento de imagem a serem realizadas e seus elementos responsáveis pela execução. A câmera faz a aquisição da imagem, a \emph{Raspberry Pi 3} faz o pré-processamento, segmentação e representação, e o servidor realiza o reconhecimento da placa.
   %  \label{processamento_imagem}
 %\end{figure}
 
@@ -391,29 +396,34 @@ Como elemento estruturante para as operações morfológicas foi utilizado um re
     \label{dimensoes1}
 \end{equation}
 As Eq. \ref{dimensoes1} permitem mensurar a densidade linear de pixels por metro, sendo, 66,93 pixels/m para a horizontal e 36,5 pixels/m para a vertical.
-Sabendo-se que a dimensão da placa do carro é de 0,4 m por 0,15 m estimou-se o tamanho do elemento estruturante multiplicando-se a densidade de pixels obtida com o tamanho da placa obtendo-se uma matriz de tamanho 27 por 5, esse tamanho foi utilizado para formar um elemento estruturante de formato de um retângulo para ser utilizado na aplicação da operação morfológica \emph{Top Hat}. 
+Sabendo-se que a dimensão da placa do carro é de 0,4 m por 0,15 m estimou-se o tamanho do elemento estruturante multiplicando-se a densidade de pixels obtida com o tamanho da placa obtendo-se uma matriz de tamanho 27 por 5, esse tamanho foi utilizado para formar um elemento estruturante de formato de um retângulo para ser utilizado na aplicação da operação morfológica \emph{Top Hat}, como mostra a Figura \ref{fig:three graphs}.
 
-\begin{figure*}[t!]
+\begin{figure}[H]
      \centering
      
      \begin{subfigure}{0.7\textwidth}
-         \includegraphics[width=\textwidth]{img_origin_n.jpg}
+         \includegraphics[width=\textwidth]{img_origin_n}
          \caption{}
          \label{fig1:demarcada}
      \end{subfigure}
 
      \begin{subfigure}{0.7\textwidth}
-         \includegraphics[width=\textwidth]{thr_n.jpg}
+         \includegraphics[width=\textwidth]{thr_n}
           \caption{}
          \label{fig2:thresh}
      \end{subfigure}
 
-     \begin{subfigure}{0.7\textwidth}
-         \includegraphics[width=\textwidth]{op_cl_n.jpg}
+  
+\end{figure}
+
+\begin{figure}[H] \ContinuedFloat
+    \centering
+    \begin{subfigure}{0.7\textwidth}
+         \includegraphics[width=\textwidth]{op_cl_n}
           \caption{}
          \label{fig3:op_cl}
          
      \end{subfigure}
-  \caption{\ref{fig1:demarcada} mostra marcação de locais possíveis onde pode haver uma placa de carro, \ref{fig2:thresh} corresponde a \emph{Top hat} mais binarização de Otsu e \ref{fig3:op_cl} mostra operações de abertura e fechamento.}
+     \caption{\ref{fig1:demarcada} mostra marcação de locais possíveis onde pode haver uma placa de carro, \ref{fig2:thresh} corresponde a \emph{Top hat} mais binarização de Otsu e \ref{fig3:op_cl} mostra operações de abertura e fechamento.}
     \label{fig:three graphs}
-\end{figure*}
+\end{figure}
