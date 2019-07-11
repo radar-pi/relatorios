@@ -82,7 +82,7 @@ A Eq. \ref{potencia_recebida} define a potência a ser recebida em função do g
 
 Onde $P_t$ é a potência transmitida, $P_r$ a potência recebida, $G$ o ganho da antena, $\lambda$ o comprimento de onda do sinal a ser enviado, $\sigma$ a área de seção transversal média do alvo e $R$ a distância do alvo até a antena.
 
-Através das informações acerca da USRP-NI2901 \cite{RDS}  a potência miníma no canal de recepção RX é de -85 dBm, porém para realização dos cálculos foi estipulado uma sinal na recepção com potencia de -50 dBm utilizando os dados onde: $R=100 \, m$, $G=9 \, dB$ Fig.\ref{antena}, $\lambda=0.328 \, m$ Eq\ref{Doppler} e $\sigma=1 \, m^{2}$ \cite{Richards}. A partir desses dados e da Eq. \ref{potencia_recebida} podemos chegar a um resultado de $P_t=14.66 \, dBm$ de potência serão necessário para enviar o sinal a um alvo localizado a 100m.
+Através das informações acerca da USRP-NI2901 \cite{rds}  a potência miníma no canal de recepção RX é de -85 dBm, porém para realização dos cálculos foi estipulado uma sinal na recepção com potencia de -50 dBm utilizando os dados onde: $R=100 \, m$, $G=9 \, dB$ Fig.\ref{antena}, $\lambda=0.328 \, m$ Eq\ref{Doppler} e $\sigma=1 \, m^{2}$ \cite{Richards}. A partir desses dados e da Eq. \ref{potencia_recebida} podemos chegar a um resultado de $P_t=14.66 \, dBm$ de potência serão necessário para enviar o sinal a um alvo localizado a 100m.
 
 A potência de ruído térmico, predominante no projeto é definida na Eq. \ref{potencia_ruido}, onde $P_n$ é a potência de ruído, definida no receptor, $k$ a constante de Boltzman = $1.38 \times 10^{-23} \, J/K$ , $T_e$ a temperatura equivalente de ruído e $B$ a largura de banda \cite{Richards}.
 
@@ -262,7 +262,7 @@ Para a \ref{tx}, o resultado obtido é mostrado primeiramente a mensagem transmi
   
 De acordo com o Artigo $5^{\circ}$ Parágrafo $1^{\circ}$ da Resolução do CONTRAN 396/11 \cite{CONTRAN}, a velocidade a ser considerada para que a penalidade seja efetivada será o resultado de uma subtração da velocidade medida pelo equipamento pelo erro máximo admitido previsto na legislação metrológica em vigor, também presente na Resolução \cite{CONTRAN}.
    
- Após encontrar o valor da velocidade considerada, é feita uma comparação para saber se o veículo realmente está acima da velocidade da via, e se estiver, é calculado a porcentagem acima da velocidade da via para saber qual tipo de infração o condutor está cometendo, que de acordo com o Artigo 218 do Código de Trânsito Brasileiro (CTB) \cite{CTB} temos 3 (três) tipos de infração, sendo elas a infração média, onde o veículo está no máximo acima 20\%, grave quando o veículo está entre 20 a 50\% e gravíssima quando o mesmo estiver acima dos 50\%.   
+ Após encontrar o valor da velocidade considerada, é feita uma comparação para saber se o veículo realmente está acima da velocidade da via, e se estiver, é calculado a porcentagem acima da velocidade da via para saber qual tipo de infração o condutor está cometendo, que de acordo com o Artigo 218 do Código de Trânsito Brasileiro (CTB) \cite{ctb} temos 3 (três) tipos de infração, sendo elas a infração média, onde o veículo está no máximo acima 20\%, grave quando o veículo está entre 20 a 50\% e gravíssima quando o mesmo estiver acima dos 50\%.   
     
 Para este processamento, após o cálculo da velocidade medida ela é convertida pelo valor tabelado para velocidade considerada, e faz as comparações com a velocidade máxima permitida da via, que normalmente é imposta pelo órgão de transito local.    
 
